@@ -117,3 +117,15 @@ main nav button.on{background:linear-gradient(105deg,#1265c9,#1283d3);border-col
   html:fullscreen #roda .hero, html.fullscreen-active #roda .hero {font-size:clamp(30px,2.6vw,48px);margin:8px 0;}
   html:fullscreen #roda .home-side .actions button, html.fullscreen-active #roda .home-side .actions button {min-height:43px;}
 }
+
+/* v20 — área de registros em duas colunas: ações à esquerda, pontes à direita */
+#pergunta .question-bottom-grid {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,2.2vw,36px);align-items:stretch;margin-top:22px;}
+#pergunta .question-left {min-width:0;display:flex;flex-direction:column;}
+#pergunta .question-left label {margin:0 0 10px;}
+#pergunta .question-left textarea {min-height:110px;resize:vertical;flex:1;}
+#pergunta .question-save-actions {margin-top:12px;gap:10px;}
+#pergunta .question-save-actions button {min-height:52px;text-transform:uppercase;}
+#pergunta .question-right {display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;gap:12px;margin:0;min-width:0;}
+#pergunta .question-right article {display:flex;flex-direction:column;justify-content:center;padding:clamp(15px,1.6vw,26px);}
+#pergunta .question-right article p {line-height:1.55;margin:9px 0 0;}
+@media (max-width:780px) {#pergunta .question-bottom-grid {grid-template-columns:1fr;}#pergunta .question-right {grid-template-columns:1fr;grid-template-rows:auto;}#pergunta .question-left textarea {min-height:100px;}}
