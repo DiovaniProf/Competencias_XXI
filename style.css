@@ -299,3 +299,74 @@ main>header .eyebrow, #welcome .welcome-header .eyebrow {
   #pergunta .question-right article .pill {font-size:16px!important;}
   #pergunta .question-right article p {font-size:21px!important;}
 }
+
+
+/* v27 — tela cheia sem rolagem em monitores desktop: ocupação vertical fluida */
+@media (min-width:1100px) and (min-height:700px) {
+  html:fullscreen, html:fullscreen body, html.fullscreen-active, html.fullscreen-active body {height:100%;overflow:hidden;}
+  html:fullscreen #appMain, html.fullscreen-active #appMain {
+    height:100dvh!important;min-height:0!important;max-height:100dvh;
+    display:flex;flex-direction:column;overflow:hidden;
+    padding:clamp(8px,1.1vh,15px) clamp(18px,1.8vw,38px) clamp(5px,.7vh,10px)!important;
+  }
+  html:fullscreen #appMain>header, html.fullscreen-active #appMain>header {
+    flex:0 0 auto;margin-bottom:clamp(4px,.7vh,9px)!important;padding-bottom:clamp(5px,.8vh,10px)!important;
+  }
+  html:fullscreen #appMain>header .eyebrow, html.fullscreen-active #appMain>header .eyebrow {font-size:clamp(16px,1.1vw,23px)!important;}
+  html:fullscreen #appMain>header h1, html.fullscreen-active #appMain>header h1 {font-size:clamp(25px,2vw,42px)!important;line-height:1.12;}
+  html:fullscreen #appMain .topstats, html.fullscreen-active #appMain .topstats {flex:0 0 auto;margin:clamp(2px,.45vh,6px) 0!important;}
+  html:fullscreen #appMain>.bar, html.fullscreen-active #appMain>.bar {flex:0 0 auto;margin-bottom:clamp(3px,.5vh,7px)!important;}
+  html:fullscreen #appMain>nav, html.fullscreen-active #appMain>nav {flex:0 0 auto;margin:clamp(3px,.6vh,8px) 0!important;}
+  html:fullscreen #appMain>nav button, html.fullscreen-active #appMain>nav button {padding:clamp(7px,1vh,13px) 8px!important;}
+  html:fullscreen #appMain>footer, html.fullscreen-active #appMain>footer {flex:0 0 auto;margin:clamp(3px,.6vh,8px) 0 0!important;font-size:clamp(10px,.72vw,13px);}
+  html:fullscreen #pergunta:not(.hidden), html.fullscreen-active #pergunta:not(.hidden) {
+    flex:1 1 auto;min-height:0!important;height:auto;margin:clamp(4px,.7vh,10px) 0 0!important;
+    padding:clamp(10px,1.25vh,20px) clamp(16px,1.6vw,32px)!important;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  html:fullscreen #pergunta #backWheel, html.fullscreen-active #pergunta #backWheel {align-self:flex-start;flex:0 0 auto;padding:clamp(6px,.85vh,11px) 16px;}
+  html:fullscreen #pergunta #qhead, html.fullscreen-active #pergunta #qhead {flex:0 0 auto;margin-top:clamp(3px,.6vh,8px);}
+  html:fullscreen #pergunta #qtext, html.fullscreen-active #pergunta #qtext {
+    flex:0 0 auto;min-height:0!important;padding:clamp(6px,1vh,14px) 0;
+    font-size:clamp(22px,1.65vw,35px);line-height:1.22;
+  }
+  html:fullscreen #pergunta #qcontrols:not(.hidden), html.fullscreen-active #pergunta #qcontrols:not(.hidden) {
+    flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:stretch;
+  }
+  html:fullscreen #pergunta #individualAnswer:not(.hidden), html.fullscreen-active #pergunta #individualAnswer:not(.hidden),
+  html:fullscreen #pergunta #collectiveAnswer:not(.hidden), html.fullscreen-active #pergunta #collectiveAnswer:not(.hidden) {flex:0 0 auto;}
+  html:fullscreen #pergunta .answer-label, html.fullscreen-active #pergunta .answer-label {margin:clamp(3px,.5vh,7px) 0;}
+  html:fullscreen #pergunta .answer-buttons button, html.fullscreen-active #pergunta .answer-buttons button {padding:clamp(8px,1.3vh,17px);}
+  html:fullscreen #pergunta #collectiveAnswer label, html.fullscreen-active #pergunta #collectiveAnswer label {margin:clamp(3px,.5vh,7px) 0;}
+  html:fullscreen #pergunta #collectiveAnswer input, html.fullscreen-active #pergunta #collectiveAnswer input {padding:clamp(7px,.9vh,12px);}
+  html:fullscreen #pergunta .muted, html.fullscreen-active #pergunta .muted {margin:clamp(3px,.6vh,8px) 0;font-size:clamp(13px,.9vw,17px);}
+  html:fullscreen #pergunta .question-bottom-grid, html.fullscreen-active #pergunta .question-bottom-grid {
+    flex:1 1 auto;min-height:0!important;margin-top:clamp(8px,1.1vh,18px)!important;
+    gap:clamp(18px,2vw,40px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  }
+  html:fullscreen #pergunta .question-left, html.fullscreen-active #pergunta .question-left {min-height:0;}
+  html:fullscreen #pergunta .question-left label, html.fullscreen-active #pergunta .question-left label {
+    flex:0 0 auto;margin:0 0 clamp(5px,.7vh,10px);font-size:clamp(19px,1.35vw,27px)!important;
+  }
+  html:fullscreen #pergunta .question-left textarea, html.fullscreen-active #pergunta .question-left textarea {
+    flex:1 1 auto;min-height:70px!important;max-height:none;resize:none;
+    padding:clamp(9px,1.1vh,18px);font-size:clamp(18px,1.25vw,25px)!important;
+  }
+  html:fullscreen #pergunta .question-save-actions, html.fullscreen-active #pergunta .question-save-actions {
+    flex:0 0 auto;margin-top:clamp(7px,.9vh,14px);gap:clamp(7px,.9vh,12px);
+  }
+  html:fullscreen #pergunta .question-save-actions button, html.fullscreen-active #pergunta .question-save-actions button {
+    min-height:clamp(40px,5.3vh,66px)!important;
+  }
+  html:fullscreen #pergunta .question-right, html.fullscreen-active #pergunta .question-right {
+    min-height:0;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:clamp(8px,1.1vh,16px);
+  }
+  html:fullscreen #pergunta .question-right article, html.fullscreen-active #pergunta .question-right article {
+    min-height:0;padding:clamp(12px,1.4vw,27px)!important;overflow:hidden;
+  }
+  html:fullscreen #pergunta .question-right article .pill, html.fullscreen-active #pergunta .question-right article .pill {font-size:clamp(17px,1.2vw,23px)!important;}
+  html:fullscreen #pergunta .question-right article p, html.fullscreen-active #pergunta .question-right article p {
+    font-size:clamp(20px,1.5vw,30px)!important;line-height:1.35;margin-top:clamp(6px,.9vh,13px)!important;
+  }
+}
+/* Para telas compactas, a rolagem continua permitida para evitar ocultar controles. */
