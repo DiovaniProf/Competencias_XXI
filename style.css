@@ -261,3 +261,41 @@ main nav button.on{background:linear-gradient(105deg,#1265c9,#1283d3);border-col
   #pergunta .question-right article {min-height:125px;}
   #pergunta .question-left textarea {min-height:155px;}
 }
+
+
+/* v26 — ampliação tipográfica, preservando integralmente os botões */
+main>header .eyebrow, #welcome .welcome-header .eyebrow {
+  font-size:clamp(17px,1.45vw,27px)!important;
+  line-height:1.35;
+  letter-spacing:.105em;
+  font-weight:900;
+}
+#pergunta .question-left label {
+  font-size:clamp(21px,1.65vw,30px)!important;
+  line-height:1.4;
+}
+#pergunta .question-left textarea {
+  font-size:clamp(20px,1.45vw,27px)!important;
+  line-height:1.6;
+}
+#pergunta .question-left textarea::placeholder {
+  font-size:clamp(18px,1.3vw,24px)!important;
+  line-height:1.5;
+}
+#pergunta .question-right article .pill {
+  font-size:clamp(18px,1.3vw,24px)!important;
+  line-height:1.4;
+  letter-spacing:.045em;
+}
+#pergunta .question-right article p {
+  font-size:clamp(23px,1.75vw,33px)!important;
+  line-height:1.48;
+}
+@media (max-width:780px) {
+  main>header .eyebrow, #welcome .welcome-header .eyebrow {font-size:17px!important;}
+  #pergunta .question-left label {font-size:20px!important;}
+  #pergunta .question-left textarea {font-size:18px!important;}
+  #pergunta .question-left textarea::placeholder {font-size:16px!important;}
+  #pergunta .question-right article .pill {font-size:16px!important;}
+  #pergunta .question-right article p {font-size:21px!important;}
+}
