@@ -129,3 +129,20 @@ main nav button.on{background:linear-gradient(105deg,#1265c9,#1283d3);border-col
 #pergunta .question-right article {display:flex;flex-direction:column;justify-content:center;padding:clamp(15px,1.6vw,26px);}
 #pergunta .question-right article p {line-height:1.55;margin:9px 0 0;}
 @media (max-width:780px) {#pergunta .question-bottom-grid {grid-template-columns:1fr;}#pergunta .question-right {grid-template-columns:1fr;grid-template-rows:auto;}#pergunta .question-left textarea {min-height:100px;}}
+
+/* v21 — abertura mais ampla com modalidades explicativas lado a lado */
+.welcome-screen {padding:clamp(16px,2.8vw,42px);}
+.welcome-card {width:min(1120px,100%);padding:clamp(25px,3.6vw,56px);}
+.welcome-card h1 {font-size:clamp(30px,3.65vw,53px);margin:13px 0 8px;}
+.welcome-card h2 {margin-top:22px;}
+.welcome-card>.mode-question {margin-top:22px;}
+.mode-cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:16px;}
+.mode-card {display:flex;flex-direction:column;min-width:0;padding:clamp(18px,2vw,26px);background:#173b58;border:1px solid #3a779f;border-radius:16px;}
+.mode-card-title {display:flex;align-items:center;gap:11px;margin-bottom:7px;}
+.mode-card-title h3 {font-size:clamp(18px,1.6vw,23px);margin:0;color:#fff;letter-spacing:.35px;}
+.mode-icon {color:#7ee1f4;font-size:25px;line-height:1;}
+.welcome-card .mode-card p {font-size:clamp(14px,1.05vw,16px);line-height:1.55;margin:10px 0;color:#dcebf5;}
+.mode-card button {margin-top:auto;width:100%;padding:16px 12px;background:linear-gradient(105deg,#1469ce,#04a6c6);font-weight:900;font-size:16px;}
+.mode-card p:last-of-type {margin-bottom:23px;}
+.mode-card button:focus-visible {outline:3px solid #fff;outline-offset:3px;}
+@media(max-width:700px){.mode-cards{grid-template-columns:1fr}.welcome-card{padding:24px 18px}.mode-card p:last-of-type{margin-bottom:20px}}
