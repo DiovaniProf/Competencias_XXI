@@ -370,3 +370,63 @@ main>header .eyebrow, #welcome .welcome-header .eyebrow {
   }
 }
 /* Para telas compactas, a rolagem continua permitida para evitar ocultar controles. */
+
+
+/* v28 — painel de pergunta compacto, sem barra de rolagem em monitores desktop.
+   Ativo na tela da pergunta, com ou sem modo fullscreen do navegador. */
+@media (min-width: 1100px) and (min-height: 650px) {
+  html:has(#pergunta:not(.hidden)), body:has(#pergunta:not(.hidden)) {height:100%;overflow:hidden;}
+  #appMain:has(#pergunta:not(.hidden)) {
+    height:100dvh!important;max-height:100dvh!important;min-height:0!important;
+    display:flex!important;flex-direction:column;overflow:hidden;
+    padding:clamp(7px,.8vh,12px) clamp(16px,1.4vw,30px) clamp(4px,.5vh,8px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header {flex:none;margin-bottom:5px!important;padding:0 155px 7px 0!important;}
+  #appMain:has(#pergunta:not(.hidden)) > header .eyebrow {font-size:clamp(15px,1.03vw,20px)!important;line-height:1.15;}
+  #appMain:has(#pergunta:not(.hidden)) > header h1 {font-size:clamp(25px,2vw,35px)!important;margin:3px 0!important;line-height:1.1;}
+  #appMain:has(#pergunta:not(.hidden)) > header .muted {font-size:11px;}
+  #appMain:has(#pergunta:not(.hidden)) .topstats {flex:none;margin:5px 0!important;font-size:11px;}
+  #appMain:has(#pergunta:not(.hidden)) > .bar {flex:none;height:5px;margin:0 0 5px!important;}
+  #appMain:has(#pergunta:not(.hidden)) > nav {flex:none;margin:4px 0 7px!important;}
+  #appMain:has(#pergunta:not(.hidden)) > nav button {padding:8px!important;font-size:13px;}
+  #appMain:has(#pergunta:not(.hidden)) > footer {flex:none;margin:4px 0 0!important;font-size:10px;}
+  #pergunta:not(.hidden) {
+    flex:1 1 0!important;min-height:0!important;height:auto!important;overflow:hidden;
+    display:flex;flex-direction:column;margin:3px 0 0!important;
+    padding:clamp(9px,1.2vh,15px) clamp(12px,1vw,20px)!important;
+  }
+  #pergunta #backWheel {flex:none;align-self:flex-start;padding:7px 14px;font-size:12px;}
+  #pergunta #qhead {flex:none;margin:3px 0 0;font-size:12px;}
+  #pergunta #qtext {flex:none;min-height:0!important;padding:clamp(8px,1.3vh,16px) 0!important;font-size:clamp(21px,1.5vw,28px);line-height:1.2;}
+  #pergunta #qcontrols:not(.hidden) {flex:1 1 0;min-height:0;display:flex;flex-direction:column;}
+  #pergunta #individualAnswer:not(.hidden),#pergunta #collectiveAnswer:not(.hidden) {flex:none;}
+  #pergunta .answer-label {margin:3px 0 5px;font-size:16px;}
+  #pergunta .answer-buttons button {padding:clamp(8px,1.2vh,13px);font-size:18px;}
+  #pergunta #collectiveAnswer label {margin:3px 0 5px;}
+  #pergunta #collectiveAnswer input {padding:7px;}
+  #pergunta .muted {font-size:13px!important;margin:5px 0!important;line-height:1.3;}
+  #pergunta .question-bottom-grid {
+    flex:1 1 0;min-height:0!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(12px,1.4vw,24px)!important;margin-top:clamp(8px,1vh,13px)!important;
+  }
+  #pergunta .question-left {min-height:0;display:flex;flex-direction:column;}
+  #pergunta .question-left label {flex:none;font-size:clamp(16px,1.1vw,21px)!important;margin:0 0 5px!important;line-height:1.2;}
+  #pergunta .question-left textarea {
+    flex:1 1 0;min-height:58px!important;max-height:none;resize:none;
+    font-size:clamp(15px,1.03vw,19px)!important;line-height:1.35;padding:11px!important;
+  }
+  #pergunta .question-left textarea::placeholder {font-size:clamp(13px,.9vw,16px)!important;}
+  #pergunta .question-save-actions {flex:none;gap:7px!important;margin-top:7px!important;}
+  #pergunta .question-save-actions button {min-height:clamp(37px,4.6vh,48px)!important;font-size:14px!important;padding:7px;}
+  #pergunta .question-right {min-height:0;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:9px!important;}
+  #pergunta .question-right article {min-height:0;padding:clamp(10px,1vw,18px)!important;overflow:hidden;}
+  #pergunta .question-right article .pill {font-size:clamp(13px,.92vw,17px)!important;line-height:1.25;}
+  #pergunta .question-right article p {font-size:clamp(17px,1.18vw,22px)!important;line-height:1.3;margin-top:7px!important;}
+}
+/* Monitores baixos: compactar ainda mais sem cortar botões. */
+@media (min-width:1100px) and (min-height:650px) and (max-height:800px) {
+  #pergunta #qtext {padding:6px 0!important;font-size:21px;}
+  #pergunta .question-bottom-grid {margin-top:5px!important;}
+  #pergunta .question-save-actions button {min-height:35px!important;}
+  #pergunta .question-right article p {font-size:17px!important;}
+}
