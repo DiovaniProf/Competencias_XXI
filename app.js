@@ -195,3 +195,6 @@ document.addEventListener('fullscreenchange',()=>{
   if(btn)btn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';
   window.dispatchEvent(new Event('resize'));
 });
+
+// V34: identificação contextual do modo na tela de perguntas.
+(function(){const badge=document.getElementById("experienceBadge");if(!badge)return;const update=()=>{const ind=document.getElementById("individualAnswer");badge.textContent=ind&&!ind.classList.contains("hidden")?"◈ Experiência: Individual":"◈ Experiência: Coletiva";};new MutationObserver(update).observe(document.getElementById("individualAnswer"),{attributes:true,attributeFilter:["class"]});update();})();
