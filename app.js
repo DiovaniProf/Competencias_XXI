@@ -9,6 +9,7 @@ function setMode(mode,reset=false){
  $('individualAnswer').classList.toggle('hidden',mode!=='individual');
  $('collectiveAnswer').classList.toggle('hidden',mode==='individual');
  $('modeIndicator').textContent=mode==='individual'?'EXPERIÊNCIA INDIVIDUAL':'EXPERIÊNCIA COLETIVA';
+ document.querySelector('#roda .intro').textContent=mode==='individual'?'Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.':'Uma questão por vez, alternando os cinco eixos. Registre quantos estudantes responderam SIM, explore a mediação e registre comentários para promover o diálogo e identificar possibilidades de intervenção interdisciplinar.';
  $('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
  $('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
  $('total').value=state.total;saveState();update();tab('roda');

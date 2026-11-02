@@ -529,3 +529,88 @@ main>header .eyebrow, #welcome .welcome-header .eyebrow {
   #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {font-size:clamp(20px,1.5vw,26px)!important;padding:5px 0!important;}
   #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {font-size:clamp(16px,1.1vw,20px)!important;}
 }
+
+
+/* v31 — melhor distribuição vertical exclusiva da tela das perguntas.
+   Reserva espaço para o cabeçalho, mantém todos os controles visíveis e
+   utiliza a área restante sem exagerar em fontes ou espaços vazios. */
+@media (min-width:1100px) and (min-height:650px) {
+  #appMain:has(#pergunta:not(.hidden)) {
+    padding-top:clamp(9px,1.1vh,15px)!important;
+    padding-bottom:clamp(7px,1vh,14px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header {
+    margin-bottom:clamp(6px,.9vh,11px)!important;
+    padding-bottom:clamp(7px,.9vh,11px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header .eyebrow {
+    font-size:clamp(17px,1.12vw,21px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header h1 {
+    font-size:clamp(27px,1.95vw,37px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) .topstats {
+    font-size:clamp(13px,.9vw,17px)!important;
+    margin:clamp(5px,.7vh,9px) 0!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > nav {
+    margin:clamp(6px,.8vh,10px) 0 clamp(8px,1.2vh,15px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > nav button {
+    padding:clamp(9px,1.2vh,14px) 8px!important;
+    font-size:clamp(14px,.93vw,17px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta {
+    padding:clamp(12px,1.5vh,20px) clamp(14px,1.1vw,22px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #backWheel {
+    padding:clamp(8px,1vh,12px) clamp(15px,1vw,20px)!important;
+    font-size:clamp(14px,.9vw,17px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qhead {
+    font-size:clamp(12px,.8vw,15px)!important;
+    margin-top:clamp(5px,.7vh,9px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {
+    padding:clamp(11px,2.3vh,25px) 0!important;
+    font-size:clamp(21px,1.55vw,29px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-bottom-grid {
+    margin-top:clamp(10px,1.5vh,18px)!important;
+    gap:clamp(14px,1.5vw,26px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article {
+    padding:clamp(12px,1.2vw,20px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(17px,1.13vw,22px)!important;
+    margin-top:clamp(5px,.8vh,10px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-save-actions button {
+    min-height:clamp(38px,4.5vh,48px)!important;
+  }
+}
+@media (min-width:1100px) and (min-height:650px) and (max-height:760px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {
+    padding:clamp(6px,1vh,11px) 0!important;
+    font-size:clamp(20px,1.4vw,25px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(16px,1vw,19px)!important;
+  }
+}
+
+/* v32 — rolagem permitida nas telas extensas, mesmo em modo tela cheia.
+   Apenas a tela de pergunta é ajustada à altura útil do monitor desktop. */
+html:fullscreen,html:fullscreen body,html.fullscreen-active,html.fullscreen-active body {overflow-y:auto!important;overflow-x:hidden!important;height:auto!important;min-height:100%!important;}
+html:fullscreen #appMain,html.fullscreen-active #appMain {height:auto!important;min-height:100dvh!important;max-height:none!important;overflow:visible!important;}
+html:fullscreen #roda:not(.hidden),html:fullscreen #relatorio:not(.hidden),html:fullscreen #questoes:not(.hidden),
+html.fullscreen-active #roda:not(.hidden),html.fullscreen-active #relatorio:not(.hidden),html.fullscreen-active #questoes:not(.hidden) {overflow:visible!important;max-height:none!important;height:auto!important;}
+@media (min-width:1100px) and (min-height:700px) {
+ html:fullscreen:has(#pergunta:not(.hidden)),html.fullscreen-active:has(#pergunta:not(.hidden)) {height:100dvh!important;overflow:hidden!important;}
+ html:fullscreen:has(#pergunta:not(.hidden)) body,html.fullscreen-active:has(#pergunta:not(.hidden)) body {height:100dvh!important;overflow:hidden!important;}
+ html:fullscreen #appMain:has(#pergunta:not(.hidden)),html.fullscreen-active #appMain:has(#pergunta:not(.hidden)) {height:100dvh!important;min-height:0!important;max-height:100dvh!important;overflow:hidden!important;}
+}
+@media (max-width:1099px), (max-height:699px) {
+ html:fullscreen #pergunta:not(.hidden),html.fullscreen-active #pergunta:not(.hidden) {height:auto!important;max-height:none!important;overflow:visible!important;}
+}
