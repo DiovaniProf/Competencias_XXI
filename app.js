@@ -104,23 +104,33 @@ function list(){
 function update(){const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas SIM · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
 function scores(){return groups.map((_,g)=>{let ids=questions.map((q,i)=>q.g===g?i:-1).filter(i=>i>=0&&state.counts[i]!==undefined);return ids.length?Math.round(100*ids.reduce((a,i)=>a+Number(state.counts[i]),0)/(ids.length*state.total)):null})}
 function reflectionData(){
- const v=scores(), entries=v.map((value,g)=>({g,value,ids:questions.map((q,i)=>q.g===g&&state.counts[i]!==undefined?i:-1).filter(i=>i>=0)})).filter(x=>x.value!==null);
- const intro='Este relatório comentado pretende auxiliar a reflexão sobre as competências para o século XXI e apoiar novas aprendizagens. Não avalia o participante nem classifica suas capacidades.';
- if(!entries.length)return [intro,'Ainda não há respostas suficientes para uma apreciação dos eixos. Ao registrar as respostas, surgirão sugestões de mediação e encaminhamento.'];
+ const v=scores();
+ const entries=v.map((value,g)=>({g,value,ids:questions.map((q,i)=>q.g===g&&state.counts[i]!==undefined?i:-1).filter(i=>i>=0)})).filter(x=>x.value!==null);
+ const intro='Este relatório comentado pretende auxiliar na reflexão sobre as competências para o século XXI e orientar novas aprendizagens. Não avalia nem classifica participantes.';
+ if(!entries.length)return [intro,'Ainda não há respostas registradas. À medida que a experiência avançar, esta seção apresentará uma apreciação dos eixos e sugestões de mediação e encaminhamento.'];
  const max=Math.max(...entries.map(x=>x.value)),min=Math.min(...entries.map(x=>x.value));
- const strong=entries.filter(x=>x.value===max),growth=entries.filter(x=>x.value===min);
- const join=a=>a.map(x=>groups[x.g]).join(a.length>1?', ':'');
+ const strongest=entries.filter(x=>x.value===max),focus=entries.filter(x=>x.value===min);
+ const names=items=>items.map(x=>groups[x.g]).join(', ');
  const paragraphs=[intro];
- if(max>=60)paragraphs.push('É positivo observar '+max+'% de respostas SIM em '+join(strong)+'. Essas experiências podem servir de referência para ampliar iniciativas em outras dimensões.');
- else paragraphs.push('Os percentuais registrados mostram diferentes oportunidades de desenvolvimento. Vale reconhecer as experiências já construídas e avançar gradualmente, sem comparações entre pessoas.');
- if(min<max){const focus=growth.flatMap(x=>x.ids).slice(0,3);const mediation=[...new Set(focus.map(i=>questions[i].m))];const actions=[...new Set(focus.map(i=>questions[i].a))];paragraphs.push('Em '+join(growth)+' ('+min+'%), o convite é aproveitar as práticas já presentes nos eixos de maior participação e experimentar novos passos. Para dialogar: '+(mediation.length?mediation.join(' '):'quais experiências poderiam fortalecer esse eixo?')+' Como encaminhamento: '+(actions.length?actions.join(' '):'definir uma pequena ação concreta e revisá-la depois.'));}
- else {const ids=entries.flatMap(x=>x.ids).slice(0,2);paragraphs.push('Os eixos apresentam percentuais semelhantes. A mediação pode explorar o que favoreceu essas experiências e propor um próximo passo: '+(ids.length?ids.map(i=>questions[i].a).join(' '):'planejar uma ação prática de aprendizagem.'));}
- if(entries.length<5)paragraphs.push('A leitura é parcial: há eixos ainda sem respostas registradas.');
+ if(max>=75)paragraphs.push('Pontos de apoio: '+names(strongest)+' apresenta(m) '+max+'% de respostas SIM. Reconheça as experiências já desenvolvidas e procure aplicá-las também a outras dimensões do projeto de vida.');
+ else if(max>=50)paragraphs.push('Há experiências importantes em '+names(strongest)+' ('+max+'% de respostas SIM). Elas podem servir de ponto de partida para fortalecer hábitos e ampliar oportunidades.');
+ else paragraphs.push('As respostas registradas convidam à construção gradual de novas experiências. Valorize o que já foi realizado e escolha uma ação pequena, concreta e possível para começar.');
+ if(min<max){
+  const selected=focus.flatMap(x=>x.ids).slice(0,2);
+  const mediation=[...new Set(selected.map(i=>questions[i].m))];
+  const actions=[...new Set(selected.map(i=>questions[i].a))];
+  paragraphs.push('Próximo foco: '+names(focus)+' ('+min+'% de respostas SIM). Para a mediação, reflita: '+(mediation[0]||'O que poderia favorecer novas experiências neste eixo?')+' Encaminhamento sugerido: '+(actions[0]||'Definir uma meta viável e acompanhar seu progresso.'));
+ }else{
+  const selected=entries.flatMap(x=>x.ids).slice(0,2);
+  paragraphs.push('Os eixos com registros apresentam percentuais semelhantes. Para avançar, discuta: '+(selected.length?questions[selected[0]].m:'Quais competências deseja desenvolver?')+' Encaminhamento: '+(selected.length?questions[selected[0]].a:'Definir uma meta de aprendizagem.'));
+ }
+ if(entries.length<5)paragraphs.push('Leitura parcial: '+(5-entries.length)+' eixo(s) ainda não possui(em) respostas. Ausência de registro não significa resultado zero.');
+ else if(entries.some(x=>x.ids.length<4))paragraphs.push('A interpretação considera apenas as questões já respondidas; os percentuais poderão mudar com novos registros.');
  return paragraphs;
 }
 function renderReflection(){const target=$('reflectionText');if(target){target.replaceChildren(...reflectionData().map(t=>{const p=document.createElement('p');p.textContent=t;return p}))}}
 function radar(){
- const c=$('radar'),x=c.getContext('2d'),cx=300,cy=265,R=172,v=scores();
+ const c=$('radar'),x=c.getContext('2d'),cx=300,cy=265,R=183,v=scores();
  x.clearRect(0,0,600,560);x.fillStyle='#102640';x.fillRect(0,0,600,560);
  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/5;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]};
  for(let level=1;level<=4;level++){x.beginPath();for(let i=0;i<5;i++){const p=pt(i,R*level/4);i?x.lineTo(...p):x.moveTo(...p)}x.closePath();x.strokeStyle='#4c6680';x.lineWidth=1.3;x.stroke()}
@@ -144,7 +154,7 @@ function radar(){
   x.fillText(v[i]===null?'—':v[i]+'%',label.x,label.y+label.lines.length*21+5);
  });
  x.fillStyle='#d5e4f3';x.font='14px system-ui';x.textAlign='left';x.fillText('Escala: 0% (centro) a 100% (vértices)',14,543);
- $('metrics').innerHTML=groups.map((g,i)=>'<div class="metric-row"><strong>'+g+'</strong><small>'+(v[i]===null?'Sem registros':v[i]+'% de SIM')+' · '+questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length+'/4 perguntas com contagem</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>').join('');renderReflection();
+ $('metrics').innerHTML=groups.map((g,i)=>{const done=questions.filter((q,j)=>q.g===i&&state.counts[j]!==undefined).length;return '<div class="metric-row"><div class="metric-title"><strong>'+g+'</strong><span class="metric-value" style="color:'+colors[i]+'">'+(v[i]===null?'—':v[i]+'%')+'</span></div><small>'+(v[i]===null?'Sem respostas registradas':done+' de 4 questões respondidas · percentual de SIM')+'</small><div class="metric-track"><div class="metric-fill" style="width:'+(v[i]??0)+'%;background:'+colors[i]+'"></div></div></div>'}).join('');renderReflection();
 }
 function summary(){const v=scores();return 'RODA DAS COMPETÊNCIAS — RELATÓRIO FORMATIVO\nTurma: '+(state.className||'Não informada')+'\nEstudantes: '+state.total+'\nQuestões realizadas: '+state.used.length+'/20\n\n'+groups.map((g,i)=>g+': '+(v[i]??'Sem dados')+(v[i]===null?'':'%')).join('\n')+'\n\nLEITURA REFLEXIVA\n'+reflectionData().join('\n\n')+'\n\n'+state.used.map(i=>'QUESTÃO '+(i+1)+' — '+questions[i].q+'\nSIM: '+(state.counts[i]??'Não informado')+' | NÃO: '+(state.counts[i]===undefined?'Não informado':state.total-state.counts[i])+'\nMEDIAÇÃO: '+questions[i].m+'\nENCAMINHAMENTO: '+questions[i].a+'\nCOMENTÁRIOS: '+(state.notes[i]||'Não registradas')).join('\n\n')}
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(summary());$('status').textContent='Resumo copiado.'}catch(e){$('status').textContent='Não foi possível copiar automaticamente.'}};
