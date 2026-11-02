@@ -146,3 +146,23 @@ main nav button.on{background:linear-gradient(105deg,#1265c9,#1283d3);border-col
 .mode-card p:last-of-type {margin-bottom:23px;}
 .mode-card button:focus-visible {outline:3px solid #fff;outline-offset:3px;}
 @media(max-width:700px){.mode-cards{grid-template-columns:1fr}.welcome-card{padding:24px 18px}.mode-card p:last-of-type{margin-bottom:20px}}
+
+/* v22 — abertura em três colunas, aproveitamento horizontal */
+.welcome-screen{padding:clamp(14px,2.2vw,35px);min-height:100dvh;}
+.welcome-card.welcome-v22{width:min(1510px,100%);max-width:none;padding:clamp(24px,3.2vw,54px);}
+.welcome-v22 .welcome-header{padding-bottom:18px;border-bottom:1px solid #365b78;}
+.welcome-v22 .welcome-header h1{font-size:clamp(30px,3.1vw,51px);max-width:none;line-height:1.16;}
+.welcome-v22 .welcome-header .welcome-sub{margin-bottom:0;}
+.welcome-v22 .welcome-lead{font-size:clamp(20px,2vw,28px);margin:24px 0 20px;}
+.welcome-three{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:18px;align-items:stretch;}
+.welcome-three>section{min-width:0;display:flex;flex-direction:column;border-radius:16px;padding:clamp(20px,1.8vw,29px);}
+.welcome-three .welcome-purpose{background:#12324d;border:1px solid #315b7b;}
+.welcome-three .mode-card{background:#173b58;border:1px solid #3a779f;}
+.welcome-three .welcome-purpose h3{font-size:clamp(19px,1.55vw,25px);line-height:1.3;margin:10px 0 16px;}
+.welcome-three .purpose-icon{color:#70dff1;font-size:29px;}
+.welcome-v22 .welcome-three p{font-size:clamp(14px,1.05vw,17px);line-height:1.65;margin:8px 0 13px;color:#dcebf5;}
+.welcome-v22 .welcome-three .mode-card-title{min-height:40px;}
+.welcome-v22 .welcome-three .mode-card button{margin-top:auto;min-height:54px;}
+@media(min-width:1200px) and (min-height:760px){.welcome-v22 .welcome-three>section{min-height:365px;}}
+@media(max-width:1050px){.welcome-three{grid-template-columns:repeat(2,minmax(0,1fr));}.welcome-three .welcome-purpose{grid-column:1/-1;}.welcome-v22 .welcome-three>section{min-height:0;}}
+@media(max-width:700px){.welcome-three{grid-template-columns:1fr;}.welcome-three .welcome-purpose{grid-column:auto;}.welcome-card.welcome-v22{padding:23px 17px;}.welcome-v22 .welcome-lead{margin:20px 0 14px;}}
