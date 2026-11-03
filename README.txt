@@ -15,3 +15,4 @@ Proteção de dados: não registre nomes de estudantes ou informações sensíve
 IMPORTANTE: uma experiência reaberta pode ser editada; salve uma nova versão no histórico ao concluir.
 
 V38: Seletor de turma exibe apenas dados da turma escolhida. Cada turma tem um único registro atualizado a cada salvamento, com data/hora da última edição. Registros múltiplos antigos são consolidados pelo mais recente. A importação JSON preserva apenas o registro mais recente por turma. Faça backup antes de substituir dados.
+\nV41: Enunciado da pergunta ampliado e centralizado em caixa azul néon, com quebra automática em até duas linhas quando couber. Em telas menores, pode ocupar mais linhas para evitar cortes.\n
