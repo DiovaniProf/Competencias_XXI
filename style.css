@@ -681,3 +681,29 @@ html:fullscreen #relatorio .report-chart canvas,html.fullscreen-active #relatori
     line-height:1.25;
   }
 }
+
+/* V43 — revelação sob demanda das pontes, sem distração na projeção */
+#pergunta .bridge-reveal {
+  display:inline-flex!important;align-items:center;justify-content:center;
+  align-self:center;min-width:112px;min-height:43px;
+  margin:10px auto 4px;padding:9px 22px;
+  border:1.5px solid #43ddff;border-radius:12px;
+  background:linear-gradient(120deg,#075a8c,#087fb6);
+  color:#fff;font-size:clamp(15px,1.15vw,20px);font-weight:800;
+  letter-spacing:.09em;cursor:pointer;
+  box-shadow:0 0 14px rgba(18,211,255,.3);
+}
+#pergunta .bridge-reveal:hover,#pergunta .bridge-reveal:focus-visible {
+  background:#0c9bcb;box-shadow:0 0 20px rgba(18,211,255,.55);
+}
+#pergunta .bridge-concealed[hidden] {display:none!important;}
+#pergunta .bridge-concealed:not([hidden]) {
+  display:block!important;max-height:clamp(90px,15vh,170px);
+  overflow-y:auto;overflow-wrap:break-word;margin:8px 0 0!important;
+  text-align:center;
+}
+#pergunta .question-right article {justify-content:center;}
+@media (max-width:700px) {
+  #pergunta .bridge-reveal {min-height:44px;min-width:100px;}
+  #pergunta .bridge-concealed:not([hidden]) {max-height:none;overflow:visible;}
+}

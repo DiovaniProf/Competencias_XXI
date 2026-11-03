@@ -1,5 +1,5 @@
 {
-  "versao": "1.0",
+  "versao": "1.1",
   "finalidade": "Sugestões pedagógicas pré-cadastradas, vinculadas às 20 questões originais. Não constituem diagnóstico individual.",
   "questoes": [
     {
@@ -9,7 +9,10 @@
       "titulo": "Curadoria de produções escolares",
       "atividade": "Selecionar três produções e justificar as competências mobilizadas.",
       "evidencias": "Portfólio inicial e rubrica de autoavaliação.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já possui um portfólio com seus projetos e/ou produções escolares?",
+      "ponte_mediacao": "Que evidências esses projetos revelam suas habilidades?",
+      "ponte_encaminhamento": "Selecionar um projeto para iniciar um portfólio."
     },
     {
       "id": 2,
@@ -18,7 +21,10 @@
       "titulo": "Trilha de formação complementar",
       "atividade": "Pesquisar cursos gratuitos e elaborar plano de participação.",
       "evidencias": "Mapa de cursos e registro de aprendizagens.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já possui certificados de cursos, oficinas ou palestras?",
+      "ponte_mediacao": "Que conhecimentos você adquiriu além das aulas?",
+      "ponte_encaminhamento": "Pesquisar um curso gratuito com certificado."
     },
     {
       "id": 3,
@@ -27,7 +33,10 @@
       "titulo": "Curadoria de conteúdos sobre Administração",
       "atividade": "Comparar fontes, autoria, data e evidências de três conteúdos.",
       "evidencias": "Lista comentada de fontes verificadas.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você acompanha conteúdos confiáveis sobre Administração, economia ou empreendedorismo?",
+      "ponte_mediacao": "Como verificar a qualidade dessas fontes e conteúdos?",
+      "ponte_encaminhamento": "Selecionar dois canais educativos confiáveis."
     },
     {
       "id": 4,
@@ -36,7 +45,10 @@
       "titulo": "Desafio de aprendizagem autônoma",
       "atividade": "Definir uma habilidade, etapas e prazo de quatro semanas.",
       "evidencias": "Plano de aprendizagem e diário de progresso.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você costuma ter iniciativa própria para aprender algo novo?",
+      "ponte_mediacao": "Qual aprendizagem você começou sem ser obrigado?",
+      "ponte_encaminhamento": "Definir um desafio de nova aprendizagem para este mês."
     },
     {
       "id": 5,
@@ -45,7 +57,10 @@
       "titulo": "Laboratório de verificação de respostas da IA",
       "atividade": "Comparar uma resposta de IA com fontes verificáveis e corrigir falhas.",
       "evidencias": "Relatório de checagem e critérios utilizados.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você utiliza inteligência artificial para estudar e verificar suas respostas?",
+      "ponte_mediacao": "Como identificar possíveis erros da IA?",
+      "ponte_encaminhamento": "Conferir as respostas da IA relacionadas com fontes confiáveis."
     },
     {
       "id": 6,
@@ -54,7 +69,10 @@
       "titulo": "Oficina de dados e gráficos",
       "atividade": "Organizar dados fictícios em planilha e construir um gráfico.",
       "evidencias": "Planilha e gráfico com interpretação.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você sabe usar planilhas para organizar dados e criar gráficos?",
+      "ponte_mediacao": "Como isso ajuda a tomar decisões?",
+      "ponte_encaminhamento": "Criar uma planilha simples sobre um assunto de seu interesse."
     },
     {
       "id": 7,
@@ -63,7 +81,10 @@
       "titulo": "Apresentação autoral",
       "atividade": "Criar apresentação breve com clareza visual e fontes.",
       "evidencias": "Apresentação e devolutiva por pares.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já criou apresentações ou conteúdos digitais para comunicar ideias?",
+      "ponte_mediacao": "Como tornar sua comunicação mais clara?",
+      "ponte_encaminhamento": "Preparar uma apresentação de 5 minutos com 4 slides sobre um assunto que você gosta e entende."
     },
     {
       "id": 8,
@@ -72,7 +93,10 @@
       "titulo": "Projeto em arquivo compartilhado",
       "atividade": "Criar produção coletiva com papéis e critérios de colaboração.",
       "evidencias": "Histórico de versões e produto coletivo.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já participou de um trabalho escolar, no mesmo arquivo, com outros colegas usando ferramentas digitais? [Ex.: Google Slides, Canva, etc.]",
+      "ponte_mediacao": "Como dividir tarefas; realizar com responsabilidade e compreender o todo do projeto?",
+      "ponte_encaminhamento": "Organizar uma tarefa para ser compartilhada com outros dois colegas."
     },
     {
       "id": 9,
@@ -81,7 +105,10 @@
       "titulo": "Mini simulado diagnóstico",
       "atividade": "Resolver questões e discutir estratégias, sem ranqueamento.",
       "evidencias": "Mapa de estratégias e dúvidas recorrentes.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já realizou um simulado com questões do ENEM de anos anteriores?",
+      "ponte_mediacao": "Que áreas precisam de maior atenção?",
+      "ponte_encaminhamento": "Fazer um simulado com 5 questões de cada área e analisar os erros."
     },
     {
       "id": 10,
@@ -90,7 +117,10 @@
       "titulo": "Planejamento semanal realista",
       "atividade": "Criar cronograma com pausas, metas viáveis e revisão.",
       "evidencias": "Cronograma e registro de ajustes.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você tem uma rotina semanal de estudos para o ENEM?",
+      "ponte_mediacao": "Seu plano de estudos também respeita um tempo de descanso e lazer?",
+      "ponte_encaminhamento": "Criar um cronograma realista. Ex: 1 hora por semana."
     },
     {
       "id": 11,
@@ -99,7 +129,10 @@
       "titulo": "Oficina de escrita e feedback",
       "atividade": "Produzir redação e revisar com critérios transparentes.",
       "evidencias": "Versão inicial, feedback e reescrita.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já escreveu uma redação no modelo ENEM e recebeu feedback?",
+      "ponte_mediacao": "Que aspectos da escrita ou leitura você precisa melhorar?",
+      "ponte_encaminhamento": "Produzir uma redação e pedir devolutiva de uma pessoa que conhece as características de uma redação de ENEM.."
     },
     {
       "id": 12,
@@ -108,7 +141,10 @@
       "titulo": "Mapa de trajetórias pós-Ensino Médio",
       "atividade": "Pesquisar cursos, instituições, bolsas e formas de ingresso.",
       "evidencias": "Mapa comparativo de oportunidades.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já pesquisou sobre cursos superiores e formas de ingresso?",
+      "ponte_mediacao": "Que cursos combinam mais com seus interesses?",
+      "ponte_encaminhamento": "Pesquisar duas opções de graduação."
     },
     {
       "id": 13,
@@ -117,7 +153,10 @@
       "titulo": "Projeto de solução para a escola",
       "atividade": "Identificar problema coletivo e prototipar solução simples.",
       "evidencias": "Protótipo e apresentação da proposta.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já participou de um projeto empreendedor ou ajudou organizar um evento escolar ou de sua comunidade?",
+      "ponte_mediacao": "O que você aprendeu sobre trabalho coletivo e liderança?",
+      "ponte_encaminhamento": "Pensar na realização de uma proposta de participação."
     },
     {
       "id": 14,
@@ -126,7 +165,10 @@
       "titulo": "Oficina de currículo e habilidades",
       "atividade": "Criar currículo sem exigir experiência profissional prévia.",
       "evidencias": "Currículo fictício ou voluntário e checklist.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já elaborou um currículo com suas competências escolares?",
+      "ponte_mediacao": "Que habilidades você já tem mesmo sem emprego formal?",
+      "ponte_encaminhamento": "Montar a primeira versão do seu currículo."
     },
     {
       "id": 15,
@@ -135,7 +177,10 @@
       "titulo": "Simulação de educação financeira",
       "atividade": "Planejar orçamento fictício com despesas, metas e imprevistos.",
       "evidencias": "Planilha orçamentária e reflexão.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já organizou um orçamento financeiro pessoal com valores de entrada e saída?",
+      "ponte_mediacao": "Como distinguir necessidades e desejos?",
+      "ponte_encaminhamento": "Registrar seus gastos durante 15 dias, ou um mês."
     },
     {
       "id": 16,
@@ -144,7 +189,10 @@
       "titulo": "Projeto de vida em etapas",
       "atividade": "Definir metas flexíveis, ações possíveis e revisão periódica.",
       "evidencias": "Plano de metas e indicadores escolhidos.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já definiu metas para os próximos dois anos?",
+      "ponte_mediacao": "Como dar o primeiro passo na direção de algo possível de ser realizado?",
+      "ponte_encaminhamento": "Registrar duas metas com prazos de execução."
     },
     {
       "id": 17,
@@ -153,7 +201,10 @@
       "titulo": "Mapa de oportunidades culturais",
       "atividade": "Pesquisar atividades acessíveis e organizar agenda coletiva opcional.",
       "evidencias": "Mapa de opções culturais e esportivas.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você reserva tempo para esporte, cultura, leitura ou atividades prazerosas?",
+      "ponte_mediacao": "Como o lazer contribui para seu bem-estar?",
+      "ponte_encaminhamento": "Reservar um momento de lazer escolhido livremente."
     },
     {
       "id": 18,
@@ -162,7 +213,10 @@
       "titulo": "Oficina de organização do tempo",
       "atividade": "Discutir limites e organizar semana equilibrada sem culpabilização.",
       "evidencias": "Agenda simulada e estratégias de pausa.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você consegue equilibrar estudos, lazer e descanso?",
+      "ponte_mediacao": "Que ação poderia melhorar esse tipo de equilíbrio?",
+      "ponte_encaminhamento": "Organizar uma semana com pausas pensadas estrategicamente.."
     },
     {
       "id": 19,
@@ -171,7 +225,10 @@
       "titulo": "Experimento de atenção e escolhas digitais",
       "atividade": "Refletir sobre hábitos de uso sem monitorar dados pessoais.",
       "evidencias": "Diário anônimo opcional de estratégias.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você já trocou o tempo de telas digitais por convivência ou atividade com outras pessoas?",
+      "ponte_mediacao": "Você escolhe os conteúdos que vê ou segue os algoritmos?",
+      "ponte_encaminhamento": "Experimentar um dia da semana sem redes sociais."
     },
     {
       "id": 20,
@@ -180,7 +237,10 @@
       "titulo": "Roda de conversa sobre descanso",
       "atividade": "Debater descanso, expectativas e bem-estar com respeito à privacidade.",
       "evidencias": "Síntese coletiva e combinados de cuidado.",
-      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO.",
+      "pergunta_oficial": "Você consegue descansar sem sentir que precisa estar produzindo?",
+      "ponte_mediacao": "Por que descansar é um direito e uma necessidade?",
+      "ponte_encaminhamento": "Planejar um momento de descanso sem cobranças."
     }
   ]
 }
