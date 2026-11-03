@@ -1,0 +1,186 @@
+{
+  "versao": "1.0",
+  "finalidade": "Sugestões pedagógicas pré-cadastradas, vinculadas às 20 questões originais. Não constituem diagnóstico individual.",
+  "questoes": [
+    {
+      "id": 1,
+      "eixo": 0,
+      "tema": "Portfólio e protagonismo",
+      "titulo": "Curadoria de produções escolares",
+      "atividade": "Selecionar três produções e justificar as competências mobilizadas.",
+      "evidencias": "Portfólio inicial e rubrica de autoavaliação.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 2,
+      "eixo": 0,
+      "tema": "Certificados e aprendizagem",
+      "titulo": "Trilha de formação complementar",
+      "atividade": "Pesquisar cursos gratuitos e elaborar plano de participação.",
+      "evidencias": "Mapa de cursos e registro de aprendizagens.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 3,
+      "eixo": 0,
+      "tema": "Fontes confiáveis",
+      "titulo": "Curadoria de conteúdos sobre Administração",
+      "atividade": "Comparar fontes, autoria, data e evidências de três conteúdos.",
+      "evidencias": "Lista comentada de fontes verificadas.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 4,
+      "eixo": 0,
+      "tema": "Iniciativa e autonomia",
+      "titulo": "Desafio de aprendizagem autônoma",
+      "atividade": "Definir uma habilidade, etapas e prazo de quatro semanas.",
+      "evidencias": "Plano de aprendizagem e diário de progresso.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 5,
+      "eixo": 1,
+      "tema": "IA crítica",
+      "titulo": "Laboratório de verificação de respostas da IA",
+      "atividade": "Comparar uma resposta de IA com fontes verificáveis e corrigir falhas.",
+      "evidencias": "Relatório de checagem e critérios utilizados.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 6,
+      "eixo": 1,
+      "tema": "Planilhas",
+      "titulo": "Oficina de dados e gráficos",
+      "atividade": "Organizar dados fictícios em planilha e construir um gráfico.",
+      "evidencias": "Planilha e gráfico com interpretação.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 7,
+      "eixo": 1,
+      "tema": "Comunicação digital",
+      "titulo": "Apresentação autoral",
+      "atividade": "Criar apresentação breve com clareza visual e fontes.",
+      "evidencias": "Apresentação e devolutiva por pares.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 8,
+      "eixo": 1,
+      "tema": "Colaboração digital",
+      "titulo": "Projeto em arquivo compartilhado",
+      "atividade": "Criar produção coletiva com papéis e critérios de colaboração.",
+      "evidencias": "Histórico de versões e produto coletivo.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 9,
+      "eixo": 2,
+      "tema": "Simulados ENEM",
+      "titulo": "Mini simulado diagnóstico",
+      "atividade": "Resolver questões e discutir estratégias, sem ranqueamento.",
+      "evidencias": "Mapa de estratégias e dúvidas recorrentes.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 10,
+      "eixo": 2,
+      "tema": "Rotina de estudos",
+      "titulo": "Planejamento semanal realista",
+      "atividade": "Criar cronograma com pausas, metas viáveis e revisão.",
+      "evidencias": "Cronograma e registro de ajustes.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 11,
+      "eixo": 2,
+      "tema": "Redação ENEM",
+      "titulo": "Oficina de escrita e feedback",
+      "atividade": "Produzir redação e revisar com critérios transparentes.",
+      "evidencias": "Versão inicial, feedback e reescrita.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 12,
+      "eixo": 2,
+      "tema": "Ingresso e cursos",
+      "titulo": "Mapa de trajetórias pós-Ensino Médio",
+      "atividade": "Pesquisar cursos, instituições, bolsas e formas de ingresso.",
+      "evidencias": "Mapa comparativo de oportunidades.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 13,
+      "eixo": 3,
+      "tema": "Empreendedorismo",
+      "titulo": "Projeto de solução para a escola",
+      "atividade": "Identificar problema coletivo e prototipar solução simples.",
+      "evidencias": "Protótipo e apresentação da proposta.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 14,
+      "eixo": 3,
+      "tema": "Currículo",
+      "titulo": "Oficina de currículo e habilidades",
+      "atividade": "Criar currículo sem exigir experiência profissional prévia.",
+      "evidencias": "Currículo fictício ou voluntário e checklist.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 15,
+      "eixo": 3,
+      "tema": "Orçamento pessoal",
+      "titulo": "Simulação de educação financeira",
+      "atividade": "Planejar orçamento fictício com despesas, metas e imprevistos.",
+      "evidencias": "Planilha orçamentária e reflexão.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 16,
+      "eixo": 3,
+      "tema": "Metas futuras",
+      "titulo": "Projeto de vida em etapas",
+      "atividade": "Definir metas flexíveis, ações possíveis e revisão periódica.",
+      "evidencias": "Plano de metas e indicadores escolhidos.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 17,
+      "eixo": 4,
+      "tema": "Cultura e lazer",
+      "titulo": "Mapa de oportunidades culturais",
+      "atividade": "Pesquisar atividades acessíveis e organizar agenda coletiva opcional.",
+      "evidencias": "Mapa de opções culturais e esportivas.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 18,
+      "eixo": 4,
+      "tema": "Equilíbrio de tempo",
+      "titulo": "Oficina de organização do tempo",
+      "atividade": "Discutir limites e organizar semana equilibrada sem culpabilização.",
+      "evidencias": "Agenda simulada e estratégias de pausa.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 19,
+      "eixo": 4,
+      "tema": "Uso consciente de telas",
+      "titulo": "Experimento de atenção e escolhas digitais",
+      "atividade": "Refletir sobre hábitos de uso sem monitorar dados pessoais.",
+      "evidencias": "Diário anônimo opcional de estratégias.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    },
+    {
+      "id": 20,
+      "eixo": 4,
+      "tema": "Direito ao descanso",
+      "titulo": "Roda de conversa sobre descanso",
+      "atividade": "Debater descanso, expectativas e bem-estar com respeito à privacidade.",
+      "evidencias": "Síntese coletiva e combinados de cuidado.",
+      "criterio": "Analisar respostas e comentários antes de decidir pela intervenção; não presumir déficit por resposta NÃO."
+    }
+  ]
+}

@@ -20,7 +20,7 @@ $('chooseCollective').onclick=()=>setMode('collective',true);
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
 function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
-function tab(name){document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function tab(name){document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio','intervencao'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
 function wheel(rotation=angle){
  const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
@@ -176,7 +176,7 @@ function makeDocx(){
  P('Percentuais de respostas SIM nas questões efetivamente registradas.');groups.forEach((g,i)=>P(g+': '+(v[i]===null?'Sem registros':v[i]+'%')));
  P('LEITURA REFLEXIVA',true);reflectionData().forEach(t=>P(t));P('REGISTROS POR QUESTÃO',true);
  state.used.forEach(i=>{const q=questions[i];P((i+1)+'. '+groups[q.g],true);P(q.q);P('SIM: '+(state.counts[i]??'Não registrado')+' | NÃO: '+(state.counts[i]===undefined?'Não registrado':state.total-state.counts[i]));P('Ponte — Mediação: '+q.m);P('Ponte — Encaminhamento: '+q.a);P('Comentários: '+(state.notes[i]||'Não registrados'))});
- P('Este material é formativo e não classifica estudantes. Evite dados pessoais sensíveis.');
+ P('INTERVENÇÕES PEDAGÓGICAS',true);if(typeof getInterventions==='function'){getInterventions().forEach((r,g)=>{P(groups[g],true);P('Situação: '+r.status+' | Data: '+(r.date||'Não informada'));P('Plano: '+(r.plan||'Não registrado'));P('Evidências: '+(r.evidence||'Não registradas'));P('Reavaliação: '+(r.reeval||'Não registrada'))})}P('Este material é formativo e não classifica estudantes. Evite dados pessoais sensíveis.');
  const documentXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body>'+paragraphs.join('')+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1100" w:right="1000" w:bottom="1100" w:left="1000"/></w:sectPr></w:body></w:document>';
  const contentTypes='<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>';
  const rels='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
@@ -195,6 +195,3 @@ document.addEventListener('fullscreenchange',()=>{
   if(btn)btn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';
   window.dispatchEvent(new Event('resize'));
 });
-
-// V34: identificação contextual do modo na tela de perguntas.
-(function(){const badge=document.getElementById("experienceBadge");if(!badge)return;const update=()=>{const ind=document.getElementById("individualAnswer");badge.textContent=ind&&!ind.classList.contains("hidden")?"◈ Experiência: Individual":"◈ Experiência: Coletiva";};new MutationObserver(update).observe(document.getElementById("individualAnswer"),{attributes:true,attributeFilter:["class"]});update();})();
