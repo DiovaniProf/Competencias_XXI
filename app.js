@@ -85,7 +85,7 @@ function saveCurrent(){
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
 $('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert('Registre e confirme a resposta SIM ou NÃO antes de continuar.');$('count').focus();return}if(saveCurrent())spin()};
-$('save').onclick=()=>{if(saveCurrent())alert('Registro salvo com sucesso.')};
+$('save').onclick=()=>{if(saveCurrent())tab('roda')};
 $('last').onclick=()=>{if(state.active>=0)tab('pergunta')};
 $('count').onchange=()=>{};
 $('note').onchange=()=>{};
@@ -114,9 +114,9 @@ function list(){
  });
 }
 let lastBridgeQuestion=null;
-function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.textContent='VER';btn.setAttribute('aria-expanded','false');}
+function hideBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;el.hidden=true;btn.setAttribute('aria-expanded','false');}
 function resetBridges(){hideBridge('med','showMed');hideBridge('action','showAction');}
-function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.textContent=willOpen?'OCULTAR':'VER';btn.setAttribute('aria-expanded',String(willOpen));}
+function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.setAttribute('aria-expanded',String(willOpen));}
 $('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
 $('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
 function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas SIM · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}

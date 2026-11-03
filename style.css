@@ -707,3 +707,34 @@ html:fullscreen #relatorio .report-chart canvas,html.fullscreen-active #relatori
   #pergunta .bridge-reveal {min-height:44px;min-width:100px;}
   #pergunta .bridge-concealed:not([hidden]) {max-height:none;overflow:visible;}
 }
+
+/* V45 — tela de pergunta centralizada, inspirada na disposição LGPD */
+#pergunta.v45-question-panel{position:relative;min-height:min(76vh,800px);padding:clamp(16px,2vw,32px)!important;background:linear-gradient(145deg,#102a44,#0b2037)!important}
+#pergunta .v45-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+#pergunta .v45-qhead{color:#86e6ff;font-weight:800;letter-spacing:.08em;font-size:clamp(12px,.9vw,16px)}
+#pergunta .v45-question-core{width:min(100%,1050px);margin:0 auto;text-align:center}
+#pergunta .v45-question-label{display:inline-block;padding:8px 15px;border:1px solid #257ba5;border-radius:25px;background:#095b82;color:#a5edff;font-weight:800;font-size:12px;letter-spacing:.08em;margin:8px 0 10px}
+#pergunta #qtext.question{width:100%;max-width:none;margin:5px auto 14px;padding:clamp(12px,1.4vw,22px);font-size:clamp(27px,2.5vw,45px);line-height:1.18;background:transparent!important;border:0!important;box-shadow:none!important;color:#fff;text-align:center;font-weight:850;text-wrap:balance}
+#pergunta #individualAnswer{margin:0 auto 10px}
+#pergunta #individualAnswer .answer-buttons{justify-content:center;gap:10px}
+#pergunta #individualAnswer .answer-buttons button{width:min(43%,290px);font-size:clamp(19px,1.5vw,27px);min-height:55px}
+#pergunta .v45-response-help{margin:5px 0 10px}
+#pergunta #collectiveAnswer{margin:0 auto 14px;max-width:680px;text-align:left}
+#pergunta #collectiveAnswer label{font-weight:800;font-size:14px}
+#pergunta #collectiveAnswer #count{width:100%;margin-top:6px;min-height:48px}
+#pergunta #countHint{font-size:12px;margin-top:4px}
+#pergunta .v45-reveals{display:grid;gap:10px;margin:16px 0}
+#pergunta .v45-bridge{border:1px solid #477b9a;border-radius:10px;background:#183e5b;text-align:left;overflow:hidden}
+#pergunta .v45-reveal-head{width:100%;min-height:49px;padding:12px 16px;border:0;background:transparent;color:#fff;font-weight:850;text-align:left;display:flex;align-items:center;justify-content:space-between;cursor:pointer;letter-spacing:.025em}
+#pergunta .v45-reveal-head:hover,#pergunta .v45-reveal-head:focus-visible{background:#205272;outline:2px solid #4ed9ff;outline-offset:-2px}
+#pergunta .v45-chevron{font-size:20px;color:#91eaff;transition:transform .18s}
+#pergunta .v45-reveal-head[aria-expanded="true"] .v45-chevron{transform:rotate(180deg)}
+#pergunta .v45-bridge .bridge-concealed:not([hidden]){display:block!important;margin:0!important;padding:12px 17px 17px;color:#effaff;text-align:left;font-size:clamp(15px,1.1vw,19px);line-height:1.45;max-height:none;overflow:visible}
+#pergunta .v45-bridge .bridge-concealed[hidden]{display:none!important}
+#pergunta .v45-comment-wrap{text-align:left;margin-top:13px}
+#pergunta .v45-comment-wrap label{display:block;font-weight:800;margin-bottom:7px;font-size:15px}
+#pergunta #note{width:100%;height:clamp(80px,12vh,135px);min-height:75px;resize:vertical}
+#pergunta .v45-save-actions{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
+#pergunta .v45-save-actions button{min-height:46px;padding:10px 16px;font-weight:850;flex:0 1 49%}
+#pergunta .v45-save-actions #next{background:linear-gradient(100deg,#1469dc,#00acd1)}
+@media(max-width:700px){#pergunta .v45-top{align-items:flex-start}#pergunta #qtext.question{font-size:clamp(23px,5.5vw,34px)}#pergunta .v45-save-actions{flex-direction:column}#pergunta .v45-save-actions button{width:100%}}

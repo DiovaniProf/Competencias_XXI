@@ -26,3 +26,5 @@ V38: Seletor de turma exibe apenas dados da turma escolhida. Cada turma tem um �
 V42: 20 questões e suas Pontes de Mediação/Encaminhamento atualizadas fielmente a partir do PDF fornecido pelo professor. O menu MINHAS TURMAS e o campo Turma no relatório ficam ocultos na experiência individual; aparecem na coletiva. Os registros locais de turmas e as funcionalidades de importação/exportação JSON permanecem preservados.
 
 V43: As pontes de Mediação e Encaminhamento iniciam ocultas. Botão VER revela cada sugestão independentemente; OCULTAR a recolhe. Ao trocar de questão ambas são ocultadas automaticamente.
+
+V45: apresentação centralizada da questão; pontes em painéis recolhíveis; comentário abaixo; dois botões SALVAR E VOLTAR À RODA / SALVAR E GIRAR NOVAMENTE. Conteúdos e turmas V44 preservados.
