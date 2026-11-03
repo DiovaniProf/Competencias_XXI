@@ -1,3 +1,10 @@
+VERSÃO 44 — INTERVENÇÕES POR MODALIDADE
+
+20 questões e 40 pontes oficiais sincronizadas com o DOCX atualizado.
+20 intervenções individuais e 20 coletivas distintas, cada qual com título, atividade e evidências.
+O painel INTERVENÇÃO PROPOSTA seleciona automaticamente a modalidade ativa.
+A lógica de priorização de questões permanece a mesma da V43; NÃO não equivale a diagnóstico.
+
 RODA DAS COMPETÊNCIAS — SÉCULO XXI | V37
 
 Abra index.html no navegador com os arquivos da pasta juntos.
