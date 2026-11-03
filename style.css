@@ -640,3 +640,7 @@ html:fullscreen #relatorio .report-chart canvas,html.fullscreen-active #relatori
 
 /* V38 — seleção única e registro único por turma */
 .cm-choose{width:100%;min-height:46px;background:#164361;color:#f1faff;border:1px solid #45c6ef;border-radius:10px;padding:10px 12px;margin:8px 0 15px;font-size:1rem}.cm-select-label{font-size:.82rem;font-weight:700;color:#8bdef6}.cm-class.active{cursor:default}.cm-stat{justify-content:flex-start}.cm-history-card{margin-top:12px}.cm-history-title strong{color:#91e4f6}
+
+/* V39 — Confirmação de salvamento ao alternar turmas */
+.cm-modal-overlay{position:fixed;inset:0;z-index:99999;background:rgba(1,10,24,.84);display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
+.cm-modal-overlay.hidden{display:none!important}.cm-modal{width:min(620px,100%);background:linear-gradient(145deg,#113a5a,#081c35);border:2px solid #39c8f4;border-radius:18px;padding:28px;box-shadow:0 0 35px #00a8ff55;color:#f2faff;text-align:center}.cm-modal-icon{font-size:38px;color:#ffbd55}.cm-modal h2{font-size:1.3rem;color:#7ce5ff;margin:10px 0}.cm-modal p{line-height:1.6;color:#d0e4f3}.cm-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.cm-modal-actions button{flex:1;min-width:145px;padding:13px 9px}@media(max-width:600px){.cm-modal-actions{flex-direction:column}}
