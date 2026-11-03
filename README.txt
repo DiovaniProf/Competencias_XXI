@@ -13,3 +13,5 @@ Armazenamento: localStorage do navegador. Não há sincronização entre disposi
 Proteção de dados: não registre nomes de estudantes ou informações sensíveis. Proteja os backups JSON.
 
 IMPORTANTE: uma experiência reaberta pode ser editada; salve uma nova versão no histórico ao concluir.
+
+V38: Seletor de turma exibe apenas dados da turma escolhida. Cada turma tem um único registro atualizado a cada salvamento, com data/hora da última edição. Registros múltiplos antigos são consolidados pelo mais recente. A importação JSON preserva apenas o registro mais recente por turma. Faça backup antes de substituir dados.
