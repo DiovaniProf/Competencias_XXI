@@ -10,11 +10,11 @@
   q.style.removeProperty('font-size');
   const cssSize=parseFloat(getComputedStyle(q).fontSize)||64;
   const viewportH=window.innerHeight||document.documentElement.clientHeight;
-  const maxBoxH=Math.max(240,Math.min(viewportH*.43,520));
+  const maxBoxH=Math.max(240,Math.min(viewportH*.53,650));
   let size=cssSize;
   // Apenas limitar casos extremos (perguntas longas); permitir quebra de linhas.
-  while(q.getBoundingClientRect().height>maxBoxH && size>32){
-    size=Math.max(32,size-2);
+  while(q.getBoundingClientRect().height>maxBoxH && size>38){
+    size=Math.max(38,size-2);
     q.style.setProperty('font-size',size+'px','important');
   }
   q.dataset.fontPx=Math.round(size);

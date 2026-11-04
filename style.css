@@ -1293,3 +1293,49 @@ html[data-experience-mode="individual"] #pergunta .answer-label{font-size:clamp(
 #roda #resetHome{background:linear-gradient(180deg,#793251,#4d213c)!important;border:2px solid #ff6ca0!important;color:#fff!important;}
 #roda #changeExperience{background:linear-gradient(180deg,#10375d,#041b37)!important;border:2px solid #c3e5ff!important;color:#fff!important;}
 @media(max-width:950px){#roda .home-layout{grid-template-columns:1fr!important;}#roda .home-side{border-left:0!important;border-top:2px solid #1bcaff!important;}}
+
+/* V65 — legibilidade real na projeção: ambas as modalidades */
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core #qtext.question{
+ font-size:clamp(64px,6.2vw,118px)!important;
+ line-height:1.08!important;
+ font-weight:900!important;
+ letter-spacing:-.025em!important;
+ width:min(100%,1500px)!important;
+ max-width:1500px!important;
+ padding:clamp(20px,2.4vh,36px) clamp(22px,2.5vw,48px)!important;
+ margin:clamp(12px,1.5vh,22px) auto!important;
+ border:2px solid #ffd46b!important;
+ border-radius:18px!important;
+ text-align:center!important;
+ text-wrap:balance!important;
+ overflow-wrap:break-word!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons{
+ max-width:470px!important;gap:18px!important;margin:8px auto 2px!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button{
+ flex:0 1 190px!important;width:190px!important;max-width:190px!important;
+ min-width:140px!important;min-height:58px!important;height:clamp(58px,7vh,76px)!important;
+ padding:8px 16px!important;font-size:clamp(23px,1.65vw,32px)!important;
+ border-radius:12px!important;
+}
+@media(max-width:900px){
+ html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core #qtext.question{font-size:clamp(38px,7vw,70px)!important;padding:16px!important;}
+}
+@media(max-width:500px){
+ html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button{width:135px!important;min-width:120px!important;flex-basis:135px!important;font-size:23px!important;}
+}
+
+/* V66 — Entrada translúcida: a arte ENTRADA.jpg permanece visível,
+   sem reduzir a opacidade dos textos e dos botões. */
+#welcome.welcome-screen:not(.hidden) .welcome-card.welcome-v22 {
+  background:rgba(6,22,43,.43)!important;
+  backdrop-filter:blur(2px)!important;
+  -webkit-backdrop-filter:blur(2px)!important;
+}
+#welcome.welcome-screen:not(.hidden) .welcome-three .welcome-purpose {
+  background:rgba(12,43,73,.58)!important;
+}
+#welcome.welcome-screen:not(.hidden) .welcome-three .mode-card {
+  background:rgba(15,51,82,.58)!important;
+}
