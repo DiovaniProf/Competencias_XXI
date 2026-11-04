@@ -1,0 +1,1 @@
+V50 — Ajuste de dimensões da tela de questões conforme imagem enviada. As pontes, comentários, respostas e salvamento mantêm suas funções. A imagem XXI.jpg é usada apenas na tela da questão. Arquivo inicial: index.html.
