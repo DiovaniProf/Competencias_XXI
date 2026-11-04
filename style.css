@@ -1745,3 +1745,86 @@ html body #welcome.login-v67:not(.hidden) #loginFullscreen.login-fullscreen-cont
  background:rgba(2,19,40,.82)!important;box-shadow:none!important;filter:none!important;
 }
 html body #welcome.login-v67.hidden #loginFullscreen{display:none!important;}
+
+
+/* V75 — A roda e o pentágono têm o MESMO layout nas duas experiências.
+   A única distinção visual é a forma de registrar respostas. */
+html[data-experience-mode="collective"] #roda,
+html[data-experience-mode="collective"] #relatorio{
+  box-sizing:border-box!important;
+}
+html[data-experience-mode="collective"] #roda .home-layout{
+  display:grid!important;
+  grid-template-columns:minmax(390px,1.05fr) minmax(390px,1fr)!important;
+  align-items:center!important;
+  gap:clamp(24px,3vw,70px)!important;
+}
+html[data-experience-mode="collective"] #roda .wheel-wrap{
+  width:min(100%,min(82vh,860px))!important;
+  max-width:860px!important;
+  margin-inline:auto!important;
+}
+html[data-experience-mode="collective"] #roda #wheel{
+  display:block!important;width:100%!important;height:auto!important;aspect-ratio:1!important;
+}
+html[data-experience-mode="collective"] #roda .home-side{
+  background:linear-gradient(120deg,rgba(3,22,49,.82),rgba(3,21,48,.7))!important;
+  border:0!important;border-left:2px solid #1bcaff!important;
+  border-radius:0!important;padding:clamp(22px,3vw,48px)!important;
+}
+html[data-experience-mode="collective"] #roda .home-side .actions{
+  max-width:none!important;gap:clamp(10px,1.3vh,20px)!important;
+}
+html[data-experience-mode="collective"] #roda .home-side .actions button{
+  min-height:clamp(56px,7.2vh,86px)!important;
+  font-size:clamp(16px,1.45vw,25px)!important;
+}
+html[data-experience-mode="collective"] #relatorio #radar{
+  display:block!important;max-width:100%!important;height:auto!important;margin-inline:auto!important;
+}
+html[data-experience-mode="collective"] #pergunta #collectiveAnswer:not(.hidden){
+  display:block!important;width:100%!important;text-align:center!important;
+}
+html[data-experience-mode="collective"] #pergunta #collectiveAnswer .v45-collective-entry{
+  width:min(100%,360px)!important;margin:6px auto!important;
+}
+html[data-experience-mode="collective"] #pergunta #collectiveAnswer #count{
+  box-sizing:border-box!important;width:100%!important;max-width:360px!important;
+  min-height:48px!important;
+}
+@media(max-width:950px){
+ html[data-experience-mode="collective"] #roda .home-layout{
+  grid-template-columns:1fr!important;
+ }
+ html[data-experience-mode="collective"] #roda .home-side{
+  border-left:0!important;border-top:2px solid #1bcaff!important;
+ }
+}
+
+
+/* V76 RODAPLUS: fixed 16:9 JPG + circular independent PNG rotor + invisible accessible buttons. */
+html body #roda.rodaplus-panel{padding:0!important;margin:0 auto!important;max-width:none!important;width:100%!important;background:#061c36!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+html body #roda .rodaplus-stage{position:relative!important;aspect-ratio:1671 / 941!important;width:min(100%,1450px)!important;margin:0 auto!important;overflow:hidden!important;background:#051b35!important}
+html body #roda .rodaplus-background{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;user-select:none}
+html body #roda .rodaplus-rotor{position:absolute;left:5.625%;top:5.632%;width:49.072%;aspect-ratio:1;z-index:2;overflow:hidden;border-radius:50%;pointer-events:none}
+html body #roda .rodaplus-rotor img{width:100%;height:100%;display:block;object-fit:fill;transform-origin:center center;will-change:transform;user-select:none}
+html body #roda .rodaplus-pointer{position:absolute;left:27.768%;top:1.594%;width:5.266%;height:10.733%;z-index:4;pointer-events:none;user-select:none}
+html body #roda .rodaplus-hit{position:absolute;z-index:5;left:58.15%;width:36.6%;height:11.8%;border:0!important;border-radius:28px!important;background:transparent!important;color:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important;cursor:pointer!important;outline-offset:3px!important;transform:none!important;transition:none!important;opacity:1!important}
+html body #roda .rodaplus-hit span{font-size:0;opacity:0;pointer-events:none}
+html body #roda .rodaplus-hit:hover,html body #roda .rodaplus-hit:active{background:transparent!important;filter:none!important;box-shadow:none!important;transform:none!important}
+html body #roda .rodaplus-hit:focus-visible{outline:3px solid #fff!important}
+html body #roda .rodaplus-hit:disabled{cursor:not-allowed!important;opacity:1!important}
+html body #roda .hit-spin{top:11.9%}
+html body #roda .hit-panel{top:27.55%}
+html body #roda .hit-reset{top:42.9%}
+html body #roda .hit-last{top:58.35%}
+html body #roda .hit-home{top:72.9%}
+html body #roda .rodaplus-status{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:center!important;gap:10px 20px!important;padding:9px 16px 14px!important;max-width:1500px!important;margin:0 auto!important;background:#061d38!important}
+html body #roda .rodaplus-status .pill{margin:0!important;font-size:12px!important}
+html body #roda #collectiveTotal{display:flex;align-items:center;gap:10px!important;margin:0!important;padding:0!important}
+html body #roda #collectiveTotal label{font-size:12px!important;white-space:nowrap!important;margin:0!important}
+html body #roda #total{width:90px!important;min-height:38px!important;padding:5px 8px!important;font-size:18px!important}
+html body #roda #spinMessage{margin:0!important;font-size:13px!important;color:#ffdb8b!important}
+html body #roda .rodaplus-intro{display:none!important}
+@media(min-width:950px){html body #appMain:has(#roda:not(.hidden))>.v46-header{padding-block:7px!important;min-height:0!important}html body #appMain:has(#roda:not(.hidden))>nav{padding-block:3px!important}}
+@media(max-width:720px){html body #roda .rodaplus-stage{width:100%!important}html body #roda .rodaplus-hit{border-radius:12px!important}html body #roda .rodaplus-status{padding:12px!important}html body #roda #collectiveTotal{flex-wrap:wrap!important;justify-content:center!important}}

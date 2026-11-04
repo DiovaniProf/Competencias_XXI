@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roda das Competências para o Século XXI — V73</title><link rel="stylesheet" href="style.css"></head><body><div id="welcome" class="welcome-screen login-v67">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roda das Competências para o Século XXI — V76 RODAPLUS</title><link rel="stylesheet" href="style.css"></head><body><div id="welcome" class="welcome-screen login-v67">
   <button id="loginFullscreen" class="login-fullscreen-control" type="button" aria-label="Abrir tela de entrada em tela cheia">⛶ TELA CHEIA</button>
   <div class="login-stage" aria-label="Laboratório de Projeto de Vida — Roda das Competências">
     <div class="login-actions">
@@ -31,7 +31,24 @@
    <div class="v47-metrics"><div><strong id="v47-questions">20</strong><span>Questões</span></div><div><strong id="v47-people">1</strong><span>Participantes</span></div><div><strong id="v47-yes">0</strong><span>Respostas SIM</span></div><div><strong id="v47-no">0</strong><span>Respostas NÃO</span></div></div>
    <div class="v47-progress"><div><b>Progresso da Roda</b><span id="v47-progress-text">0 de 20 questões</span></div><div class="v47-progress-track"><div id="v47-progress-bar"></div></div></div>
    <div class="v47-tiles"><button type="button" data-go="roda"><span>◎</span><b>RODA</b><small>Aplicar a experiência</small></button><button type="button" data-go="relatorio"><span>⬠</span><b>PENTÁGONO</b><small>Explorar competências</small></button><button type="button" data-go="questoes"><span>☷</span><b>QUESTÕES</b><small>Revisar perguntas</small></button><button type="button" data-go="intervencao"><span>▥</span><b>ANÁLISE E INTERVENÇÃO</b><small>Interpretar resultados</small></button></div>
-  </div></div></section><section id="roda" class="panel"><div class="home-layout"><div class="wheel-side"><div class="wheel-wrap"><canvas id="wheel" width="500" height="500" aria-label="Roda de cinco eixos temáticos giratória"></canvas><div class="wheel-pointer" aria-hidden="true"></div></div><div id="spinMessage" aria-live="polite"></div></div><div class="home-side"><div class="eyebrow">DESAFIO FORMATIVO</div><h2 class="hero">Gire a roda.<br>Amplie suas possibilidades.</h2><p class="intro">Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.</p><div id="collectiveTotal"><label for="total">Número de alunos participantes</label><input type="number" min="1" step="1" id="total" value="10"><p class="muted">A quantidade informada será utilizada no cálculo dos percentuais do pentágono.</p></div><p id="modeIndicator" class="pill"></p><div class="actions"><button id="spin">⟳ GIRAR A RODA</button><button id="last" class="alt">REABRIR QUESTÃO ATUAL</button><button id="resetHome" class="out danger">REINICIAR RODA</button><button id="changeExperience" class="out" type="button">FINALIZAR/TROCAR EXPERIÊNCIA</button></div><p class="muted center">A roda alterna os eixos sempre que houver questões disponíveis em outros eixos.</p></div></div></section>
+  </div></div></section><section id="roda" class="panel rodaplus-panel" aria-label="Roda das Competências — painel interativo">
+  <div class="rodaplus-stage" role="group" aria-label="Roda giratória e comandos">
+    <img class="rodaplus-background" src="RODAPLUS.jpg" alt="Painel Roda das Competências Século XXI, cinco eixos e cinco botões dourados" draggable="false">
+    <div class="rodaplus-rotor" aria-label="Roda giratória dos cinco eixos"><img id="wheelGraphic" src="RODAPLUS_GIRO.png" alt="Setores: Carreira, Lazer e Tempo Livre, Protagonismo, Tecnologia e ENEM" draggable="false"></div>
+    <img class="rodaplus-pointer" src="RODAPLUS_SETA.png" alt="" aria-hidden="true" draggable="false">
+    <button id="spin" class="rodaplus-hit hit-spin" type="button" aria-label="Girar a roda"><span>GIRAR A RODA</span></button>
+    <button id="openControl" class="rodaplus-hit hit-panel" type="button" aria-label="Abrir painel de controle"><span>PAINEL DE CONTROLE</span></button>
+    <button id="resetHome" class="rodaplus-hit hit-reset" type="button" aria-label="Reiniciar atividade"><span>REINICIAR ATIVIDADE</span></button>
+    <button id="last" class="rodaplus-hit hit-last" type="button" aria-label="Reabrir questão atual"><span>REABRIR QUESTÃO ATUAL</span></button>
+    <button id="changeExperience" class="rodaplus-hit hit-home" type="button" aria-label="Voltar ao início"><span>VOLTAR AO INÍCIO</span></button>
+  </div>
+  <div class="rodaplus-status">
+    <p id="modeIndicator" class="pill" aria-live="polite"></p>
+    <div id="collectiveTotal"><label for="total">PARTICIPANTES DA EXPERIÊNCIA COLETIVA</label><input type="number" min="1" step="1" id="total" value="10" aria-label="Número de estudantes participantes"></div>
+    <div id="spinMessage" aria-live="polite"></div>
+    <p class="intro rodaplus-intro">Uma questão por vez, alternando os cinco eixos.</p>
+  </div>
+</section>
 <section id="pergunta" class="panel hidden v45-question-panel v46-question-panel">
 <div class="v45-top"><div id="qhead" class="v45-qhead"></div><button type="button" id="backWheel" class="out">← VOLTAR À RODA</button></div>
 <div class="v45-question-core"><div class="v45-question-label">QUESTÃO DA RODA</div><div id="qtext" class="question">Gire a roda para começar.</div>

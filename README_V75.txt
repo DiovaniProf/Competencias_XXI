@@ -1,0 +1,1 @@
+V75: experiência coletiva usa o mesmo dimensionamento e distribuição da roda e do pentágono da experiência individual. Mantidos contagem SIM (0 até total da turma), média por eixo, atualização do pentágono e tela cheia.
