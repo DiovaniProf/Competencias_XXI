@@ -1401,3 +1401,113 @@ html body #pergunta #saveReturn{
 @media(max-aspect-ratio:9/11){
  #welcome.login-v67 .login-stage{width:100%!important;}
 }
+
+
+/* ============================================================
+   V68 — LAYOUT CANÔNICO DA QUESTÃO (individual e coletiva)
+   Regras finais, escopo exclusivo de #pergunta. Evita que
+   estilos antigos reduzam a fonte no monitor ou Smart TV.
+   ============================================================ */
+html body #pergunta.v46-question-panel:not(.hidden) {
+  box-sizing:border-box!important;
+  min-height:calc(100dvh - 150px)!important;
+  padding:clamp(10px,1.3vh,18px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core{
+  width:min(100%,1200px)!important;
+  max-width:1200px!important;
+  margin:0 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:clamp(7px,1vh,14px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-label{
+  align-self:center!important;
+  margin:0!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+  box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;max-width:1100px!important;
+  min-height:clamp(110px,15vh,190px)!important;
+  margin:0 auto!important;
+  padding:clamp(15px,2.4vh,28px) clamp(18px,3vw,45px)!important;
+  font-size:clamp(34px,3.35vw,66px)!important;
+  line-height:1.12!important;font-weight:900!important;
+  text-align:center!important;text-wrap:balance!important;
+  color:#fff!important;
+  background:rgba(2,18,39,.90)!important;
+  border:3px solid #ffca42!important;border-radius:24px!important;
+  box-shadow:0 0 18px rgba(255,193,48,.32),inset 0 0 20px rgba(0,0,0,.25)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #qcontrols{
+  width:min(100%,1050px)!important;max-width:1050px!important;
+  margin:0 auto!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-reveals{
+  width:100%!important;
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(10px,1.3vw,20px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-bridge{
+  min-width:0!important;
+  border:1px solid #17c4e9!important;border-radius:14px!important;
+  background:rgba(3,28,53,.85)!important;
+  overflow:hidden!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-reveal-head{
+  width:100%!important;
+  min-height:48px!important;
+  font-size:clamp(16px,1.25vw,23px)!important;
+  text-align:left!important;
+  color:white!important;
+  background:linear-gradient(180deg,#07547d,#073553)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-comment-wrap{
+  width:100%!important;max-width:none!important;
+  margin:0 auto!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #note{
+  box-sizing:border-box!important;width:100%!important;
+  min-height:clamp(75px,11vh,140px)!important;
+  font-size:clamp(15px,1.05vw,20px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-save-actions{
+  display:flex!important;justify-content:center!important;
+  flex-wrap:wrap!important;gap:clamp(12px,2vw,28px)!important;
+  margin-top:clamp(8px,1.5vh,18px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #backWheel{
+  background:linear-gradient(135deg,#075c39,#0f9d5a)!important;
+  color:#fff!important;border:2px solid #77ffa6!important;
+  box-shadow:0 0 13px rgba(48,255,123,.4)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #save{
+  background:linear-gradient(135deg,#214b77,#126ca4)!important;
+  color:#fff!important;border:2px solid #8bd9ff!important;
+}
+html body #welcome.login-v67 .login-instructions{
+  background:linear-gradient(180deg,#ffd66c,#e7a826)!important;
+  color:#081b31!important;border:2px solid #ffdf82!important;
+  box-shadow:0 4px 16px rgba(231,168,38,.28)!important;
+}
+html body #welcome.login-v67 .login-hotspot:hover{
+  background:rgba(255,198,63,.07)!important;
+}
+html body #welcome.login-v67 .instructions-dialog h3{
+  color:#ffdc83;font-size:clamp(19px,1.5vw,25px);margin:22px 0 6px;
+}
+@media(max-width:760px){
+ html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+   font-size:clamp(27px,5.3vw,43px)!important;min-height:110px!important;
+ }
+ html body #pergunta.v46-question-panel:not(.hidden) .v45-reveals{
+   grid-template-columns:1fr!important;
+ }
+}
+@media(min-width:1500px){
+ html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+   font-size:clamp(52px,3.5vw,74px)!important;
+ }
+}
