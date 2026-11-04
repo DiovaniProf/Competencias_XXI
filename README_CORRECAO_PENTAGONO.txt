@@ -1,0 +1,1 @@
+BASE V75 — correção pontual: registro automático da resposta coletiva no registro único da turma; painel usa os dados ativos quando a turma está carregada; recálculo do pentágono após cada resposta; mantém imagens, estilo, roda, LOGIN e demais recursos V75. Resposta 0 é válida. Não altera fórmula: média de respostas SIM das questões respondidas por eixo.

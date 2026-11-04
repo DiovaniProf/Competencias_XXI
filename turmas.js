@@ -55,7 +55,7 @@ function applyRecord(c,r,destination){
  state.className=c.name;state.total=c.participants;
  el('className').value=c.name;el('total').value=c.participants;
  if(r)restoreInterventions(r.interventions);else clearInterventions();
- saveState();update();tab(destination);renderClasses();status('Dados carregados exclusivamente da turma '+c.name+'.')
+ saveState();update();tab(destination);if(typeof radar==='function')radar();renderClasses();if(window.renderV47Dashboard)renderV47Dashboard();status('Dados carregados exclusivamente da turma '+c.name+'.')
 }
 
 window.archiveCurrentExperience=archiveCurrentExperience;

@@ -47,7 +47,6 @@ $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await docum
 function selectAnswer(n){if(state.mode!=='individual'||state.active<0)return;$('count').value=String(n);if(saveCurrent()){radar(); $('answerYes').setAttribute('aria-pressed',String(n===1));$('answerNo').setAttribute('aria-pressed',String(n===0)); }}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
 function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio'){
- if(state.active>=0&&$('count').value.trim()!=='')saveCurrent();
  radar();
  requestAnimationFrame(()=>{if(!$('relatorio').classList.contains('hidden'))radar();});
 }if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
@@ -115,7 +114,12 @@ function saveCurrent(){
  }else if(state.counts[state.active]===undefined){/* sem resposta ainda */}
  state.notes[state.active]=$('note').value;
  saveState();update();
+ // Atualiza também o registro único da turma, que alimenta o painel coletivo.
+ if(state.mode==='collective' && typeof window.archiveCurrentExperience==='function') {
+   window.archiveCurrentExperience(true);
+ }
  radar();
+ if(typeof window.renderV47Dashboard==='function')window.renderV47Dashboard();
  return true;
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
