@@ -43,7 +43,7 @@ function askSaveBeforeSwitch(targetName,proceed){
  document.getElementById('cmSwitchCancel').onclick=()=>{close();renderClasses()};
 }
 function chooseClass(id){const target=db.classes.find(c=>c.id===id);if(!target){selected=null;renderClasses();return}
- askSaveBeforeSwitch(target.name,()=>{selected=id;window.currentClassId=id;localStorage.setItem('rodaXXISelectedClass',id);renderClasses();status('Turma selecionada: '+target.name+'. Use ABRIR RESULTADOS ou ABRIR INTERVENÇÕES para carregar somente seus registros.')})
+ askSaveBeforeSwitch(target.name,()=>{selected=id;window.currentClassId=id;localStorage.setItem('rodaXXISelectedClass',id);renderClasses();if(window.renderV47Dashboard)renderV47Dashboard();status('Turma selecionada: '+target.name+'. Use ABRIR RESULTADOS ou ABRIR INTERVENÇÕES para carregar somente seus registros.')})
 }
 function clearInterventions(){try{localStorage.removeItem(intKey())}catch(e){}}
 function applyRecord(c,r,destination){
@@ -84,6 +84,16 @@ function renderClasses(){
 }
 
 window.renderClasses=renderClasses;
+window.v47Classes=()=>db.classes.map(c=>({id:c.id,name:c.name,year:c.year,participants:c.participants,record:clone(c.experiences?.[0]||null)}));
+window.v47SelectedClass=()=>selected;
+window.v47ChooseClass=(id)=>chooseClass(id);
+window.v47StartSelected=()=>{const c=current();if(c)startClass(c);else status('Selecione uma turma primeiro.')};
+window.v47OpenCreate=()=>{tab('turmas');el('cmNew').click()};
+window.v47ManageSelected=()=>{tab('turmas');renderClasses()};
+window.v47EditParticipants=()=>{const c=current();if(!c){status('Selecione uma turma.');return}const raw=prompt('Novo número de participantes para '+c.name+' (1 a 1000):',String(c.participants));if(raw===null)return;const n=Number(raw);if(!Number.isInteger(n)||n<1||n>1000){status('Informe um número inteiro de 1 a 1000.');return}const old=c.participants;if(n<old&&c.experiences?.[0]&&Object.values(c.experiences[0].counts||{}).some(v=>v>n)){status('Há respostas SIM superiores ao novo total. Refaça as perguntas antes de reduzir os participantes.');return}if(!confirm('Alterar participantes de '+old+' para '+n+'?'))return;c.participants=n;c.updatedAt=stamp();if(c.experiences?.[0])c.experiences[0].participants=n;if(loadedClassId===c.id){state.total=n;el('total').value=n;saveState();update()}persist();renderClasses();if(window.renderV47Dashboard)renderV47Dashboard();status('Participantes atualizados para '+n+'.')};
+window.v47RedoQuestions=()=>{const c=current();if(!c){status('Selecione uma turma.');return}if(!confirm('REFAZER AS 20 PERGUNTAS de '+c.name+'? Isso apagará respostas, comentários e intervenções salvos desta turma. Exporte um backup antes de continuar.'))return;if(!confirm('Confirmar reinício definitivo da experiência desta turma?'))return;c.experiences=[];c.updatedAt=stamp();if(loadedClassId===c.id){state.used=[];state.active=-1;state.counts={};state.notes={};clearInterventions();saveState();update()}persist();renderClasses();if(window.renderV47Dashboard)renderV47Dashboard();status('Perguntas reiniciadas para '+c.name+'.')};
+window.v47DeleteClass=()=>{const c=current();if(!c){status('Selecione uma turma.');return}if(!confirm('EXCLUIR TURMA '+c.name+' e todos os registros? Esta ação não pode ser desfeita.'))return;if(!confirm('Confirma a exclusão definitiva da turma '+c.name+'?'))return;const id=c.id;db.classes=db.classes.filter(x=>x.id!==id);if(loadedClassId===id){loadedClassId=null;state.used=[];state.active=-1;state.counts={};state.notes={};clearInterventions();saveState();update()}selected=null;window.currentClassId='';localStorage.removeItem('rodaXXISelectedClass');persist();renderClasses();if(window.renderV47Dashboard)renderV47Dashboard();status('Turma excluída.')};
+
 function startClass(c){askSaveBeforeSwitch(c.name,()=>applyRecord(c,c.experiences?.[0]||null,'roda'))}
 function loadExperience(c,r,destination){askSaveBeforeSwitch(c.name,()=>applyRecord(c,r,destination))}
 function download(data,name){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}

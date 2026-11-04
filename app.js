@@ -24,7 +24,7 @@ function setMode(mode,reset=false){
  document.querySelector('#roda .intro').textContent=mode==='individual'?'Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.':'Uma questão por vez, alternando os cinco eixos. Registre quantos estudantes responderam SIM, explore a mediação e registre comentários para promover o diálogo e identificar possibilidades de intervenção interdisciplinar.';
  $('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
  $('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
- $('total').value=state.total;syncModeNavigation();saveState();update();tab('roda');
+ $('total').value=state.total;syncModeNavigation();saveState();update();tab('dashboard');
 }
 $('backWheel').onclick=()=>{tab('roda')};
 $('chooseIndividual').onclick=()=>setMode('individual',true);
@@ -32,7 +32,7 @@ $('chooseCollective').onclick=()=>setMode('collective',true);
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
 function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
-function tab(name){if(name==='turmas'&&state.mode!=='collective')name='roda';document.querySelectorAll('main>section[id]').forEach(s=>{if(['roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
 function wheel(rotation=angle){
  const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
