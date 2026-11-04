@@ -905,3 +905,49 @@ body{background:#06172d!important;background-image:none!important}
 #turmas #cmStatus{font-size:13px;margin:12px 0 0}
 @media(max-width:1050px){#turmas .cm-header-actions{justify-content:flex-start;flex:1 1 100%}#turmas .v47-manage-actions{gap:9px}#turmas .v47-manage-actions button{gap:9px}}
 @media(max-width:780px){#turmas .cm-layout{grid-template-columns:1fr!important}#turmas .v47-manage-actions{grid-template-columns:1fr!important}#turmas .cm-header-actions button{flex:1 1 180px!important}#turmas .cm-details>.cm-actions{grid-template-columns:1fr!important}#turmas #cmStart{grid-column:1}#turmas .cm-list,#turmas .cm-details{min-height:auto}}
+
+/* V52 — pergunta central em destaque, conforme protótipo aprovado */
+@media (min-width: 901px) {
+  #pergunta .v45-question-core {
+    width: min(100%, 1120px) !important;
+    max-width: 1120px !important;
+    margin: -4px auto 0 !important;
+  }
+  #pergunta #qtext.question {
+    width: 100% !important;
+    max-width: 1120px !important;
+    font-size: clamp(38px, 3.15vw, 64px) !important;
+    font-weight: 900 !important;
+    line-height: 1.06 !important;
+    letter-spacing: -.025em !important;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    padding: 8px 12px 12px !important;
+    margin: 0 auto 17px !important;
+  }
+  #pergunta .v45-question-label {margin-bottom: 12px !important;}
+  #pergunta .v46-reveals,
+  #pergunta .v45-comment-wrap {max-width: 1020px !important; margin-left:auto !important; margin-right:auto !important;}
+  #pergunta .v45-save-actions {max-width: 900px !important;}
+  #pergunta #collectiveAnswer {margin-bottom: 12px !important;}
+}
+@media (min-width: 901px) and (max-height: 780px) {
+  #pergunta #qtext.question {
+    font-size: clamp(34px, 2.8vw, 51px) !important;
+    margin-bottom: 10px !important;
+    line-height: 1.08 !important;
+  }
+  #pergunta .v46-reveals {margin-top: 10px !important; margin-bottom: 8px !important;}
+  #pergunta #note {height: 65px !important; min-height: 65px !important;}
+}
+@media (max-width: 900px) {
+  #pergunta #qtext.question {
+    font-size: clamp(27px, 5vw, 44px) !important;
+    font-weight: 900 !important;
+    line-height: 1.12 !important;
+    text-wrap: balance;
+  }
+}
+@media (max-width: 520px) {
+  #pergunta #qtext.question {font-size: clamp(25px, 6vw, 34px) !important;}
+}
