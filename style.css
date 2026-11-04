@@ -1339,3 +1339,65 @@ html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-butt
 #welcome.welcome-screen:not(.hidden) .welcome-three .mode-card {
   background:rgba(15,51,82,.58)!important;
 }
+
+
+/* V67 — LOGIN.jpg é a arte fixa oficial. Os botões HTML reais sobrepõem os botões desenhados. */
+html body #welcome.login-v67:not(.hidden){
+  box-sizing:border-box!important;min-height:100vh!important;min-height:100dvh!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:center!important;gap:clamp(8px,1.5vh,18px)!important;
+  padding:clamp(8px,1.5vh,20px)!important;background:#03152b!important;
+}
+#welcome.login-v67 .login-stage{
+  position:relative!important;width:min(100%,calc((100dvh - 95px)*1.77683))!important;
+  aspect-ratio:1672/941!important;flex:none!important;
+  background:#06213f url("LOGIN.jpg") center / 100% 100% no-repeat!important;
+  box-shadow:0 12px 42px #0008!important;border-radius:8px!important;
+}
+#welcome.login-v67 .login-actions{position:absolute!important;inset:0!important;}
+#welcome.login-v67 .login-hotspot{
+  position:absolute!important;top:55.2%!important;height:20.4%!important;
+  border:0!important;background:transparent!important;color:transparent!important;
+  box-shadow:none!important;cursor:pointer!important;border-radius:12%!important;
+  padding:0!important;min-height:0!important;transform:none!important;
+}
+#welcome.login-v67 #chooseIndividual{left:19.1%!important;width:30.4%!important;}
+#welcome.login-v67 #chooseCollective{left:50.8%!important;width:32.3%!important;}
+#welcome.login-v67 .login-hotspot span{opacity:0!important;}
+#welcome.login-v67 .login-hotspot:focus-visible{
+ outline:4px solid #b5ff4b!important;outline-offset:2px!important;
+ box-shadow:0 0 20px #85ff58!important;
+}
+#welcome.login-v67 .login-hotspot:hover{background:rgba(27,240,255,.10)!important;}
+#welcome.login-v67 .login-instructions{
+  display:block!important;position:relative!important;
+  background:linear-gradient(180deg,#0d7b4b,#043e30)!important;
+  border:2px solid #8dff67!important;color:#fff!important;
+  box-shadow:0 0 17px #63ff5880!important;border-radius:14px!important;
+  font-size:clamp(15px,1.5vw,22px)!important;font-weight:900!important;
+  padding:clamp(10px,1.3vh,17px) clamp(24px,3vw,48px)!important;
+  cursor:pointer!important;
+}
+#welcome.login-v67 .instructions-dialog{
+  width:min(700px,calc(100vw - 32px))!important;max-height:85vh!important;
+  overflow:auto!important;background:#0a2947!important;color:white!important;
+  border:2px solid #3ad9f5!important;border-radius:18px!important;
+  padding:clamp(20px,3vw,38px)!important;box-shadow:0 25px 90px #000c!important;
+}
+#welcome.login-v67 .instructions-dialog::backdrop{background:rgba(0,8,22,.84);}
+#welcome.login-v67 .instructions-dialog h2{font-size:clamp(24px,2.5vw,36px)!important;}
+#welcome.login-v67 .instructions-dialog p{font-size:clamp(17px,1.35vw,21px)!important;line-height:1.55!important;}
+#welcome.login-v67 .instructions-dialog button{background:#05c2e8!important;color:#03172b!important;font-weight:900!important;}
+/* Ações de retorno: verde néon apenas para RETORNAR/VOLTAR À RODA.
+   SALVAR E VOLTAR À RODA mantém azul, conforme solicitado. */
+html body #pergunta button[id*="back" i],
+html body #pergunta button[id*="Back" i]{background:linear-gradient(135deg,#0d6f49,#15d77c)!important;color:#fff!important;border:2px solid #70ffb1!important;}
+html body #pergunta #save,
+html body #pergunta #saveBack,
+html body #pergunta #saveReturn{
+ background:linear-gradient(135deg,#214b77,#126ca4)!important;
+ border:2px solid #8bd9ff!important;color:#fff!important;
+}
+@media(max-aspect-ratio:9/11){
+ #welcome.login-v67 .login-stage{width:100%!important;}
+}
