@@ -1,0 +1,1802 @@
+
+:root{font-family:system-ui,Arial,sans-serif;background:#081629;color:#eff7ff}*{box-sizing:border-box}body{margin:0}main{max-width:900px;margin:auto;padding:16px 12px 70px}h1{text-align:center;font-size:clamp(24px,5vw,38px);margin:6px 0}header{text-align:center}.muted{color:#abc4da;font-size:13px}button,input,textarea{font:inherit}button{cursor:pointer;background:#1268dc;color:white;border:0;border-radius:11px;padding:12px;font-weight:700}button:disabled{opacity:.4}button.alt{background:#27425f}button.out{background:transparent;border:1px solid #7294b1}button:focus-visible{outline:3px solid #f4d079}nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0}nav button{font-size:12px;padding:11px 2px;background:#1b3451}nav button.on{background:#166cde}.panel{background:#122a45;border:1px solid #30506b;border-radius:17px;padding:16px;margin:12px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{text-align:center;background:#1b3551;border-radius:12px;padding:12px}.stat b{font-size:23px;display:block}.actions{display:grid;gap:9px}#wheel{width:100%;display:block;transition:transform 3s cubic-bezier(.13,.73,.12,1);transform-origin:center center}.wheel-wrap{width:min(100%,390px);position:relative;margin:8px auto;overflow:visible}.wheel-pointer{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:34px solid #f5d17d;z-index:3;filter:drop-shadow(0 2px 2px #000)}.spinning{pointer-events:none;opacity:.65}#spinMessage{min-height:20px;color:#f5d17d;font-weight:700;text-align:center}.center{text-align:center}.question{font-size:clamp(21px,4.8vw,31px);font-weight:750;line-height:1.4;text-align:center;min-height:145px;display:grid;place-items:center}.bridge{display:grid;grid-template-columns:1fr 1fr;gap:10px}.bridge article{background:#1e3a59;border-radius:12px;padding:13px}textarea,input{background:#091d33;border:1px solid #66819d;color:white;border-radius:10px;padding:11px;width:100%}textarea{min-height:95px}label{display:block;margin:12px 0 6px;font-weight:650}.item{display:block;text-align:left;width:100%;margin:7px 0;background:#1d3854}.pill{font-size:12px;color:#9fe7f7}.bar{height:7px;background:#29465f;border-radius:8px;overflow:hidden}.bar div{height:100%;background:#25d3e7}.hidden{display:none}canvas#radar{width:100%;max-width:510px;display:block;margin:auto;background:#102640;border-radius:16px}footer{text-align:center;color:#a9c4dd;font-size:12px;margin:25px 0}@media(max-width:480px){.bridge{grid-template-columns:1fr}.panel{padding:13px}nav button{font-size:11px}.question{min-height:130px}}
+
+main{max-width:1480px;padding:18px 26px 65px}header{text-align:left;margin-bottom:14px}header h1{text-align:left;font-size:clamp(25px,3vw,40px)}
+nav{max-width:760px;margin:12px 0 20px}.stats{max-width:760px;margin:10px 0}.bar{max-width:760px}
+#roda{background:#0d263d;border-color:#2b526f;padding:26px 28px}.home-layout{display:grid;grid-template-columns:minmax(350px,1fr) minmax(360px,1fr);gap:40px;align-items:center;min-height:550px}.wheel-side{display:flex;flex-direction:column;align-items:center}.wheel-wrap{width:min(100%,510px)}.home-side{max-width:610px}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:900;color:#75d7f7}.hero{font-size:clamp(30px,4.2vw,58px);line-height:1.13;margin:15px 0 18px}.intro{color:#c3dcf1;font-size:17px;line-height:1.65}.home-side .actions{max-width:430px;margin-top:18px}.home-side .actions button{min-height:52px;text-transform:uppercase}.danger{border-color:#b65d73!important;color:#ffd9df;background:#492b3b!important}.home-side label{font-size:16px}#total{max-width:260px;font-size:21px;font-weight:750}.panel{margin:16px 0}#pergunta{min-height:60vh}#pergunta .question{min-height:165px}#pergunta .bridge{margin:22px 0}.wheel-pointer{top:-6px}
+@media(max-width:900px){.home-layout{grid-template-columns:1fr;gap:16px}.wheel-wrap{max-width:430px}.home-side{max-width:none}.hero{font-size:clamp(28px,6vw,44px)}main{padding:12px 14px 50px}#roda{padding:18px}}
+
+/* Experiências individual e coletiva */
+main{max-width:1500px;padding:22px clamp(16px,3vw,50px) 70px}main>header{position:relative;text-align:left;padding:2px 175px 20px 0;border-bottom:1px solid #2d4b68;margin-bottom:18px}main>header h1{font-size:clamp(26px,3vw,43px);text-align:left}.accent,.welcome-card h1 span{color:#49d7e8}.fullscreen{position:absolute;right:0;top:10px;background:#12314d;border:1px solid #5a86aa}nav{grid-template-columns:repeat(4,1fr)}nav button{font-size:14px}#roda{padding:22px 28px}.home-layout{grid-template-columns:minmax(320px,1fr) minmax(350px,1fr);gap:36px}.welcome-screen{min-height:100dvh;display:grid;place-items:center;padding:30px 18px;background:radial-gradient(circle at 65% 18%,#173f5f 0%,#081629 65%)}.welcome-card{width:min(950px,100%);background:#102b45;border:1px solid #315876;border-radius:24px;padding:clamp(25px,5vw,65px);box-shadow:0 25px 70px #0005}.welcome-card h1{font-size:clamp(30px,5vw,56px);text-align:left;line-height:1.13;margin:18px 0 12px}.welcome-sub{color:#9fe5f5;font-weight:700}.welcome-card h2{font-size:clamp(22px,3vw,32px);margin-top:34px}.welcome-card p{line-height:1.75;color:#d4e5f3;font-size:17px}.mode-question{font-weight:800;font-size:21px!important;color:white!important;margin-top:28px}.mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:18px 0}.mode-buttons button{padding:20px;font-size:20px;background:linear-gradient(110deg,#1364ce,#05a6c7)}.answer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:14px}.answer-buttons button{color:#061b1c;font-size:22px;font-weight:900;padding:20px}.answer-yes{background:#a6f0c2}.answer-no{background:#ffbabc}.answer-buttons button.selected{outline:4px solid #fff;outline-offset:2px}.answer-label{font-weight:800;font-size:19px}#modeIndicator{margin-top:18px}.hidden{display:none!important}@media(max-width:850px){.home-layout{grid-template-columns:1fr;gap:15px}main>header{padding-right:0;padding-top:65px}.fullscreen{left:0;right:auto;top:0}.mode-buttons{grid-template-columns:1fr}}
+
+/* v7: painel horizontal como na Roda das Competências LGPD */
+.topstats{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:14px 0 9px;color:#c9e6ff;font-size:13px;font-weight:750;flex-wrap:wrap}
+.bar{max-width:none!important;width:100%;height:7px;margin:0 0 14px;background:#274a64;border-radius:12px;overflow:hidden}
+.bar #progress{background:linear-gradient(90deg,#1984ef,#42e1e9);height:100%;transition:width .3s}
+main nav{max-width:none!important;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 18px}
+main nav button{padding:13px 8px;border:1px solid #315873;background:#12314d;color:#fff;font-size:15px;font-weight:850}
+main nav button.on{background:linear-gradient(105deg,#1265c9,#1283d3);border-color:#48b7f5}
+@media(max-width:650px){.topstats{font-size:11px;gap:6px}.topstats span{flex:1 1 40%}.topstats span:last-child{flex-basis:100%}main nav button{font-size:12px;padding:12px 4px}}
+
+/* v8: o desenho é animado no canvas; nunca rotacionar o elemento. */
+#wheel{transform:none!important;transition:none!important}
+
+/* Relatório no padrão visual LGPD */
+.report-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}.report-heading h2{font-size:clamp(24px,2.6vw,34px);margin:8px 0}.report-heading .out{flex-shrink:0}.report-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.95fr);gap:24px;align-items:start}.report-chart{background:#0b2439;border:1px solid #335774;border-radius:16px;padding:12px}.report-chart canvas{max-width:100%;height:auto}.report-side #metrics{margin-top:20px}.metric-row{padding:13px 0 16px;border-bottom:1px solid #34516b}.metric-row strong{display:block;font-size:15px;margin-bottom:5px}.metric-row small{display:block;color:#bad7ed;font-size:12px;margin-bottom:8px}.metric-track{height:7px;background:#2c526c;border-radius:20px;overflow:hidden}.metric-fill{height:100%;border-radius:20px}.report-actions{display:grid;gap:9px;margin-top:18px}.report-actions button{width:100%}.reflection{margin-top:24px;padding:22px;border:1px solid #355e78;border-radius:16px;background:#102b45}.reflection p{line-height:1.7;margin:12px 0}.reflection .eyebrow{color:#76d9f2}.reflection strong{color:#eafaff}@media(max-width:900px){.report-grid{grid-template-columns:1fr}.report-heading{flex-wrap:wrap}.report-heading .out{width:100%}}
+
+/* v13 — banco de questões no padrão LGPD: bloqueio até o sorteio */
+#list{display:grid;gap:10px;margin-top:18px}
+#list .bank-question{display:flex;align-items:center;gap:18px;width:100%;margin:0;padding:17px 20px;text-align:left;background:#14334e;border:1px solid #315675;border-radius:12px;color:#f4faff;transition:background .18s,border-color .18s}
+#list .bank-question.unlocked:hover{background:#1b4768;border-color:#5ac6eb}
+#list .bank-question.locked{opacity:.72;cursor:not-allowed;background:#102b43}
+#list .bank-question:disabled{opacity:.72}
+#list .bank-status{display:inline-flex;align-items:center;justify-content:center;min-width:174px;padding:9px 11px;border-radius:8px;background:#09253b;color:#b7cfe2;font-size:12px;font-weight:850;letter-spacing:.035em;white-space:nowrap}
+#list .bank-question.unlocked .bank-status{background:#0c514f;color:#b4f7e3}
+#list .bank-content{display:flex;flex-direction:column;gap:5px;min-width:0}
+#list .bank-content strong{font-size:15px;color:#fff}
+#list .bank-content span{font-size:14px;color:#c1d9eb;line-height:1.45}
+@media(max-width:650px){#list .bank-question{align-items:flex-start;flex-direction:column;gap:9px;padding:13px}#list .bank-status{min-width:0}}
+
+
+/* v18 — melhor aproveitamento da largura e altura, especialmente em tela cheia */
+@media (min-width: 1100px) {
+  #appMain {max-width:none;width:100%;padding:clamp(12px,1.35vw,26px) clamp(18px,2.1vw,44px) 28px;}
+  #roda {padding:clamp(18px,2vw,34px);}
+  #roda .home-layout {grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,3.5vw,75px);min-height:min(700px,calc(100dvh - 255px));}
+  #roda .wheel-wrap {width:min(100%,min(58vh,640px));max-width:none;}
+  #roda .home-side {max-width:760px;width:100%;}
+  #roda .home-side .actions {max-width:560px;}
+  #roda .hero {font-size:clamp(35px,3.45vw,65px);}
+  #roda .intro {font-size:clamp(16px,1.18vw,21px);}
+  #relatorio .report-grid {grid-template-columns:minmax(0,1.15fr) minmax(380px,.95fr);gap:clamp(22px,2.5vw,50px);}
+  #relatorio .report-chart {display:flex;align-items:center;justify-content:center;min-height:550px;}
+  #relatorio .report-chart canvas {width:min(100%,740px);max-width:740px;}
+}
+@media (min-width: 1100px) and (min-height: 720px) {
+  :fullscreen #appMain, body:has(:fullscreen) #appMain {min-height:100dvh;display:flex;flex-direction:column;}
+  :fullscreen #roda, body:has(:fullscreen) #roda {flex:1;display:flex;align-items:center;}
+  :fullscreen #roda .home-layout, body:has(:fullscreen) #roda .home-layout {width:100%;min-height:0;}
+  :fullscreen #roda .wheel-wrap, body:has(:fullscreen) #roda .wheel-wrap {width:min(100%,min(65vh,760px));}
+  :fullscreen #roda .home-side .actions button, body:has(:fullscreen) #roda .home-side .actions button {min-height:clamp(52px,6vh,68px);}
+  :fullscreen #relatorio, body:has(:fullscreen) #relatorio {flex:1;}
+  :fullscreen #relatorio .report-chart, body:has(:fullscreen) #relatorio .report-chart {min-height:min(75vh,850px);}
+  :fullscreen #relatorio .report-chart canvas, body:has(:fullscreen) #relatorio .report-chart canvas {width:min(100%,min(75vh,900px));max-width:900px;}
+}
+@media (min-width: 1100px) and (max-height: 780px) {
+  #roda .home-layout {min-height:0;}
+  #roda .wheel-wrap {width:min(100%,min(52vh,540px));}
+  #roda .hero {font-size:clamp(31px,3vw,48px);margin:8px 0 12px;}
+  #roda .intro {line-height:1.4;}
+  #roda .home-side .actions button {min-height:43px;}
+}
+@media (max-width: 1099px) {
+  #appMain {width:100%;max-width:none;padding-inline:clamp(12px,2.5vw,28px);}
+}
+
+
+/* v19 — tela cheia: aproveitar toda a área real do monitor */
+@media (min-width: 1100px) {
+  html:fullscreen, html:fullscreen body, html.fullscreen-active, html.fullscreen-active body {width:100%;min-height:100%;margin:0;}
+  html:fullscreen #appMain, html.fullscreen-active #appMain {
+    width:100vw!important; max-width:100vw!important; min-height:100dvh;
+    margin:0!important; padding:clamp(10px,1.2vh,18px) clamp(16px,1.65vw,38px) 12px!important;
+    display:flex; flex-direction:column;
+  }
+  html:fullscreen #appMain>header, html.fullscreen-active #appMain>header {
+    flex:0 0 auto; padding-bottom:clamp(8px,1vh,15px); margin-bottom:clamp(6px,1vh,12px);
+  }
+  html:fullscreen #appMain>header h1, html.fullscreen-active #appMain>header h1 {font-size:clamp(30px,2.25vw,48px);margin:3px 0 5px;}
+  html:fullscreen #appMain .topstats, html.fullscreen-active #appMain .topstats {margin:clamp(5px,.8vh,10px) 0;}
+  html:fullscreen #appMain nav, html.fullscreen-active #appMain nav {margin:clamp(6px,.9vh,12px) 0;}
+  html:fullscreen #appMain nav button, html.fullscreen-active #appMain nav button {padding:clamp(9px,1.2vh,16px) 8px;}
+  html:fullscreen #roda:not(.hidden), html.fullscreen-active #roda:not(.hidden) {
+    flex:1 1 auto; min-height:0; width:100%; margin:4px 0 0; padding:clamp(12px,1.6vw,32px);
+    display:flex; align-items:center; justify-content:center;
+  }
+  html:fullscreen #roda .home-layout, html.fullscreen-active #roda .home-layout {
+    width:100%; height:100%; min-height:0; gap:clamp(20px,3vw,80px);
+    grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); align-items:center;
+  }
+  html:fullscreen #roda .wheel-side, html.fullscreen-active #roda .wheel-side {width:100%;justify-content:center;min-width:0;}
+  html:fullscreen #roda .wheel-wrap, html.fullscreen-active #roda .wheel-wrap {
+    width:min(100%, 71dvh, 43vw, 860px)!important; max-width:none!important;
+    margin:10px auto;
+  }
+  html:fullscreen #roda .home-side, html.fullscreen-active #roda .home-side {width:100%;max-width:900px;}
+  html:fullscreen #roda .home-side .actions, html.fullscreen-active #roda .home-side .actions {max-width:min(100%,740px);}
+  html:fullscreen #roda .home-side .actions button, html.fullscreen-active #roda .home-side .actions button {min-height:clamp(48px,5.6vh,72px);font-size:clamp(14px,1.15vw,19px);}
+  html:fullscreen #roda .hero, html.fullscreen-active #roda .hero {font-size:clamp(36px,3.3vw,68px);line-height:1.12;}
+  html:fullscreen #roda .intro, html.fullscreen-active #roda .intro {font-size:clamp(17px,1.2vw,23px);}
+  html:fullscreen #relatorio:not(.hidden), html.fullscreen-active #relatorio:not(.hidden) {flex:1 1 auto;min-height:0;}
+  html:fullscreen #relatorio .report-chart, html.fullscreen-active #relatorio .report-chart {min-height:min(72dvh,850px);}
+  html:fullscreen #relatorio .report-chart canvas, html.fullscreen-active #relatorio .report-chart canvas {width:min(100%,74dvh,920px);max-width:920px;}
+  html:fullscreen #appMain>footer, html.fullscreen-active #appMain>footer {margin:8px 0 0;font-size:11px;flex:0 0 auto;}
+}
+@media (min-width:1100px) and (max-height:760px) {
+  html:fullscreen #roda .wheel-wrap, html.fullscreen-active #roda .wheel-wrap {width:min(100%,60dvh,43vw,700px)!important;}
+  html:fullscreen #roda .hero, html.fullscreen-active #roda .hero {font-size:clamp(30px,2.6vw,48px);margin:8px 0;}
+  html:fullscreen #roda .home-side .actions button, html.fullscreen-active #roda .home-side .actions button {min-height:43px;}
+}
+
+/* v20 — área de registros em duas colunas: ações à esquerda, pontes à direita */
+#pergunta .question-bottom-grid {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,2.2vw,36px);align-items:stretch;margin-top:22px;}
+#pergunta .question-left {min-width:0;display:flex;flex-direction:column;}
+#pergunta .question-left label {margin:0 0 10px;}
+#pergunta .question-left textarea {min-height:110px;resize:vertical;flex:1;}
+#pergunta .question-save-actions {margin-top:12px;gap:10px;}
+#pergunta .question-save-actions button {min-height:52px;text-transform:uppercase;}
+#pergunta .question-right {display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;gap:12px;margin:0;min-width:0;}
+#pergunta .question-right article {display:flex;flex-direction:column;justify-content:center;padding:clamp(15px,1.6vw,26px);}
+#pergunta .question-right article p {line-height:1.55;margin:9px 0 0;}
+@media (max-width:780px) {#pergunta .question-bottom-grid {grid-template-columns:1fr;}#pergunta .question-right {grid-template-columns:1fr;grid-template-rows:auto;}#pergunta .question-left textarea {min-height:100px;}}
+
+/* v21 — abertura mais ampla com modalidades explicativas lado a lado */
+.welcome-screen {padding:clamp(16px,2.8vw,42px);}
+.welcome-card {width:min(1120px,100%);padding:clamp(25px,3.6vw,56px);}
+.welcome-card h1 {font-size:clamp(30px,3.65vw,53px);margin:13px 0 8px;}
+.welcome-card h2 {margin-top:22px;}
+.welcome-card>.mode-question {margin-top:22px;}
+.mode-cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:16px;}
+.mode-card {display:flex;flex-direction:column;min-width:0;padding:clamp(18px,2vw,26px);background:#173b58;border:1px solid #3a779f;border-radius:16px;}
+.mode-card-title {display:flex;align-items:center;gap:11px;margin-bottom:7px;}
+.mode-card-title h3 {font-size:clamp(18px,1.6vw,23px);margin:0;color:#fff;letter-spacing:.35px;}
+.mode-icon {color:#7ee1f4;font-size:25px;line-height:1;}
+.welcome-card .mode-card p {font-size:clamp(14px,1.05vw,16px);line-height:1.55;margin:10px 0;color:#dcebf5;}
+.mode-card button {margin-top:auto;width:100%;padding:16px 12px;background:linear-gradient(105deg,#1469ce,#04a6c6);font-weight:900;font-size:16px;}
+.mode-card p:last-of-type {margin-bottom:23px;}
+.mode-card button:focus-visible {outline:3px solid #fff;outline-offset:3px;}
+@media(max-width:700px){.mode-cards{grid-template-columns:1fr}.welcome-card{padding:24px 18px}.mode-card p:last-of-type{margin-bottom:20px}}
+
+/* v22 — abertura em três colunas, aproveitamento horizontal */
+.welcome-screen{padding:clamp(14px,2.2vw,35px);min-height:100dvh;}
+.welcome-card.welcome-v22{width:min(1510px,100%);max-width:none;padding:clamp(24px,3.2vw,54px);}
+.welcome-v22 .welcome-header{padding-bottom:18px;border-bottom:1px solid #365b78;}
+.welcome-v22 .welcome-header h1{font-size:clamp(30px,3.1vw,51px);max-width:none;line-height:1.16;}
+.welcome-v22 .welcome-header .welcome-sub{margin-bottom:0;}
+.welcome-v22 .welcome-lead{font-size:clamp(20px,2vw,28px);margin:24px 0 20px;}
+.welcome-three{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:18px;align-items:stretch;}
+.welcome-three>section{min-width:0;display:flex;flex-direction:column;border-radius:16px;padding:clamp(20px,1.8vw,29px);}
+.welcome-three .welcome-purpose{background:#12324d;border:1px solid #315b7b;}
+.welcome-three .mode-card{background:#173b58;border:1px solid #3a779f;}
+.welcome-three .welcome-purpose h3{font-size:clamp(19px,1.55vw,25px);line-height:1.3;margin:10px 0 16px;}
+.welcome-three .purpose-icon{color:#70dff1;font-size:29px;}
+.welcome-v22 .welcome-three p{font-size:clamp(14px,1.05vw,17px);line-height:1.65;margin:8px 0 13px;color:#dcebf5;}
+.welcome-v22 .welcome-three .mode-card-title{min-height:40px;}
+.welcome-v22 .welcome-three .mode-card button{margin-top:auto;min-height:54px;}
+@media(min-width:1200px) and (min-height:760px){.welcome-v22 .welcome-three>section{min-height:365px;}}
+@media(max-width:1050px){.welcome-three{grid-template-columns:repeat(2,minmax(0,1fr));}.welcome-three .welcome-purpose{grid-column:1/-1;}.welcome-v22 .welcome-three>section{min-height:0;}}
+@media(max-width:700px){.welcome-three{grid-template-columns:1fr;}.welcome-three .welcome-purpose{grid-column:auto;}.welcome-card.welcome-v22{padding:23px 17px;}.welcome-v22 .welcome-lead{margin:20px 0 14px;}}
+
+/* v23 — abertura expandida: mais largura e altura útil, sem sacrificar responsividade */
+@media (min-width: 1100px) {
+  #welcome.welcome-screen {
+    width:100%; min-height:100dvh;
+    padding:clamp(12px,1.6vw,28px) clamp(14px,1.8vw,36px);
+    display:flex; align-items:center; justify-content:center;
+  }
+  #welcome .welcome-card.welcome-v22 {
+    width:100%; max-width:1920px;
+    min-height:min(900px,calc(100dvh - clamp(24px,3.2vw,56px)));
+    padding:clamp(26px,3vw,60px) clamp(28px,3.5vw,76px);
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  #welcome .welcome-v22 .welcome-header {padding-bottom:clamp(16px,2.3vh,28px);}
+  #welcome .welcome-v22 .welcome-header h1 {font-size:clamp(35px,3.2vw,65px);}
+  #welcome .welcome-v22 .welcome-lead {margin:clamp(20px,3vh,36px) 0 clamp(16px,2.5vh,30px);font-size:clamp(22px,1.8vw,34px);}
+  #welcome .welcome-three {gap:clamp(16px,1.5vw,30px);grid-template-columns:1.04fr 1fr 1fr;}
+  #welcome .welcome-three>section {min-height:clamp(390px,51dvh,610px);padding:clamp(22px,2vw,40px);}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(15px,1.04vw,20px);line-height:1.68;}
+  #welcome .welcome-three .welcome-purpose h3 {font-size:clamp(22px,1.6vw,30px);}
+  #welcome .mode-card-title h3 {font-size:clamp(21px,1.4vw,27px);}
+  #welcome .welcome-v22 .welcome-three .mode-card button {min-height:clamp(56px,6.5vh,76px);font-size:clamp(15px,1vw,19px);}
+}
+@media (min-width:1100px) and (max-height:720px) {
+  #welcome .welcome-card.welcome-v22 {min-height:calc(100dvh - 24px);padding-block:18px;}
+  #welcome .welcome-three>section {min-height:310px;padding:18px 24px;}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(14px,.95vw,17px);line-height:1.48;margin:6px 0 10px;}
+  #welcome .welcome-v22 .welcome-lead {margin:13px 0;}
+}
+@media (min-width:701px) and (max-width:1099px) {
+  #welcome .welcome-card.welcome-v22 {width:100%;}
+}
+
+/* v24 — preenchimento real da janela na tela de escolha, mantendo 3 colunas */
+@media (min-width:1100px) {
+  #welcome.welcome-screen {
+    width:100%; min-height:100dvh;
+    padding:clamp(8px,1.15vw,22px)!important;
+    display:flex;align-items:stretch;justify-content:center;
+  }
+  #welcome .welcome-card.welcome-v22 {
+    box-sizing:border-box;width:100%!important;max-width:none!important;
+    min-height:calc(100dvh - clamp(16px,2.3vw,44px))!important;
+    padding:clamp(28px,3.1vw,65px) clamp(32px,3.4vw,76px)!important;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  #welcome .welcome-v22 .welcome-header h1 {font-size:clamp(37px,3.3vw,72px);line-height:1.12;}
+  #welcome .welcome-v22 .welcome-lead {margin:clamp(22px,3.2vh,42px) 0 clamp(18px,2.7vh,34px);}
+  #welcome .welcome-three {grid-template-columns:1.04fr 1fr 1fr;gap:clamp(16px,1.5vw,30px);flex:1;min-height:0;}
+  #welcome .welcome-three>section {min-height:clamp(370px,53dvh,740px);padding:clamp(24px,2.1vw,46px);}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(15px,1.04vw,21px);line-height:1.68;}
+  #welcome .welcome-three .mode-card button {min-height:clamp(58px,7vh,86px);}
+}
+@media (min-width:1100px) and (max-height:740px) {
+  #welcome .welcome-card.welcome-v22 {padding-block:18px!important;}
+  #welcome .welcome-three>section {min-height:300px;padding:20px 24px;}
+  #welcome .welcome-v22 .welcome-three p {font-size:clamp(14px,.95vw,18px);line-height:1.45;margin:6px 0 10px;}
+  #welcome .welcome-v22 .welcome-lead {margin:12px 0;}
+}
+
+
+/* v25 — leitura ampliada e aproveitamento vertical na tela de questões */
+#pergunta .question-bottom-grid {
+  gap:clamp(20px,2.5vw,48px);
+  margin-top:clamp(22px,3vh,38px);
+  align-items:stretch;
+}
+#pergunta .question-left label {font-size:clamp(17px,1.2vw,22px);line-height:1.4;}
+#pergunta .question-left textarea {
+  font-size:clamp(17px,1.16vw,21px);
+  line-height:1.65;
+  min-height:clamp(170px,25vh,320px);
+  padding:clamp(16px,1.4vw,25px);
+}
+#pergunta .question-left textarea::placeholder {font-size:clamp(15px,1.03vw,19px);line-height:1.5;}
+#pergunta .question-save-actions {gap:clamp(12px,1.7vh,20px);margin-top:clamp(14px,2vh,24px);}
+#pergunta .question-save-actions button {min-height:clamp(58px,7vh,82px);font-size:clamp(15px,1.08vw,20px);}
+#pergunta .question-right {gap:clamp(14px,2vh,24px);}
+#pergunta .question-right article {padding:clamp(22px,2vw,42px);}
+#pergunta .question-right article .pill {font-size:clamp(14px,1vw,18px);font-weight:800;letter-spacing:.06em;}
+#pergunta .question-right article p {font-size:clamp(19px,1.4vw,26px);line-height:1.5;margin-top:clamp(12px,2vh,24px);}
+#pergunta .muted {font-size:clamp(15px,1vw,18px);line-height:1.5;}
+@media (min-width:1100px) and (min-height:750px) {
+  #pergunta:not(.hidden) {min-height:calc(100dvh - 220px);display:flex;flex-direction:column;}
+  #pergunta #qcontrols:not(.hidden) {flex:1;display:flex;flex-direction:column;}
+  #pergunta .question-bottom-grid {flex:1;min-height:clamp(330px,43vh,650px);}
+  #pergunta .question-left textarea {flex:1;}
+}
+@media (max-width:780px) {
+  #pergunta .question-bottom-grid {grid-template-columns:1fr;}
+  #pergunta .question-right {grid-template-rows:auto;}
+  #pergunta .question-right article {min-height:125px;}
+  #pergunta .question-left textarea {min-height:155px;}
+}
+
+
+/* v26 — ampliação tipográfica, preservando integralmente os botões */
+main>header .eyebrow, #welcome .welcome-header .eyebrow {
+  font-size:clamp(17px,1.45vw,27px)!important;
+  line-height:1.35;
+  letter-spacing:.105em;
+  font-weight:900;
+}
+#pergunta .question-left label {
+  font-size:clamp(21px,1.65vw,30px)!important;
+  line-height:1.4;
+}
+#pergunta .question-left textarea {
+  font-size:clamp(20px,1.45vw,27px)!important;
+  line-height:1.6;
+}
+#pergunta .question-left textarea::placeholder {
+  font-size:clamp(18px,1.3vw,24px)!important;
+  line-height:1.5;
+}
+#pergunta .question-right article .pill {
+  font-size:clamp(18px,1.3vw,24px)!important;
+  line-height:1.4;
+  letter-spacing:.045em;
+}
+#pergunta .question-right article p {
+  font-size:clamp(23px,1.75vw,33px)!important;
+  line-height:1.48;
+}
+@media (max-width:780px) {
+  main>header .eyebrow, #welcome .welcome-header .eyebrow {font-size:17px!important;}
+  #pergunta .question-left label {font-size:20px!important;}
+  #pergunta .question-left textarea {font-size:18px!important;}
+  #pergunta .question-left textarea::placeholder {font-size:16px!important;}
+  #pergunta .question-right article .pill {font-size:16px!important;}
+  #pergunta .question-right article p {font-size:21px!important;}
+}
+
+
+/* v27 — tela cheia sem rolagem em monitores desktop: ocupação vertical fluida */
+@media (min-width:1100px) and (min-height:700px) {
+  html:fullscreen, html:fullscreen body, html.fullscreen-active, html.fullscreen-active body {height:100%;overflow:hidden;}
+  html:fullscreen #appMain, html.fullscreen-active #appMain {
+    height:100dvh!important;min-height:0!important;max-height:100dvh;
+    display:flex;flex-direction:column;overflow:hidden;
+    padding:clamp(8px,1.1vh,15px) clamp(18px,1.8vw,38px) clamp(5px,.7vh,10px)!important;
+  }
+  html:fullscreen #appMain>header, html.fullscreen-active #appMain>header {
+    flex:0 0 auto;margin-bottom:clamp(4px,.7vh,9px)!important;padding-bottom:clamp(5px,.8vh,10px)!important;
+  }
+  html:fullscreen #appMain>header .eyebrow, html.fullscreen-active #appMain>header .eyebrow {font-size:clamp(16px,1.1vw,23px)!important;}
+  html:fullscreen #appMain>header h1, html.fullscreen-active #appMain>header h1 {font-size:clamp(25px,2vw,42px)!important;line-height:1.12;}
+  html:fullscreen #appMain .topstats, html.fullscreen-active #appMain .topstats {flex:0 0 auto;margin:clamp(2px,.45vh,6px) 0!important;}
+  html:fullscreen #appMain>.bar, html.fullscreen-active #appMain>.bar {flex:0 0 auto;margin-bottom:clamp(3px,.5vh,7px)!important;}
+  html:fullscreen #appMain>nav, html.fullscreen-active #appMain>nav {flex:0 0 auto;margin:clamp(3px,.6vh,8px) 0!important;}
+  html:fullscreen #appMain>nav button, html.fullscreen-active #appMain>nav button {padding:clamp(7px,1vh,13px) 8px!important;}
+  html:fullscreen #appMain>footer, html.fullscreen-active #appMain>footer {flex:0 0 auto;margin:clamp(3px,.6vh,8px) 0 0!important;font-size:clamp(10px,.72vw,13px);}
+  html:fullscreen #pergunta:not(.hidden), html.fullscreen-active #pergunta:not(.hidden) {
+    flex:1 1 auto;min-height:0!important;height:auto;margin:clamp(4px,.7vh,10px) 0 0!important;
+    padding:clamp(10px,1.25vh,20px) clamp(16px,1.6vw,32px)!important;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  html:fullscreen #pergunta #backWheel, html.fullscreen-active #pergunta #backWheel {align-self:flex-start;flex:0 0 auto;padding:clamp(6px,.85vh,11px) 16px;}
+  html:fullscreen #pergunta #qhead, html.fullscreen-active #pergunta #qhead {flex:0 0 auto;margin-top:clamp(3px,.6vh,8px);}
+  html:fullscreen #pergunta #qtext, html.fullscreen-active #pergunta #qtext {
+    flex:0 0 auto;min-height:0!important;padding:clamp(6px,1vh,14px) 0;
+    font-size:clamp(22px,1.65vw,35px);line-height:1.22;
+  }
+  html:fullscreen #pergunta #qcontrols:not(.hidden), html.fullscreen-active #pergunta #qcontrols:not(.hidden) {
+    flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:stretch;
+  }
+  html:fullscreen #pergunta #individualAnswer:not(.hidden), html.fullscreen-active #pergunta #individualAnswer:not(.hidden),
+  html:fullscreen #pergunta #collectiveAnswer:not(.hidden), html.fullscreen-active #pergunta #collectiveAnswer:not(.hidden) {flex:0 0 auto;}
+  html:fullscreen #pergunta .answer-label, html.fullscreen-active #pergunta .answer-label {margin:clamp(3px,.5vh,7px) 0;}
+  html:fullscreen #pergunta .answer-buttons button, html.fullscreen-active #pergunta .answer-buttons button {padding:clamp(8px,1.3vh,17px);}
+  html:fullscreen #pergunta #collectiveAnswer label, html.fullscreen-active #pergunta #collectiveAnswer label {margin:clamp(3px,.5vh,7px) 0;}
+  html:fullscreen #pergunta #collectiveAnswer input, html.fullscreen-active #pergunta #collectiveAnswer input {padding:clamp(7px,.9vh,12px);}
+  html:fullscreen #pergunta .muted, html.fullscreen-active #pergunta .muted {margin:clamp(3px,.6vh,8px) 0;font-size:clamp(13px,.9vw,17px);}
+  html:fullscreen #pergunta .question-bottom-grid, html.fullscreen-active #pergunta .question-bottom-grid {
+    flex:1 1 auto;min-height:0!important;margin-top:clamp(8px,1.1vh,18px)!important;
+    gap:clamp(18px,2vw,40px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  }
+  html:fullscreen #pergunta .question-left, html.fullscreen-active #pergunta .question-left {min-height:0;}
+  html:fullscreen #pergunta .question-left label, html.fullscreen-active #pergunta .question-left label {
+    flex:0 0 auto;margin:0 0 clamp(5px,.7vh,10px);font-size:clamp(19px,1.35vw,27px)!important;
+  }
+  html:fullscreen #pergunta .question-left textarea, html.fullscreen-active #pergunta .question-left textarea {
+    flex:1 1 auto;min-height:70px!important;max-height:none;resize:none;
+    padding:clamp(9px,1.1vh,18px);font-size:clamp(18px,1.25vw,25px)!important;
+  }
+  html:fullscreen #pergunta .question-save-actions, html.fullscreen-active #pergunta .question-save-actions {
+    flex:0 0 auto;margin-top:clamp(7px,.9vh,14px);gap:clamp(7px,.9vh,12px);
+  }
+  html:fullscreen #pergunta .question-save-actions button, html.fullscreen-active #pergunta .question-save-actions button {
+    min-height:clamp(40px,5.3vh,66px)!important;
+  }
+  html:fullscreen #pergunta .question-right, html.fullscreen-active #pergunta .question-right {
+    min-height:0;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:clamp(8px,1.1vh,16px);
+  }
+  html:fullscreen #pergunta .question-right article, html.fullscreen-active #pergunta .question-right article {
+    min-height:0;padding:clamp(12px,1.4vw,27px)!important;overflow:hidden;
+  }
+  html:fullscreen #pergunta .question-right article .pill, html.fullscreen-active #pergunta .question-right article .pill {font-size:clamp(17px,1.2vw,23px)!important;}
+  html:fullscreen #pergunta .question-right article p, html.fullscreen-active #pergunta .question-right article p {
+    font-size:clamp(20px,1.5vw,30px)!important;line-height:1.35;margin-top:clamp(6px,.9vh,13px)!important;
+  }
+}
+/* Para telas compactas, a rolagem continua permitida para evitar ocultar controles. */
+
+
+/* v28 — painel de pergunta compacto, sem barra de rolagem em monitores desktop.
+   Ativo na tela da pergunta, com ou sem modo fullscreen do navegador. */
+@media (min-width: 1100px) and (min-height: 650px) {
+  html:has(#pergunta:not(.hidden)), body:has(#pergunta:not(.hidden)) {height:100%;overflow:hidden;}
+  #appMain:has(#pergunta:not(.hidden)) {
+    height:100dvh!important;max-height:100dvh!important;min-height:0!important;
+    display:flex!important;flex-direction:column;overflow:hidden;
+    padding:clamp(7px,.8vh,12px) clamp(16px,1.4vw,30px) clamp(4px,.5vh,8px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header {flex:none;margin-bottom:5px!important;padding:0 155px 7px 0!important;}
+  #appMain:has(#pergunta:not(.hidden)) > header .eyebrow {font-size:clamp(15px,1.03vw,20px)!important;line-height:1.15;}
+  #appMain:has(#pergunta:not(.hidden)) > header h1 {font-size:clamp(25px,2vw,35px)!important;margin:3px 0!important;line-height:1.1;}
+  #appMain:has(#pergunta:not(.hidden)) > header .muted {font-size:11px;}
+  #appMain:has(#pergunta:not(.hidden)) .topstats {flex:none;margin:5px 0!important;font-size:11px;}
+  #appMain:has(#pergunta:not(.hidden)) > .bar {flex:none;height:5px;margin:0 0 5px!important;}
+  #appMain:has(#pergunta:not(.hidden)) > nav {flex:none;margin:4px 0 7px!important;}
+  #appMain:has(#pergunta:not(.hidden)) > nav button {padding:8px!important;font-size:13px;}
+  #appMain:has(#pergunta:not(.hidden)) > footer {flex:none;margin:4px 0 0!important;font-size:10px;}
+  #pergunta:not(.hidden) {
+    flex:1 1 0!important;min-height:0!important;height:auto!important;overflow:hidden;
+    display:flex;flex-direction:column;margin:3px 0 0!important;
+    padding:clamp(9px,1.2vh,15px) clamp(12px,1vw,20px)!important;
+  }
+  #pergunta #backWheel {flex:none;align-self:flex-start;padding:7px 14px;font-size:12px;}
+  #pergunta #qhead {flex:none;margin:3px 0 0;font-size:12px;}
+  #pergunta #qtext {flex:none;min-height:0!important;padding:clamp(8px,1.3vh,16px) 0!important;font-size:clamp(21px,1.5vw,28px);line-height:1.2;}
+  #pergunta #qcontrols:not(.hidden) {flex:1 1 0;min-height:0;display:flex;flex-direction:column;}
+  #pergunta #individualAnswer:not(.hidden),#pergunta #collectiveAnswer:not(.hidden) {flex:none;}
+  #pergunta .answer-label {margin:3px 0 5px;font-size:16px;}
+  #pergunta .answer-buttons button {padding:clamp(8px,1.2vh,13px);font-size:18px;}
+  #pergunta #collectiveAnswer label {margin:3px 0 5px;}
+  #pergunta #collectiveAnswer input {padding:7px;}
+  #pergunta .muted {font-size:13px!important;margin:5px 0!important;line-height:1.3;}
+  #pergunta .question-bottom-grid {
+    flex:1 1 0;min-height:0!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(12px,1.4vw,24px)!important;margin-top:clamp(8px,1vh,13px)!important;
+  }
+  #pergunta .question-left {min-height:0;display:flex;flex-direction:column;}
+  #pergunta .question-left label {flex:none;font-size:clamp(16px,1.1vw,21px)!important;margin:0 0 5px!important;line-height:1.2;}
+  #pergunta .question-left textarea {
+    flex:1 1 0;min-height:58px!important;max-height:none;resize:none;
+    font-size:clamp(15px,1.03vw,19px)!important;line-height:1.35;padding:11px!important;
+  }
+  #pergunta .question-left textarea::placeholder {font-size:clamp(13px,.9vw,16px)!important;}
+  #pergunta .question-save-actions {flex:none;gap:7px!important;margin-top:7px!important;}
+  #pergunta .question-save-actions button {min-height:clamp(37px,4.6vh,48px)!important;font-size:14px!important;padding:7px;}
+  #pergunta .question-right {min-height:0;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:9px!important;}
+  #pergunta .question-right article {min-height:0;padding:clamp(10px,1vw,18px)!important;overflow:hidden;}
+  #pergunta .question-right article .pill {font-size:clamp(13px,.92vw,17px)!important;line-height:1.25;}
+  #pergunta .question-right article p {font-size:clamp(17px,1.18vw,22px)!important;line-height:1.3;margin-top:7px!important;}
+}
+/* Monitores baixos: compactar ainda mais sem cortar botões. */
+@media (min-width:1100px) and (min-height:650px) and (max-height:800px) {
+  #pergunta #qtext {padding:6px 0!important;font-size:21px;}
+  #pergunta .question-bottom-grid {margin-top:5px!important;}
+  #pergunta .question-save-actions button {min-height:35px!important;}
+  #pergunta .question-right article p {font-size:17px!important;}
+}
+
+
+/* v29 — legibilidade e distribuição equilibrada das telas */
+@media(min-width:1100px){
+  #appMain .topstats{font-size:clamp(13px,.84vw,16px)!important;gap:12px;line-height:1.3}
+  #appMain>nav button{font-size:clamp(14px,.9vw,17px)!important;font-weight:850}
+  #pergunta #backWheel{font-size:clamp(13px,.88vw,16px)!important;font-weight:800}
+  /* O relatório ocupa melhor a largura, sem deixar a coluna direita ociosa. */
+  #relatorio .report-grid{grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:clamp(18px,1.6vw,32px);align-items:stretch}
+  #relatorio .report-side{display:flex;flex-direction:column;min-width:0}
+  #relatorio .report-side>label{font-size:clamp(15px,.95vw,18px)}
+  #relatorio .report-side #className{font-size:clamp(15px,.92vw,18px);padding:11px 13px}
+  #relatorio .report-side #metrics{margin-top:clamp(10px,1.5vh,18px);display:grid;grid-template-rows:repeat(5,minmax(0,1fr));flex:1}
+  #relatorio .metric-row{padding:clamp(7px,.95vh,13px) 0;display:flex;flex-direction:column;justify-content:center}
+  #relatorio .metric-row strong{font-size:clamp(15px,1vw,19px);margin-bottom:4px}
+  #relatorio .metric-row small{font-size:clamp(12px,.83vw,15px);margin-bottom:7px}
+  #relatorio .report-actions{margin-top:clamp(10px,1.5vh,18px);gap:8px}
+  #relatorio .report-actions button{min-height:clamp(39px,4.6vh,52px)}
+  #relatorio .report-chart{min-height:0;align-self:stretch}
+  #relatorio .report-chart canvas{width:min(100%,min(68vh,740px));height:auto}
+}
+/* Evitar campo e caixas excessivamente altos sem perder o texto. */
+@media(min-width:1100px) and (min-height:650px){
+  #pergunta .question-bottom-grid{flex:0 1 auto!important;height:clamp(215px,34vh,330px)!important;min-height:0!important;align-self:stretch}
+  #pergunta #qcontrols:not(.hidden){justify-content:space-between}
+  #pergunta .question-left textarea{flex:1 1 auto;min-height:65px!important;max-height:clamp(110px,20vh,190px)!important}
+  #pergunta .question-right{grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(6px,.85vh,10px)!important}
+  #pergunta .question-right article{display:flex;flex-direction:column;justify-content:center;padding:clamp(10px,1vw,18px)!important}
+  #pergunta .question-right article p{margin-top:clamp(4px,.65vh,9px)!important;line-height:1.3}
+  #pergunta .question-save-actions{gap:clamp(5px,.7vh,9px)!important;margin-top:clamp(5px,.7vh,9px)!important}
+}
+@media(min-width:1100px) and (min-height:650px) and (max-height:760px){
+  #pergunta .question-bottom-grid{height:clamp(195px,30vh,250px)!important}
+  #pergunta .question-left textarea{max-height:120px!important}
+  #pergunta .question-right article p{font-size:clamp(16px,1.05vw,19px)!important}
+}
+
+
+/* v30 — a restrição de rolagem pertence EXCLUSIVAMENTE à tela da pergunta.
+   Roda, pentágono, banco e abertura mantêm rolagem natural. */
+@media (min-width:1100px) {
+  html:fullscreen:not(:has(#pergunta:not(.hidden))),
+  html:fullscreen:not(:has(#pergunta:not(.hidden))) body,
+  html.fullscreen-active:not(:has(#pergunta:not(.hidden))),
+  html.fullscreen-active:not(:has(#pergunta:not(.hidden))) body {
+    height:auto!important;min-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;
+  }
+  html:fullscreen #appMain:not(:has(#pergunta:not(.hidden))),
+  html.fullscreen-active #appMain:not(:has(#pergunta:not(.hidden))) {
+    height:auto!important;max-height:none!important;min-height:100dvh!important;
+    overflow:visible!important;display:block!important;
+    padding-bottom:clamp(22px,3vh,42px)!important;
+  }
+  html:fullscreen #appMain:not(:has(#pergunta:not(.hidden))) > footer,
+  html.fullscreen-active #appMain:not(:has(#pergunta:not(.hidden))) > footer {margin-top:18px!important;}
+  html:fullscreen #roda:not(.hidden), html.fullscreen-active #roda:not(.hidden),
+  html:fullscreen #relatorio:not(.hidden), html.fullscreen-active #relatorio:not(.hidden),
+  html:fullscreen #questoes:not(.hidden), html.fullscreen-active #questoes:not(.hidden) {
+    height:auto!important;max-height:none!important;overflow:visible!important;
+  }
+}
+/* Distribuição vertical equilibrada: ocupar o painel sem exagerar nas fontes ou deixar
+   um vazio desproporcional abaixo das caixas. */
+@media (min-width:1100px) and (min-height:650px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qcontrols:not(.hidden) {
+    justify-content:flex-start!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-bottom-grid {
+    flex:1 1 auto!important;height:auto!important;max-height:none!important;
+    min-height:0!important;margin-top:clamp(9px,1.3vh,16px)!important;
+    padding-bottom:clamp(4px,.8vh,10px);
+    gap:clamp(14px,1.5vw,27px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-left textarea {
+    flex:1 1 auto!important;min-height:65px!important;max-height:none!important;
+    font-size:clamp(15px,1.05vw,19px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right {
+    grid-template-rows:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:clamp(7px,1vh,12px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article {
+    justify-content:center!important;padding:clamp(12px,1.1vw,21px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article .pill {
+    font-size:clamp(14px,.95vw,18px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(17px,1.2vw,23px)!important;line-height:1.3!important;
+    margin-top:clamp(7px,1vh,12px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-save-actions button {
+    min-height:clamp(39px,4.8vh,52px)!important;
+  }
+}
+@media (min-width:1100px) and (min-height:650px) and (max-height:780px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {font-size:clamp(20px,1.5vw,26px)!important;padding:5px 0!important;}
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {font-size:clamp(16px,1.1vw,20px)!important;}
+}
+
+
+/* v31 — melhor distribuição vertical exclusiva da tela das perguntas.
+   Reserva espaço para o cabeçalho, mantém todos os controles visíveis e
+   utiliza a área restante sem exagerar em fontes ou espaços vazios. */
+@media (min-width:1100px) and (min-height:650px) {
+  #appMain:has(#pergunta:not(.hidden)) {
+    padding-top:clamp(9px,1.1vh,15px)!important;
+    padding-bottom:clamp(7px,1vh,14px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header {
+    margin-bottom:clamp(6px,.9vh,11px)!important;
+    padding-bottom:clamp(7px,.9vh,11px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header .eyebrow {
+    font-size:clamp(17px,1.12vw,21px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > header h1 {
+    font-size:clamp(27px,1.95vw,37px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) .topstats {
+    font-size:clamp(13px,.9vw,17px)!important;
+    margin:clamp(5px,.7vh,9px) 0!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > nav {
+    margin:clamp(6px,.8vh,10px) 0 clamp(8px,1.2vh,15px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) > nav button {
+    padding:clamp(9px,1.2vh,14px) 8px!important;
+    font-size:clamp(14px,.93vw,17px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta {
+    padding:clamp(12px,1.5vh,20px) clamp(14px,1.1vw,22px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #backWheel {
+    padding:clamp(8px,1vh,12px) clamp(15px,1vw,20px)!important;
+    font-size:clamp(14px,.9vw,17px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qhead {
+    font-size:clamp(12px,.8vw,15px)!important;
+    margin-top:clamp(5px,.7vh,9px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {
+    padding:clamp(11px,2.3vh,25px) 0!important;
+    font-size:clamp(21px,1.55vw,29px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-bottom-grid {
+    margin-top:clamp(10px,1.5vh,18px)!important;
+    gap:clamp(14px,1.5vw,26px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article {
+    padding:clamp(12px,1.2vw,20px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(17px,1.13vw,22px)!important;
+    margin-top:clamp(5px,.8vh,10px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-save-actions button {
+    min-height:clamp(38px,4.5vh,48px)!important;
+  }
+}
+@media (min-width:1100px) and (min-height:650px) and (max-height:760px) {
+  #appMain:has(#pergunta:not(.hidden)) #pergunta #qtext {
+    padding:clamp(6px,1vh,11px) 0!important;
+    font-size:clamp(20px,1.4vw,25px)!important;
+  }
+  #appMain:has(#pergunta:not(.hidden)) #pergunta .question-right article p {
+    font-size:clamp(16px,1vw,19px)!important;
+  }
+}
+
+/* v32 — rolagem permitida nas telas extensas, mesmo em modo tela cheia.
+   Apenas a tela de pergunta é ajustada à altura útil do monitor desktop. */
+html:fullscreen,html:fullscreen body,html.fullscreen-active,html.fullscreen-active body {overflow-y:auto!important;overflow-x:hidden!important;height:auto!important;min-height:100%!important;}
+html:fullscreen #appMain,html.fullscreen-active #appMain {height:auto!important;min-height:100dvh!important;max-height:none!important;overflow:visible!important;}
+html:fullscreen #roda:not(.hidden),html:fullscreen #relatorio:not(.hidden),html:fullscreen #questoes:not(.hidden),
+html.fullscreen-active #roda:not(.hidden),html.fullscreen-active #relatorio:not(.hidden),html.fullscreen-active #questoes:not(.hidden) {overflow:visible!important;max-height:none!important;height:auto!important;}
+@media (min-width:1100px) and (min-height:700px) {
+ html:fullscreen:has(#pergunta:not(.hidden)),html.fullscreen-active:has(#pergunta:not(.hidden)) {height:100dvh!important;overflow:hidden!important;}
+ html:fullscreen:has(#pergunta:not(.hidden)) body,html.fullscreen-active:has(#pergunta:not(.hidden)) body {height:100dvh!important;overflow:hidden!important;}
+ html:fullscreen #appMain:has(#pergunta:not(.hidden)),html.fullscreen-active #appMain:has(#pergunta:not(.hidden)) {height:100dvh!important;min-height:0!important;max-height:100dvh!important;overflow:hidden!important;}
+}
+@media (max-width:1099px), (max-height:699px) {
+ html:fullscreen #pergunta:not(.hidden),html.fullscreen-active #pergunta:not(.hidden) {height:auto!important;max-height:none!important;overflow:visible!important;}
+}
+
+/* v33 — painel de resultados: leitura e aproveitamento da área gráfica */
+#relatorio .report-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(14px,1.35vw,28px)}
+#relatorio .report-chart{padding:clamp(5px,.7vw,12px);min-width:0}
+#relatorio .report-chart canvas{display:block;width:100%;max-width:820px;height:auto;max-height:none;object-fit:contain}
+#relatorio .metric-row{padding:clamp(9px,1.1vh,15px) 0}
+#relatorio .metric-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#relatorio .metric-title strong{font-size:clamp(15px,1.04vw,20px);line-height:1.3}
+#relatorio .metric-value{font-size:clamp(21px,1.55vw,30px);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+#relatorio .metric-row small{font-size:clamp(12px,.86vw,16px);margin:5px 0 9px}
+#relatorio .metric-track{height:9px}
+#relatorio .reflection{margin-top:clamp(16px,2vh,28px);padding:clamp(16px,1.5vw,24px)}
+#relatorio .reflection p{font-size:clamp(14px,.94vw,17px);line-height:1.6;margin:10px 0}
+@media (max-width:900px){#relatorio .report-grid{grid-template-columns:1fr}}
+html:fullscreen #relatorio .report-chart canvas,html.fullscreen-active #relatorio .report-chart canvas{width:100%;max-width:820px}
+/* V36 — análise coletiva premium, com layout responsivo e rolagem em tela cheia */
+#intervencao{background:linear-gradient(145deg,#06182f,#082948);color:#eaf6ff;border:1px solid #1589bd;border-radius:18px;padding:20px;overflow-y:auto!important;max-height:none!important;height:auto!important}
+#intervencao .int-header{padding:12px 16px 18px;border-bottom:1px solid #28698d}#intervencao .int-header h2{font-size:clamp(23px,2.4vw,36px);color:#f0faff;margin:6px 0}#intervencao .int-header p{color:#b8d5e7}#intervencao .int-header button{margin-top:10px}
+#intervencao .int-notice{margin:15px 0;color:#b2d8e8;font-size:14px}#intervencao .int-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}#intervencao .int-overview>div{border:1px solid #2775a5;background:#103456;padding:15px;border-radius:12px;display:flex;flex-direction:column;gap:6px}#intervencao .int-overview span{color:#b4d2e5;font-size:13px}#intervencao .int-overview strong{font-size:26px;color:#64e5fa}
+#intervencao .int-layout{display:grid;grid-template-columns:minmax(300px,.85fr) minmax(430px,1.15fr);gap:16px;align-items:start}#intervencao .int-left,#intervencao .int-right{background:#09243f;border:1px solid #2477a7;border-radius:17px;padding:17px;min-width:0}#intervencao h3{color:#f2fbff;font-size:18px;margin:0 0 15px}#intervencao .int-axis{display:block;width:100%;background:#103350;border:1px solid #286c99;color:#f4faff;border-radius:12px;padding:14px;text-align:left;margin-bottom:10px;cursor:pointer}#intervencao .int-axis.active{border:2px solid #3acdfb;box-shadow:0 0 14px #17b8fa55}#intervencao .int-axis-head,#intervencao .int-q-title,#intervencao .int-selected{display:flex;justify-content:space-between;gap:12px;align-items:start}#intervencao .int-track{height:12px;border-radius:20px;background:#35536e;overflow:hidden;margin-top:10px}#intervencao .int-fill{height:100%;border-radius:20px;transition:width .3s ease}#intervencao .int-legend{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0;font-size:13px}#intervencao .int-left small{color:#a9c9dd}#intervencao .int-selected{padding-bottom:12px;border-bottom:1px solid #31678b}#intervencao .int-selected strong{font-size:28px}#intervencao .int-question{padding:12px 2px;border-bottom:1px solid #275778}#intervencao .int-question small{color:#a9cfe6}#intervencao .int-q-title span{font-size:14px}#intervencao .int-q-title strong{white-space:nowrap}#intervencao .int-box{background:#113656;border:1px solid #2c83b1;border-radius:12px;padding:16px;margin-top:16px}#intervencao .int-box p{color:#d2e7f3;line-height:1.5}#intervencao .int-box h4{color:#74e4f5;margin:5px 0}#intervencao .int-box label{display:block;color:#e0f4ff;font-size:14px;margin:13px 0 5px}#intervencao .int-box textarea,#intervencao .int-box select,#intervencao .int-box input{width:100%;box-sizing:border-box;border:1px solid #4486a9;border-radius:8px;background:#061d34;color:white;padding:10px;font:inherit}#intervencao .int-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}#intervencao .int-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}#intervencao .int-actions button{width:auto!important;flex:1;min-width:160px}#intervencao #intSaved{color:#80e7bd}
+@media(max-width:1000px){#intervencao .int-layout{grid-template-columns:1fr}}@media(max-width:560px){#intervencao{padding:10px}#intervencao .int-overview{grid-template-columns:1fr 1fr}#intervencao .int-fields{grid-template-columns:1fr}#intervencao .int-left,#intervencao .int-right{padding:12px}}
+/* V37 — Minhas Turmas */
+.class-manager{color:#e8f6ff}.cm-header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}.cm-header h2{font-size:clamp(1.5rem,2.3vw,2.2rem);margin:.3rem 0}.cm-header p{color:#b5d1e5}.cm-header-actions,.cm-actions{display:flex;flex-wrap:wrap;gap:9px}.cm-header-actions button,.cm-actions button{width:auto;flex:1 1 auto;min-width:125px}.cm-notice{background:#123958;border:1px solid #2e779c;border-radius:12px;padding:12px;margin:14px 0;color:#c6e3f4}.cm-layout{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(350px,1.35fr);gap:16px;margin-top:18px}.cm-list,.cm-details,.cm-form{background:linear-gradient(140deg,#0a2542,#0e3556);border:1px solid #2772a0;border-radius:15px;padding:18px}.cm-list h3,.cm-details h3,.cm-form h3{color:#80dffc;margin:0 0 15px}.cm-class{display:flex;flex-direction:column;gap:7px;width:100%;text-align:left;background:#123b5a;border:1px solid #2e6588;border-radius:10px;color:#fff;padding:14px;margin-bottom:10px}.cm-class.active{border:2px solid #42d7ff;background:#154a70;box-shadow:0 0 14px #13b5f833}.cm-class small,.cm-empty{color:#afcde0}.cm-stat{display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#143d5d;padding:14px;border-radius:10px;margin-bottom:16px}.cm-stat strong{color:#7be4f7}.cm-history-card{background:#102f4d;border:1px solid #2b6185;border-radius:12px;padding:14px;margin:12px 0}.cm-history-title{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}.cm-history-title span{color:#a9cde4}.cm-form{margin:15px 0;max-width:700px}.cm-form input{margin:6px 0 12px}.cm-form .cm-actions{margin-top:12px}#cmStatus{color:#85e5dc;min-height:1.4em;margin-top:14px}#cmFile.hidden{display:none!important}@media(max-width:900px){.cm-layout{grid-template-columns:1fr}.cm-header-actions{width:100%}}
+
+/* V38 — seleção única e registro único por turma */
+.cm-choose{width:100%;min-height:46px;background:#164361;color:#f1faff;border:1px solid #45c6ef;border-radius:10px;padding:10px 12px;margin:8px 0 15px;font-size:1rem}.cm-select-label{font-size:.82rem;font-weight:700;color:#8bdef6}.cm-class.active{cursor:default}.cm-stat{justify-content:flex-start}.cm-history-card{margin-top:12px}.cm-history-title strong{color:#91e4f6}
+
+/* V39 — Confirmação de salvamento ao alternar turmas */
+.cm-modal-overlay{position:fixed;inset:0;z-index:99999;background:rgba(1,10,24,.84);display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
+.cm-modal-overlay.hidden{display:none!important}.cm-modal{width:min(620px,100%);background:linear-gradient(145deg,#113a5a,#081c35);border:2px solid #39c8f4;border-radius:18px;padding:28px;box-shadow:0 0 35px #00a8ff55;color:#f2faff;text-align:center}.cm-modal-icon{font-size:38px;color:#ffbd55}.cm-modal h2{font-size:1.3rem;color:#7ce5ff;margin:10px 0}.cm-modal p{line-height:1.6;color:#d0e4f3}.cm-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.cm-modal-actions button{flex:1;min-width:145px;padding:13px 9px}@media(max-width:600px){.cm-modal-actions{flex-direction:column}}
+
+/* V41 — destaque da pergunta para projeção em sala de aula */
+#pergunta #qtext.question {
+  box-sizing:border-box;
+  width:100%;
+  max-width:1400px;
+  margin:14px auto 20px;
+  padding:clamp(20px,2.7vw,44px) clamp(22px,3.5vw,60px);
+  border:2px solid #36d9ff;
+  border-radius:20px;
+  background:linear-gradient(125deg,#083d69 0%,#086aa5 52%,#06436e 100%);
+  box-shadow:0 0 0 1px rgba(125,231,255,.24) inset,0 0 24px rgba(0,202,255,.32);
+  color:#fff;
+  text-align:center;
+  font-size:clamp(28px,3.1vw,54px);
+  font-weight:800;
+  line-height:1.22;
+  letter-spacing:.005em;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+}
+@media (min-width:1100px) and (min-height:700px) {
+  html:fullscreen #pergunta #qtext.question,
+  html.fullscreen-active #pergunta #qtext.question {
+    font-size:clamp(36px,3.35vw,58px);
+    padding:clamp(18px,2.3vh,34px) clamp(26px,3vw,60px);
+    margin:8px auto 14px;
+    line-height:1.18;
+  }
+}
+@media (max-width:700px) {
+  #pergunta #qtext.question {
+    font-size:clamp(23px,5.5vw,36px);
+    padding:18px 16px;
+    line-height:1.25;
+  }
+}
+
+/* V43 — revelação sob demanda das pontes, sem distração na projeção */
+#pergunta .bridge-reveal {
+  display:inline-flex!important;align-items:center;justify-content:center;
+  align-self:center;min-width:112px;min-height:43px;
+  margin:10px auto 4px;padding:9px 22px;
+  border:1.5px solid #43ddff;border-radius:12px;
+  background:linear-gradient(120deg,#075a8c,#087fb6);
+  color:#fff;font-size:clamp(15px,1.15vw,20px);font-weight:800;
+  letter-spacing:.09em;cursor:pointer;
+  box-shadow:0 0 14px rgba(18,211,255,.3);
+}
+#pergunta .bridge-reveal:hover,#pergunta .bridge-reveal:focus-visible {
+  background:#0c9bcb;box-shadow:0 0 20px rgba(18,211,255,.55);
+}
+#pergunta .bridge-concealed[hidden] {display:none!important;}
+#pergunta .bridge-concealed:not([hidden]) {
+  display:block!important;max-height:clamp(90px,15vh,170px);
+  overflow-y:auto;overflow-wrap:break-word;margin:8px 0 0!important;
+  text-align:center;
+}
+#pergunta .question-right article {justify-content:center;}
+@media (max-width:700px) {
+  #pergunta .bridge-reveal {min-height:44px;min-width:100px;}
+  #pergunta .bridge-concealed:not([hidden]) {max-height:none;overflow:visible;}
+}
+
+/* V45 — tela de pergunta centralizada, inspirada na disposição LGPD */
+#pergunta.v45-question-panel{position:relative;min-height:min(76vh,800px);padding:clamp(16px,2vw,32px)!important;background:linear-gradient(145deg,#102a44,#0b2037)!important}
+#pergunta .v45-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+#pergunta .v45-qhead{color:#86e6ff;font-weight:800;letter-spacing:.08em;font-size:clamp(12px,.9vw,16px)}
+#pergunta .v45-question-core{width:min(100%,1050px);margin:0 auto;text-align:center}
+#pergunta .v45-question-label{display:inline-block;padding:8px 15px;border:1px solid #257ba5;border-radius:25px;background:#095b82;color:#a5edff;font-weight:800;font-size:12px;letter-spacing:.08em;margin:8px 0 10px}
+#pergunta #qtext.question{width:100%;max-width:none;margin:5px auto 14px;padding:clamp(12px,1.4vw,22px);font-size:clamp(27px,2.5vw,45px);line-height:1.18;background:transparent!important;border:0!important;box-shadow:none!important;color:#fff;text-align:center;font-weight:850;text-wrap:balance}
+#pergunta #individualAnswer{margin:0 auto 10px}
+#pergunta #individualAnswer .answer-buttons{justify-content:center;gap:10px}
+#pergunta #individualAnswer .answer-buttons button{width:min(43%,290px);font-size:clamp(19px,1.5vw,27px);min-height:55px}
+#pergunta .v45-response-help{margin:5px 0 10px}
+#pergunta #collectiveAnswer{margin:0 auto 14px;max-width:680px;text-align:left}
+#pergunta #collectiveAnswer label{font-weight:800;font-size:14px}
+#pergunta #collectiveAnswer #count{width:100%;margin-top:6px;min-height:48px}
+#pergunta #countHint{font-size:12px;margin-top:4px}
+#pergunta .v45-reveals{display:grid;gap:10px;margin:16px 0}
+#pergunta .v45-bridge{border:1px solid #477b9a;border-radius:10px;background:#183e5b;text-align:left;overflow:hidden}
+#pergunta .v45-reveal-head{width:100%;min-height:49px;padding:12px 16px;border:0;background:transparent;color:#fff;font-weight:850;text-align:left;display:flex;align-items:center;justify-content:space-between;cursor:pointer;letter-spacing:.025em}
+#pergunta .v45-reveal-head:hover,#pergunta .v45-reveal-head:focus-visible{background:#205272;outline:2px solid #4ed9ff;outline-offset:-2px}
+#pergunta .v45-chevron{font-size:20px;color:#91eaff;transition:transform .18s}
+#pergunta .v45-reveal-head[aria-expanded="true"] .v45-chevron{transform:rotate(180deg)}
+#pergunta .v45-bridge .bridge-concealed:not([hidden]){display:block!important;margin:0!important;padding:12px 17px 17px;color:#effaff;text-align:left;font-size:clamp(15px,1.1vw,19px);line-height:1.45;max-height:none;overflow:visible}
+#pergunta .v45-bridge .bridge-concealed[hidden]{display:none!important}
+#pergunta .v45-comment-wrap{text-align:left;margin-top:13px}
+#pergunta .v45-comment-wrap label{display:block;font-weight:800;margin-bottom:7px;font-size:15px}
+#pergunta #note{width:100%;height:clamp(80px,12vh,135px);min-height:75px;resize:vertical}
+#pergunta .v45-save-actions{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
+#pergunta .v45-save-actions button{min-height:46px;padding:10px 16px;font-weight:850;flex:0 1 49%}
+#pergunta .v45-save-actions #next{background:linear-gradient(100deg,#1469dc,#00acd1)}
+@media(max-width:700px){#pergunta .v45-top{align-items:flex-start}#pergunta #qtext.question{font-size:clamp(23px,5.5vw,34px)}#pergunta .v45-save-actions{flex-direction:column}#pergunta .v45-save-actions button{width:100%}}
+
+
+/* V46 — interface premium fiel à composição de referência, com controles reais */
+body{background:#03152b!important;background-image:linear-gradient(180deg,rgba(0,10,27,.20),rgba(0,10,27,.10)),url('fundo-premium-v46.png')!important;background-size:cover!important;background-position:center center!important;background-attachment:fixed!important}
+#appMain{max-width:1920px;margin:auto;padding:clamp(10px,1.1vw,22px)!important}
+#appMain .v46-header{display:flex!important;align-items:center;gap:clamp(12px,1.7vw,28px);position:relative;min-height:80px;padding:4px 0 12px 108px!important;border-bottom:1px solid rgba(84,191,229,.4);background:transparent!important}
+.v46-brand-icon{position:absolute;left:0;top:0;width:96px;height:78px;background:transparent}
+.v46-brand-text{min-width:0;flex:1}
+#appMain .v46-header .eyebrow{font-size:clamp(11px,.85vw,15px);letter-spacing:.17em;color:#d8f6ff;font-weight:800}
+#appMain .v46-header h1{font-size:clamp(22px,2.2vw,39px)!important;line-height:1.1;margin:4px 0!important;letter-spacing:-.025em;color:#f6faff}
+#appMain .v46-header .accent{color:#48e7ff}
+#appMain .v46-header .muted{font-size:clamp(11px,.83vw,15px);color:#d4e9f8}
+#appMain .v46-header .fullscreen{position:static!important;align-self:flex-start;flex:none;border:1px solid #30d6fa!important;background:linear-gradient(180deg,#0d3553,#08213c)!important;box-shadow:0 0 13px #00b8ed44;border-radius:12px!important;padding:12px 18px!important;white-space:nowrap}
+#appMain .v46-topstats{display:grid!important;grid-template-columns:minmax(250px,1.7fr) minmax(160px,.8fr) minmax(240px,1.2fr);gap:0;align-items:center;margin:10px 0!important;padding:11px 17px!important;border:1px solid #367ea8;border-radius:12px;background:linear-gradient(110deg,rgba(4,35,66,.94),rgba(5,25,52,.94));box-shadow:0 6px 22px #0005}
+#appMain .v46-topstats>span{display:block;padding:9px 14px;border-left:1px solid #36779b;text-align:center;font-size:clamp(11px,.82vw,15px);font-weight:800;color:#e9f7ff}
+#appMain .v46-topstats .v46-progress-cell{padding-right:20px;font-size:clamp(11px,.82vw,15px);font-weight:800}
+#appMain .v46-topstats .bar{height:7px;margin-top:8px;background:#174c70;border-radius:20px;overflow:hidden}
+#appMain .v46-topstats #progress{background:linear-gradient(90deg,#11a9ed,#52f2f6)!important;box-shadow:0 0 10px #2be9ff}
+#appMain .v46-nav{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px;margin:0 0 13px!important}
+#appMain .v46-nav button{width:100%;min-height:55px;border:1px solid #327fa8!important;border-radius:13px!important;background:linear-gradient(160deg,#0c3559,#081e3b)!important;color:#f3fbff!important;font-size:clamp(11px,.86vw,16px)!important;font-weight:850;white-space:normal;padding:9px 5px!important;box-shadow:inset 0 1px #6be8ff1f}
+#appMain .v46-nav button span{font-size:clamp(17px,1.7vw,29px);vertical-align:middle;color:#c7f5ff;margin-right:7px}
+#appMain .v46-nav button.on{border:2px solid #5af6ff!important;background:linear-gradient(180deg,#0aa3d1,#0879b5 55%,#045078)!important;box-shadow:0 0 18px #0edfff77,inset 0 1px #d8ffff7d}
+#appMain .v46-nav button.hidden{display:none!important}
+#appMain .v46-nav:has(button[data-tab="turmas"].hidden){grid-template-columns:repeat(4,minmax(0,1fr))}
+#pergunta.v46-question-panel{position:relative;overflow:hidden;isolation:isolate;min-height:0!important;padding:clamp(14px,1.6vw,25px)!important;border:1px solid #32d9ed!important;border-radius:17px!important;background:linear-gradient(180deg,rgba(4,29,57,.69),rgba(3,24,50,.66))!important;box-shadow:0 0 0 1px #0c5c83 inset,0 12px 34px #00162f77}
+#pergunta.v46-question-panel:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(0,17,38,.18) 0%,rgba(0,18,44,.78) 26%,rgba(0,18,44,.78) 74%,rgba(0,17,38,.18) 100%)}
+#pergunta .v45-top{margin:0 0 2px;align-items:center}
+#pergunta .v45-qhead{display:inline-flex;padding:9px 16px;border:1px solid #35c9e7;border-radius:10px;background:linear-gradient(120deg,#095a81,#073b62);color:#e8faff;font-size:clamp(12px,1vw,17px);letter-spacing:.035em}
+#pergunta #backWheel{background:#082541!important;border:1px solid #75d6f5!important;border-radius:10px;padding:10px 15px!important;font-weight:800}
+#pergunta .v45-question-core{width:min(100%,1050px)!important;margin:-8px auto 0!important}
+#pergunta .v45-question-label{font-size:clamp(11px,.82vw,15px);padding:7px 23px;margin:0 0 8px;color:#fff;background:linear-gradient(100deg,#04658d,#008aaf);border:1px solid #50edff;box-shadow:0 0 12px #00e7ff55}
+#pergunta #qtext.question{font-size:clamp(29px,2.6vw,49px)!important;line-height:1.15!important;padding:8px 0 12px!important;margin:0 auto 9px!important;font-weight:850!important;max-width:1050px!important;text-shadow:0 2px 5px #001e42;min-height:0!important}
+#pergunta .answer-label{margin:0 0 8px!important;font-size:clamp(12px,.92vw,16px);letter-spacing:.05em}
+#pergunta #individualAnswer .answer-buttons{gap:22px!important}
+#pergunta #individualAnswer .answer-buttons button{width:min(40%,280px)!important;min-height:62px!important;font-size:clamp(22px,1.9vw,33px)!important;font-weight:900!important;border-radius:12px!important;color:#06131c!important;box-shadow:0 0 13px #0cf6e555}
+#pergunta #individualAnswer #answerYes{background:#a0f1c5!important;border:2px solid #49e7bd!important}
+#pergunta #individualAnswer #answerNo{background:#ffb3b9!important;border:2px solid #ff8fa6!important}
+#pergunta #individualAnswer .answer-buttons button.selected{outline:3px solid #fff!important;outline-offset:3px;box-shadow:0 0 24px #32edee88!important}
+#pergunta .v45-response-help{margin:9px 0 11px!important}
+#pergunta .v46-reveals{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px!important;margin:14px 0 12px!important}
+#pergunta .v45-bridge{background:linear-gradient(180deg,rgba(12,65,99,.94),rgba(4,36,68,.94))!important;border:1px solid #2ddcf8!important;border-radius:11px!important;box-shadow:0 0 10px #07c3ff33,inset 0 1px #9ef9ff33}
+#pergunta .v45-reveal-head{min-height:55px!important;font-size:clamp(13px,1vw,18px);padding:11px 16px!important}
+#pergunta .v46-bridge-name{display:inline-flex;align-items:center;gap:6px}
+#pergunta .v45-comment-wrap{border:1px solid #427c9e;border-radius:12px;padding:12px 15px;background:rgba(6,28,54,.83);margin:0!important;text-align:left}
+#pergunta .v45-comment-wrap label{font-size:clamp(13px,.95vw,17px);margin:0 0 7px}
+#pergunta #note{height:clamp(57px,7.2vh,90px)!important;min-height:57px!important;border:1px solid #68b8df;border-radius:9px;background:rgba(2,20,41,.73);color:#fff;font-size:clamp(13px,.9vw,17px);padding:12px}
+#pergunta .v45-save-actions{justify-content:center;gap:clamp(22px,4vw,75px);margin:14px auto 0!important}
+#pergunta .v45-save-actions button{flex:0 1 330px!important;min-height:51px!important;border-radius:12px!important;font-size:clamp(12px,.9vw,16px);border:1px solid #a7ddf3!important;box-shadow:0 0 10px #00a9ff33}
+#pergunta .v45-save-actions #next{background:linear-gradient(100deg,#08b9e6,#00e1f0)!important;color:#061a2b!important;border-color:#75faff!important;box-shadow:0 0 16px #0bdaff66}
+#pergunta #collectiveAnswer{max-width:780px!important}
+#pergunta #collectiveAnswer #count{background:#082844;color:#fff;border:1px solid #5cd9f5;border-radius:9px}
+@media(max-width:1000px){#appMain .v46-header{padding-left:0!important}#appMain .v46-nav button span{display:none}#pergunta .v45-question-core{margin:5px auto!important}#pergunta #qtext.question{font-size:clamp(26px,3.4vw,40px)!important}}
+@media(max-width:680px){#appMain .v46-header{flex-wrap:wrap;gap:5px}#appMain .v46-header .fullscreen{margin-left:auto}#appMain .v46-topstats{grid-template-columns:1fr!important;gap:6px}#appMain .v46-topstats>span{border:0;border-top:1px solid #36779b}#appMain .v46-nav,#appMain .v46-nav:has(button[data-tab="turmas"].hidden){grid-template-columns:repeat(2,minmax(0,1fr))}#pergunta .v45-top{align-items:flex-start}#pergunta .v45-qhead{max-width:70%}#pergunta #qtext.question{font-size:clamp(24px,5.6vw,35px)!important}#pergunta .v46-reveals{grid-template-columns:1fr}#pergunta .v45-save-actions{flex-direction:column;gap:10px}#pergunta .v45-save-actions button{width:100%!important;flex:0 0 auto!important}}
+
+/* V47: imagens restritas às telas corretas; demais janelas azul-marinho */
+body{background:#06172d!important;background-image:none!important}
+#appMain{background:transparent!important}
+#appMain .panel:not(#pergunta):not(#dashboard){background:linear-gradient(140deg,#0a2744,#07192f)!important}
+#pergunta.v46-question-panel{background:linear-gradient(90deg,rgba(0,13,33,.58),rgba(0,18,43,.68),rgba(0,13,33,.58)),url('XXI.jpg') center/cover no-repeat!important}
+#pergunta.v46-question-panel:before{background:linear-gradient(90deg,rgba(0,13,33,.12),rgba(0,13,33,.5) 32%,rgba(0,13,33,.5) 68%,rgba(0,13,33,.12))!important}
+#dashboard.v47-dashboard{background:linear-gradient(180deg,rgba(1,18,40,.15),rgba(1,18,40,.45)),url('PAINEL.jpg') center/cover no-repeat!important;border:1px solid #0bc9e8;border-radius:20px;min-height:72vh;padding:clamp(16px,2vw,32px);color:#f4faff}
+.v47-dash-top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin:0 0 26px;padding:5px 8px}.v47-dash-top h2{font-size:clamp(24px,2.3vw,42px);margin:4px 0}.v47-dash-top h2 em{font-style:normal;color:#40e5f6}.v47-dash-top p{color:#c9dbea}.v47-mode-tag{padding:17px 23px;border:1px solid #18e2f1;border-radius:18px;background:#063452b8;font-size:clamp(14px,1.3vw,21px);font-weight:800;text-align:center}
+.v47-dash-grid{display:grid;grid-template-columns:minmax(240px,30%) minmax(0,1fr);gap:18px}.v47-side,.v47-main{background:rgba(2,25,49,.87);border:1px solid #11cfe8;border-radius:18px;padding:clamp(16px,1.5vw,28px);box-shadow:0 12px 40px #0004}.v47-side{display:flex;flex-direction:column;gap:12px}.v47-side h3{font-size:22px;margin:2px 0 12px}.v47-side button{width:100%;min-height:48px}.v47-primary{background:linear-gradient(110deg,#00e4e7,#00b7e8)!important;color:#001e31!important;font-weight:900!important}.v47-class-items{display:flex;flex-direction:column;gap:9px;max-height:40vh;overflow:auto}.v47-class-choice{background:#0a3556!important;border:1px solid #267eac!important;text-align:left!important;padding:14px!important;border-radius:12px!important}.v47-class-choice.active{border:2px solid #35f8fc!important;background:#075779!important;box-shadow:0 0 14px #02e7fc77}.v47-main-title{display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid #24779d;padding-bottom:15px}.v47-main-title h3{font-size:clamp(19px,1.7vw,28px);margin:0}.v47-main-title button{min-height:48px}.v47-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}.v47-metrics>div{background:#073554d9;border:1px solid #1978a1;border-radius:16px;display:flex;flex-direction:column;align-items:center;padding:17px 5px;gap:4px;text-align:center}.v47-metrics strong{font-size:clamp(25px,2.4vw,43px)}.v47-metrics span{font-size:13px;color:#d5ecf9}.v47-progress{background:#063555cc;border:1px solid #147ba5;border-radius:15px;padding:18px;margin-bottom:18px}.v47-progress>div:first-child{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px}.v47-progress-track{height:18px;border-radius:30px;background:#0b4363;overflow:hidden}.v47-progress-track>div{height:100%;background:linear-gradient(90deg,#08d8e9,#45f9f5);border-radius:30px}.v47-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.v47-tiles button{display:flex;flex-direction:column;align-items:center;gap:12px;justify-content:center;background:#073455db!important;border:1px solid #13c4e4!important;border-radius:16px!important;padding:18px 8px!important;min-height:160px}.v47-tiles button span{font-size:38px;color:#b0faff}.v47-tiles button b{font-size:clamp(12px,1vw,17px)}.v47-tiles button small{font-size:12px;color:#bcd8eb}.v47-manage-actions{margin:16px 0;flex-wrap:wrap}
+@media(max-width:900px){.v47-dash-grid{grid-template-columns:1fr}.v47-metrics{grid-template-columns:repeat(2,1fr)}.v47-tiles{grid-template-columns:repeat(2,1fr)}.v47-dash-top{flex-wrap:wrap}}
+@media(max-width:550px){.v47-main-title{flex-wrap:wrap}.v47-dash-top h2{font-size:23px}.v47-tiles button{min-height:125px}}
+
+/* V48 — Acesso permanente ao Painel de Controle */
+#appMain .v48-header-actions{display:flex;align-items:flex-start;justify-content:flex-end;gap:10px;flex-wrap:wrap;flex:none}
+#appMain .v48-control-return{background:linear-gradient(115deg,#ffdf62,#f3b92b)!important;color:#17233a!important;border:2px solid #ffe99a!important;box-shadow:0 0 19px rgba(255,198,44,.42),inset 0 1px 0 #fff6!important;border-radius:12px!important;padding:12px 18px!important;font-weight:950!important;letter-spacing:.025em;white-space:nowrap;cursor:pointer;min-height:44px}
+#appMain .v48-control-return:hover,#appMain .v48-control-return:focus-visible{background:linear-gradient(115deg,#fff1a1,#ffd24c)!important;box-shadow:0 0 25px rgba(255,210,61,.68)!important;transform:translateY(-1px)}
+#appMain .v48-dashboard-caption{display:inline-flex;align-items:center;margin:0 0 12px;padding:7px 14px;border:1px solid #3cd9ef;border-radius:9px;background:rgba(0,32,62,.83);font-size:clamp(13px,1vw,18px);font-weight:900;color:#e5faff;letter-spacing:.06em}
+@media(max-width:900px){#appMain .v46-header{padding-left:0!important;flex-wrap:wrap}#appMain .v48-header-actions{width:100%;justify-content:flex-start}#appMain .v48-control-return{font-size:12px!important}}
+
+/* V49 — Navegação concentrada nos quatro cartões inferiores do Painel de Controle.
+   Os botões antigos permanecem no DOM apenas para compatibilidade com os scripts. */
+#appMain > nav.v46-nav { display:none !important; }
+#appMain > section.v47-dashboard { margin-top: 10px !important; }
+
+
+/* V50 — proporções da tela de pergunta conforme referência (1340 x 809).
+   Somente layout: preserva todas as rotinas de resposta, mediação e salvamento. */
+@media (min-width: 901px) {
+  #pergunta.v46-question-panel {
+    box-sizing:border-box!important;
+    min-height: min(100%, 740px)!important;
+    padding:clamp(18px,2.1vh,30px) clamp(16px,2.1vw,34px)!important;
+  }
+  #pergunta .v45-question-core {
+    width:min(100%, 880px)!important;max-width:880px!important;
+    margin:0 auto!important;
+  }
+  #pergunta #qtext.question {
+    max-width:880px!important;width:100%!important;
+    font-size:clamp(25px,2.05vw,36px)!important;
+    line-height:1.19!important;margin:13px auto 25px!important;
+    padding:4px 8px!important;
+  }
+  #pergunta .v45-question-label {margin-bottom:9px!important;}
+  #pergunta #collectiveAnswer {max-width:880px!important;margin:0 auto 17px!important;}
+  #pergunta #collectiveAnswer .v45-collective-entry {width:min(100%,263px)!important;margin:9px auto 0!important;}
+  #pergunta #collectiveAnswer #count {box-sizing:border-box!important;width:100%!important;max-width:263px!important;min-height:41px!important;}
+  #pergunta #collectiveAnswer label,#pergunta #countHint {display:block;text-align:center!important;}
+  #pergunta #collectiveAnswer #countHint {font-size:12px!important;margin:5px 0 0!important;}
+  #pergunta .v46-reveals {width:100%!important;gap:14px!important;margin:15px 0 10px!important;}
+  #pergunta .v45-reveal-head {min-height:49px!important;padding:10px 13px!important;font-size:clamp(13px,1.1vw,16px)!important;}
+  #pergunta .v45-comment-wrap {padding:11px 12px!important;}
+  #pergunta #note {height:76px!important;min-height:76px!important;max-height:130px!important;padding:12px!important;}
+  #pergunta .v45-save-actions {gap:clamp(22px,4.5vw,62px)!important;margin:12px auto 0!important;}
+  #pergunta .v45-save-actions button {flex:0 1 245px!important;max-width:245px!important;min-height:53px!important;font-size:clamp(11px,.95vw,14px)!important;line-height:1.2!important;}
+  #pergunta #individualAnswer .answer-buttons button {width:min(40%,255px)!important;}
+}
+@media (min-width:901px) and (max-height:760px) {
+  #pergunta #qtext.question {margin:7px auto 13px!important;font-size:clamp(23px,1.9vw,32px)!important;}
+  #pergunta .v46-reveals {margin:10px 0 8px!important;}
+  #pergunta #note {height:64px!important;min-height:64px!important;}
+  #pergunta .v45-save-actions {margin-top:9px!important;}
+}
+@media (max-width:900px) {
+  #pergunta .v45-question-core {width:100%!important;max-width:880px!important;}
+  #pergunta #collectiveAnswer .v45-collective-entry {width:min(100%,270px)!important;margin-inline:auto!important;}
+  #pergunta .v45-save-actions button {min-height:50px!important;}
+}
+
+
+/* V51 — gerenciamento de turmas: composição premium, ocupação vertical e legibilidade */
+#turmas.class-manager{min-height:calc(100vh - 175px)!important;box-sizing:border-box;padding:clamp(18px,2vw,32px)!important;background:linear-gradient(150deg,#061a32,#07213d 58%,#05172e)!important;border:1px solid #159cc4!important;border-radius:20px!important;box-shadow:0 16px 50px #0005}
+#turmas .cm-header{align-items:center;gap:22px;margin-bottom:12px}
+#turmas .cm-header h2{font-size:clamp(27px,2.5vw,43px)!important;color:#f5fbff!important;margin:4px 0 8px!important;letter-spacing:-.025em}
+#turmas .cm-header .eyebrow{letter-spacing:.17em;color:#5ee5f8}
+#turmas .v51-heading-icon{color:#24e6f2;font-size:.8em;margin-right:12px}
+#turmas .cm-header p{font-size:clamp(12px,.95vw,16px);margin:0;line-height:1.5}
+#turmas .cm-header-actions{align-items:center;justify-content:flex-end;gap:12px;flex:1 1 550px}
+#turmas .cm-header-actions button{flex:0 1 auto!important;min-height:51px!important;padding:12px 17px!important;background:#092d4b!important;border:1px solid #28c9ed!important;border-radius:12px!important;font-weight:800;white-space:nowrap}
+#turmas #cmNew{background:linear-gradient(110deg,#088eea,#1364e8)!important;border-color:#219dff!important}
+#turmas .cm-notice{background:linear-gradient(90deg,#07324d,#0a3d56);border:1px solid #12a7cf;color:#d6f2ff;padding:13px 17px;margin:16px 0;border-radius:11px;font-size:clamp(12px,.85vw,15px)}
+#turmas .v47-manage-actions{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:17px 0 19px!important}
+#turmas .v47-manage-actions button{display:flex!important;align-items:center;justify-content:center;gap:17px;min-width:0!important;min-height:88px!important;padding:13px 15px!important;background:linear-gradient(155deg,#0a3b5b,#06213d)!important;border:1px solid #19cfe8!important;border-radius:14px!important;text-align:left;box-shadow:inset 0 1px #7befff22}
+#turmas .v47-manage-actions .v51-action-icon{font-size:35px;color:#69eaf7;line-height:1;flex:none}
+#turmas .v47-manage-actions .v51-action-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+#turmas .v47-manage-actions strong{font-size:clamp(13px,1.05vw,18px);color:#fff}
+#turmas .v47-manage-actions small{font-size:clamp(11px,.85vw,14px);font-weight:400;color:#d5e7f4;line-height:1.25}
+#turmas #v47-delete-class{background:linear-gradient(145deg,#40213c,#2c1c36)!important;border-color:#fb6685!important}
+#turmas #v47-delete-class .v51-action-icon{color:#ff8196}
+#turmas .cm-layout{grid-template-columns:minmax(260px,.63fr) minmax(0,1fr)!important;gap:18px!important;margin-top:0!important;align-items:stretch;min-height:clamp(370px,43vh,570px)}
+#turmas .cm-list,#turmas .cm-details{background:linear-gradient(155deg,rgba(3,32,60,.96),rgba(4,25,49,.96))!important;border:1px solid #18cce9!important;border-radius:17px!important;padding:clamp(16px,1.4vw,26px)!important;min-height:100%;box-sizing:border-box}
+#turmas .cm-list h3,#turmas .cm-details h3{color:#fff!important;font-size:clamp(16px,1.25vw,23px)!important;margin:0 0 16px!important}
+#turmas .cm-list h3 span,#turmas .v51-class-heading span:first-child{color:#2ce5f4;font-size:1.25em;margin-right:10px}
+#turmas .v51-choose-label{display:block;font-size:12px;font-weight:850;letter-spacing:.07em;color:#b9edfa;margin:0 0 12px}
+#turmas #cmClasses{max-height:clamp(260px,38vh,520px);overflow-y:auto;padding:4px 4px 8px}
+#turmas .cm-class{padding:16px!important;min-height:70px;border-radius:12px!important;background:linear-gradient(120deg,#0c3554,#0b2945)!important;border:1px solid #317da4!important;margin-bottom:12px!important}
+#turmas .cm-class.active{background:linear-gradient(120deg,#07577b,#0b375b)!important;border:2px solid #42f3ff!important;box-shadow:0 0 16px #00d9ff66!important}
+#turmas .v51-class-heading{display:flex;align-items:center;border-bottom:1px solid #215f83;padding-bottom:13px;margin-bottom:13px!important}
+#turmas .cm-stat{background:#0a3858!important;border:1px solid #1d80a9;border-radius:11px!important;padding:15px!important;line-height:1.6}
+#turmas .cm-details>.cm-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0 20px!important}
+#turmas .cm-details>.cm-actions button{display:flex;justify-content:center;align-items:center;gap:12px;min-width:0!important;min-height:67px!important;border:1px solid #24bde5!important;border-radius:12px!important;padding:10px!important;background:linear-gradient(155deg,#0c3b5d,#092843)!important}
+#turmas .cm-details>.cm-actions button span:not(.v51-start-icon){display:flex;flex-direction:column;gap:4px;align-items:flex-start;text-align:left}
+#turmas .cm-details>.cm-actions button strong{font-size:clamp(12px,1vw,17px)}
+#turmas .cm-details>.cm-actions button small{font-size:clamp(10px,.75vw,13px);font-weight:400;color:#cbe3f1;line-height:1.25}
+#turmas #cmStart{grid-column:1/-1;justify-self:center;width:min(100%,540px);background:linear-gradient(110deg,#09e5e9,#04b7e5)!important;color:#001c30!important;border-color:#55fbff!important;box-shadow:0 0 15px #08dcff44}
+#turmas #cmStart span:not(.v51-start-icon) strong,#turmas #cmStart span:not(.v51-start-icon) small{color:#001c30!important}
+#turmas .v51-start-icon{font-size:30px}
+#turmas .v51-record-title{background:linear-gradient(110deg,#0b3554,#092a46);border:1px solid #277da5;border-radius:12px;padding:13px 15px;margin-bottom:0!important}
+#turmas .v51-record-title span{color:#54e9f7;margin-right:9px}
+#turmas #cmHistory{background:#092b48;border:1px solid #277da5;border-top:0;border-radius:0 0 12px 12px;padding:14px;min-height:54px}
+#turmas #cmStatus{font-size:13px;margin:12px 0 0}
+@media(max-width:1050px){#turmas .cm-header-actions{justify-content:flex-start;flex:1 1 100%}#turmas .v47-manage-actions{gap:9px}#turmas .v47-manage-actions button{gap:9px}}
+@media(max-width:780px){#turmas .cm-layout{grid-template-columns:1fr!important}#turmas .v47-manage-actions{grid-template-columns:1fr!important}#turmas .cm-header-actions button{flex:1 1 180px!important}#turmas .cm-details>.cm-actions{grid-template-columns:1fr!important}#turmas #cmStart{grid-column:1}#turmas .cm-list,#turmas .cm-details{min-height:auto}}
+
+/* V52 — pergunta central em destaque, conforme protótipo aprovado */
+@media (min-width: 901px) {
+  #pergunta .v45-question-core {
+    width: min(100%, 1120px) !important;
+    max-width: 1120px !important;
+    margin: -4px auto 0 !important;
+  }
+  #pergunta #qtext.question {
+    width: 100% !important;
+    max-width: 1120px !important;
+    font-size: clamp(38px, 3.15vw, 64px) !important;
+    font-weight: 900 !important;
+    line-height: 1.06 !important;
+    letter-spacing: -.025em !important;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    padding: 8px 12px 12px !important;
+    margin: 0 auto 17px !important;
+  }
+  #pergunta .v45-question-label {margin-bottom: 12px !important;}
+  #pergunta .v46-reveals,
+  #pergunta .v45-comment-wrap {max-width: 1020px !important; margin-left:auto !important; margin-right:auto !important;}
+  #pergunta .v45-save-actions {max-width: 900px !important;}
+  #pergunta #collectiveAnswer {margin-bottom: 12px !important;}
+}
+@media (min-width: 901px) and (max-height: 780px) {
+  #pergunta #qtext.question {
+    font-size: clamp(34px, 2.8vw, 51px) !important;
+    margin-bottom: 10px !important;
+    line-height: 1.08 !important;
+  }
+  #pergunta .v46-reveals {margin-top: 10px !important; margin-bottom: 8px !important;}
+  #pergunta #note {height: 65px !important; min-height: 65px !important;}
+}
+@media (max-width: 900px) {
+  #pergunta #qtext.question {
+    font-size: clamp(27px, 5vw, 44px) !important;
+    font-weight: 900 !important;
+    line-height: 1.12 !important;
+    text-wrap: balance;
+  }
+}
+@media (max-width: 520px) {
+  #pergunta #qtext.question {font-size: clamp(25px, 6vw, 34px) !important;}
+}
+
+
+/* V53 — tela de questão ocupando a área útil conforme referência 1663×927. */
+@media (min-width: 901px) {
+  #appMain {max-width: none !important; padding: 10px clamp(12px,1.25vw,24px) 6px !important;}
+  #appMain .v46-header {min-height: 94px !important; padding: 2px 0 12px 18px !important;}
+  #appMain .v46-header .v46-brand-icon {display:none !important;}
+  #appMain .v46-header h1 {font-size:clamp(26px,2.15vw,39px) !important;}
+  #appMain .v46-topstats {min-height:72px !important;margin: 9px 0 17px !important;}
+  #pergunta.v46-question-panel {min-height: max(620px, calc(100dvh - 268px)) !important; padding: 16px clamp(15px,1.85vw,34px) 20px !important;}
+  #pergunta .v45-top {min-height:45px;}
+  #pergunta .v45-question-core {width: min(100%, 1050px) !important;max-width:1050px !important;margin:-40px auto 0 !important;}
+  #pergunta .v45-question-label {margin-bottom: 5px !important;}
+  #pergunta #qtext.question {font-size:clamp(36px,3.25vw,60px) !important;line-height:1.06 !important;max-width: 1050px !important;margin: 4px auto 15px !important;padding: 4px 8px 7px !important;}
+  #pergunta #collectiveAnswer {max-width:1020px !important;margin: 0 auto 15px !important;}
+  #pergunta #collectiveAnswer label {font-size:clamp(14px,1.12vw,18px) !important;}
+  #pergunta #collectiveAnswer .v45-collective-entry {width:min(100%,365px) !important;}
+  #pergunta #collectiveAnswer #count {max-width:365px !important;min-height:48px !important;font-size:17px !important;}
+  #pergunta .v46-reveals {max-width:1020px !important;gap:14px !important;margin: 13px auto 11px !important;}
+  #pergunta .v45-reveal-head {min-height:61px !important;font-size:clamp(15px,1.15vw,19px) !important;}
+  #pergunta .v45-comment-wrap {max-width:1020px !important;padding:13px 16px !important;margin: 0 auto !important;}
+  #pergunta .v45-comment-wrap label {font-size:clamp(15px,1.1vw,19px) !important;}
+  #pergunta #note {height:83px !important;min-height:83px !important;font-size:clamp(14px,1.05vw,18px) !important;}
+  #pergunta .v45-save-actions {max-width:850px !important;gap:clamp(28px,4vw,70px) !important;margin: 15px auto 0 !important;}
+  #pergunta .v45-save-actions button {flex:0 1 300px !important;max-width:300px !important;min-height:66px !important;font-size:clamp(13px,1vw,17px) !important;}
+}
+@media (min-width:901px) and (max-height:800px) {
+  #appMain .v46-header {min-height:72px !important;}
+  #appMain .v46-topstats {min-height:58px !important;margin-bottom:10px !important;}
+  #pergunta.v46-question-panel {min-height:max(525px,calc(100dvh - 215px)) !important;}
+  #pergunta .v45-question-core {margin:-30px auto 0 !important;}
+  #pergunta #qtext.question {font-size:clamp(34px,2.9vw,51px) !important;margin-bottom:9px !important;}
+  #pergunta .v45-reveal-head {min-height:49px !important;}
+  #pergunta #note {height:65px !important;min-height:65px !important;}
+  #pergunta .v45-save-actions button {min-height:52px !important;}
+}
+@media (max-width:900px) {
+  #pergunta.v46-question-panel {min-height: min(740px,calc(100dvh - 170px)) !important;}
+  #pergunta .v45-question-core {margin:5px auto 0 !important;}
+}
+/* V54 — correção de dimensionamento em tela cheia, sem alterar os dados. */
+#pergunta.v46-question-panel{width:100%!important;min-height:max(650px,calc(100dvh - 240px))!important;overflow:visible!important;}
+#pergunta .v45-question-core{display:block!important;width:min(100%,1180px)!important;max-width:1180px!important;margin:0 auto!important;min-width:0!important;text-align:center!important;}
+#pergunta #qcontrols:not(.hidden){display:block!important;position:static!important;width:100%!important;max-width:none!important;min-width:0!important;flex:none!important;align-items:stretch!important;justify-content:initial!important;}
+#pergunta #qtext.question{display:block!important;min-height:0!important;width:100%!important;max-width:1180px!important;margin:14px auto 20px!important;padding:0 12px!important;font-size:clamp(34px,3.2vw,58px)!important;line-height:1.13!important;font-weight:900!important;letter-spacing:-.018em!important;overflow-wrap:break-word!important;text-wrap:balance!important;}
+#pergunta #collectiveAnswer{display:block!important;width:100%!important;max-width:1100px!important;margin:0 auto 18px!important;text-align:center!important;}
+#pergunta #collectiveAnswer label{font-size:clamp(15px,1.1vw,19px)!important;text-align:center!important;}
+#pergunta #collectiveAnswer .v45-collective-entry{width:min(100%,360px)!important;margin:8px auto 0!important;}
+#pergunta #collectiveAnswer #count{width:100%!important;max-width:none!important;min-height:48px!important;font-size:17px!important;}
+#pergunta .v46-reveals{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important;max-width:1050px!important;margin:18px auto 12px!important;gap:16px!important;}
+#pergunta .v45-bridge{min-width:0!important;}
+#pergunta .v45-reveal-head{min-height:60px!important;font-size:clamp(15px,1.15vw,19px)!important;}
+#pergunta .v45-comment-wrap{display:block!important;width:100%!important;max-width:1050px!important;min-width:0!important;margin:0 auto!important;padding:14px 16px!important;flex:none!important;}
+#pergunta .v45-comment-wrap label{display:block!important;text-align:left!important;font-size:clamp(15px,1.1vw,19px)!important;}
+#pergunta #note{display:block!important;box-sizing:border-box!important;width:100%!important;max-width:none!important;min-width:0!important;height:clamp(105px,13vh,145px)!important;min-height:105px!important;max-height:none!important;resize:vertical!important;font-size:clamp(15px,1vw,18px)!important;line-height:1.4!important;}
+#pergunta .v45-save-actions{display:flex!important;flex-direction:row!important;justify-content:center!important;align-items:stretch!important;width:100%!important;max-width:850px!important;gap:clamp(18px,3vw,55px)!important;margin:18px auto 4px!important;}
+#pergunta .v45-save-actions button{flex:1 1 0!important;width:auto!important;max-width:350px!important;min-height:66px!important;font-size:clamp(14px,1vw,17px)!important;line-height:1.2!important;white-space:normal!important;}
+@media(min-width:901px) and (max-height:780px){
+#pergunta.v46-question-panel{min-height:max(550px,calc(100dvh - 205px))!important;}
+#pergunta #qtext.question{font-size:clamp(32px,2.85vw,49px)!important;margin:9px auto 12px!important;}
+#pergunta .v46-reveals{margin:12px auto 9px!important;}
+#pergunta .v45-reveal-head{min-height:52px!important;}
+#pergunta #note{height:clamp(88px,12vh,112px)!important;min-height:88px!important;}
+#pergunta .v45-save-actions button{min-height:54px!important;}
+}
+@media(max-width:900px){
+#pergunta.v46-question-panel{min-height:calc(100dvh - 170px)!important;}
+#pergunta .v45-question-core{width:100%!important;margin:5px auto!important;}
+#pergunta #qtext.question{font-size:clamp(27px,4.5vw,42px)!important;}
+#pergunta .v46-reveals{gap:10px!important;}
+#pergunta #note{min-height:100px!important;height:110px!important;}
+}
+@media(max-width:680px){
+#pergunta .v46-reveals{grid-template-columns:1fr!important;}
+#pergunta .v45-save-actions{flex-direction:column!important;gap:10px!important;}
+#pergunta .v45-save-actions button{flex:none!important;width:100%!important;max-width:none!important;}
+}
+
+
+/* V55 — composição de projeção: pergunta dominante e controles distribuídos verticalmente. */
+@media (min-width: 901px) {
+  #pergunta.v46-question-panel {
+    box-sizing:border-box!important;
+    min-height:max(680px,calc(100dvh - 222px))!important;
+    padding:clamp(16px,2vh,28px) clamp(16px,2vw,36px) 24px!important;
+  }
+  #pergunta .v45-top {min-height:45px!important;}
+  #pergunta .v45-question-core {
+    box-sizing:border-box!important;
+    width:min(100%,1250px)!important;max-width:1250px!important;
+    min-height:clamp(565px,calc(100dvh - 320px),790px)!important;
+    margin:0 auto!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:stretch!important;justify-content:space-between!important;
+    gap:clamp(8px,1.5vh,20px)!important;
+  }
+  #pergunta .v45-question-label {align-self:center!important;margin:0 auto!important;flex:0 0 auto!important;}
+  #pergunta #qtext.question {
+    box-sizing:border-box!important;flex:0 0 auto!important;
+    max-width:1250px!important;width:100%!important;
+    font-size:clamp(46px,4.5vw,82px)!important;
+    line-height:1.08!important;letter-spacing:-.024em!important;
+    margin:clamp(10px,2vh,28px) auto clamp(14px,2vh,28px)!important;
+    padding:0 14px!important;
+    font-weight:900!important;text-align:center!important;text-wrap:balance!important;
+  }
+  #pergunta #qcontrols:not(.hidden){flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;gap:clamp(12px,1.7vh,22px)!important;}
+  #pergunta #collectiveAnswer{margin:0 auto!important;flex:0 0 auto!important;}
+  #pergunta #collectiveAnswer label{font-size:clamp(17px,1.25vw,22px)!important;}
+  #pergunta #collectiveAnswer .v45-collective-entry{width:min(100%,400px)!important;}
+  #pergunta #collectiveAnswer #count{min-height:54px!important;font-size:19px!important;}
+  #pergunta .v46-reveals{width:min(100%,1120px)!important;max-width:1120px!important;margin:0 auto!important;gap:18px!important;flex:0 0 auto!important;}
+  #pergunta .v45-reveal-head{min-height:65px!important;font-size:clamp(17px,1.28vw,22px)!important;}
+  #pergunta .v45-comment-wrap{width:min(100%,1120px)!important;max-width:1120px!important;margin:0 auto!important;flex:0 0 auto!important;}
+  #pergunta .v45-comment-wrap label{font-size:clamp(17px,1.2vw,21px)!important;}
+  #pergunta #note{height:clamp(105px,14vh,160px)!important;min-height:105px!important;font-size:clamp(16px,1.1vw,20px)!important;}
+  #pergunta .v45-save-actions{margin:0 auto!important;width:min(100%,900px)!important;max-width:900px!important;flex:0 0 auto!important;}
+  #pergunta .v45-save-actions button{min-height:clamp(58px,7vh,78px)!important;font-size:clamp(15px,1.15vw,19px)!important;}
+}
+@media (min-width:901px) and (max-height:800px) {
+  #pergunta.v46-question-panel{min-height:max(570px,calc(100dvh - 195px))!important;}
+  #pergunta .v45-question-core{min-height:clamp(470px,calc(100dvh - 270px),620px)!important;gap:9px!important;}
+  #pergunta #qtext.question{font-size:clamp(42px,4.1vw,65px)!important;margin:8px auto 12px!important;}
+  #pergunta .v45-reveal-head{min-height:52px!important;}
+  #pergunta #note{height:clamp(82px,11vh,115px)!important;min-height:82px!important;}
+  #pergunta .v45-save-actions button{min-height:54px!important;}
+}
+@media(max-width:900px){
+  #pergunta #qtext.question{font-size:clamp(32px,5.5vw,50px)!important;line-height:1.12!important;}
+}
+
+/* V57 — ampliação de 75% da fonte da pergunta, mantendo demais elementos.
+   Valores multiplicados por 1,75 sobre as regras finais da V56. */
+@media (min-width:901px){
+  #pergunta #qtext.question{font-size:clamp(80.5px,7.875vw,143.5px)!important;line-height:1.04!important;max-width:100%!important;overflow-wrap:anywhere!important;}
+  #pergunta .v45-question-core{min-height:0!important;height:auto!important;gap:clamp(12px,2vh,24px)!important;}
+  #pergunta #qcontrols:not(.hidden){flex:0 0 auto!important;gap:clamp(12px,2vh,24px)!important;}
+  #pergunta.v46-question-panel{height:auto!important;min-height:calc(100dvh - 222px)!important;overflow:visible!important;}
+}
+@media (min-width:901px) and (max-height:800px){
+  #pergunta #qtext.question{font-size:clamp(73.5px,7.175vw,113.75px)!important;}
+}
+@media (max-width:900px){
+  #pergunta #qtext.question{font-size:clamp(56px,9.625vw,87.5px)!important;line-height:1.06!important;}
+}
+@media (max-width:680px){
+  #pergunta #qtext.question{font-size:clamp(42px,9.8vw,70px)!important;}
+}
+
+
+/* V58 — fundos oficiais 16:9, fixos, com conteúdo HTML interativo */
+#welcome.welcome-screen {
+  background-image:linear-gradient(90deg,rgba(2,15,36,.25),rgba(2,15,36,.15)),url("ENTRADA.jpg")!important;
+  background-size:cover!important;background-position:center center!important;
+  background-attachment:fixed!important;
+}
+#welcome .welcome-card.welcome-v22 {background:rgba(7,28,52,.79)!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(83,204,249,.5)!important;box-shadow:0 20px 65px rgba(0,0,0,.38)!important;}
+#roda.panel {
+  background-image:linear-gradient(90deg,rgba(0,13,35,.20),rgba(0,14,39,.34)),url("RODA.jpg")!important;
+  background-size:cover!important;background-position:center center!important;
+  background-repeat:no-repeat!important;
+  border-color:#2bd8fa!important;
+}
+#roda .home-side {padding:clamp(16px,2.1vw,34px);border-radius:20px;background:linear-gradient(145deg,rgba(4,25,53,.86),rgba(5,31,62,.73));border:1px solid rgba(62,194,244,.25);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+#roda .wheel-wrap {filter:drop-shadow(0 10px 24px rgba(0,0,0,.55)) drop-shadow(0 0 14px rgba(0,180,255,.22));}
+/* FUTURISTA.png é referência estética; os controles continuam reais e clicáveis. */
+#roda .actions button,#welcome .mode-card button,#welcome .mode-buttons button {
+  border:1.5px solid #42dcff!important;
+  background:linear-gradient(165deg,#0968bd 0%,#064b94 42%,#03b5de 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,22,65,.4),0 0 17px rgba(0,195,255,.32),0 8px 17px rgba(0,0,0,.3)!important;
+  color:#fff!important;font-weight:900!important;letter-spacing:.015em;
+  transition:filter .15s,transform .15s,box-shadow .15s;
+}
+#roda .actions button:hover:not(:disabled),#welcome .mode-card button:hover:not(:disabled){filter:brightness(1.17);transform:translateY(-2px);}
+#roda .actions button.alt {background:linear-gradient(160deg,#4a6788,#234563)!important;border-color:#9ebdd7!important;}
+#roda .actions button.danger {background:linear-gradient(160deg,#703251,#47233f)!important;border-color:#f36caa!important;}
+#roda .actions button.out:not(.danger) {background:linear-gradient(160deg,#143b66,#09233e)!important;border-color:#b2d5f2!important;}
+#roda .home-side .eyebrow{color:#3ee2ff;text-shadow:0 0 10px rgba(0,209,255,.3);}
+#roda .home-side .hero{text-shadow:0 3px 12px rgba(0,0,0,.65);}
+/* V57: manter a pergunta central 75% maior, inclusive em tela cheia. */
+/* Fontes ampliadas nas duas telas solicitadas: banco de questões e análise. */
+#questoes #list .bank-content strong {font-size:clamp(22px,1.8vw,30px)!important;line-height:1.2!important;}
+#questoes #list .bank-content span {font-size:clamp(21px,1.65vw,28px)!important;line-height:1.4!important;}
+#questoes #list .bank-status {font-size:clamp(16px,1.35vw,23px)!important;min-width:clamp(170px,16vw,260px)!important;white-space:normal!important;text-align:center;}
+#questoes #list .bank-question {padding:clamp(18px,1.6vw,28px)!important;gap:clamp(16px,1.8vw,32px)!important;}
+#questoes h2 {font-size:clamp(30px,2.5vw,45px)!important;}
+#questoes .muted {font-size:clamp(18px,1.4vw,24px)!important;}
+#intervencao .int-left,#intervencao .int-right {font-size:clamp(18px,1.5vw,25px)!important;}
+#intervencao .int-left h3,#intervencao .int-right h3 {font-size:clamp(22px,1.8vw,30px)!important;}
+#intervencao #intAxes,#intervencao #intQuestions,#intervencao #intReading,#intervencao #intSuggestion {font-size:clamp(19px,1.5vw,26px)!important;line-height:1.55!important;}
+#intervencao .int-left small,#intervencao .int-right small {font-size:clamp(15px,1.15vw,20px)!important;}
+@media(max-width:800px){
+ #welcome.welcome-screen{background-attachment:scroll!important;}
+ #roda.panel{background-position:center!important;}
+ #roda .home-side{padding:18px;}
+ #questoes #list .bank-question{flex-direction:column!important;align-items:stretch!important;}
+ #questoes #list .bank-status{min-width:0!important;}
+}
+
+/* V59: fundos JPG oficiais da raiz do GitHub, com prioridade de exibição. */
+#welcome.welcome-screen:not(.hidden){background:#062344 url("ENTRADA.jpg") center center / cover no-repeat fixed!important;}
+#roda.panel:not(.hidden){background:#062344 url("RODA.jpg") center center / cover no-repeat!important;}
+#welcome .welcome-card.welcome-v22{background:rgba(6,22,43,.68)!important;}
+@media(max-width:800px){#welcome.welcome-screen:not(.hidden){background-attachment:scroll!important;}}
+
+/* V60 — acesso à roda verde néon e pergunta 100% maior, em moldura dourada */
+#v47-enter.v47-primary {
+ background:linear-gradient(135deg,#baff52 0%,#40ff86 46%,#00e6a1 100%)!important;
+ color:#04241d!important;border:2px solid #b5ff70!important;
+ box-shadow:0 0 17px rgba(61,255,139,.52),inset 0 1px 0 #e8ffd1!important;
+ text-shadow:none!important;font-weight:900!important;
+}
+#v47-enter.v47-primary:hover,#v47-enter.v47-primary:focus-visible {
+ background:linear-gradient(135deg,#dcff8b,#61ff9b)!important;
+ box-shadow:0 0 28px rgba(61,255,139,.8)!important;
+}
+#pergunta #qtext.question {
+ box-sizing:border-box!important;display:block!important;width:100%!important;
+ max-width:100%!important;min-width:0!important;
+ padding:clamp(20px,2.2vw,40px)!important;
+ border:3px solid #f4c66c!important;border-radius:20px!important;
+ background:linear-gradient(145deg,rgba(3,21,47,.88),rgba(8,43,70,.75))!important;
+ box-shadow:0 0 0 1px rgba(255,238,176,.22) inset,0 0 26px rgba(255,187,61,.25)!important;
+ color:#fff!important;text-align:center!important;text-wrap:balance!important;
+ overflow-wrap:anywhere!important;white-space:normal!important;
+}
+@media(min-width:901px){#pergunta #qtext.question{font-size:clamp(161px,15.75vw,287px)!important;line-height:1.03!important;}}
+@media(min-width:901px) and (max-height:800px){#pergunta #qtext.question{font-size:clamp(147px,14.35vw,227.5px)!important;}}
+@media(max-width:900px){#pergunta #qtext.question{font-size:clamp(112px,19.25vw,175px)!important;line-height:1.05!important;}}
+@media(max-width:680px){#pergunta #qtext.question{font-size:clamp(84px,19.6vw,140px)!important;}}
+/* A tela pode rolar quando a pergunta ocupa várias linhas; nenhum controle fica cortado. */
+#pergunta.v46-question-panel{height:auto!important;max-height:none!important;overflow:visible!important;}
+#pergunta .v45-question-core{height:auto!important;max-height:none!important;min-height:0!important;}
+
+/* V61 — escala adaptativa para notebook, monitor e Smart TV (navegador próprio/HDMI).
+   A pergunta utiliza aproximadamente 3 vezes a dimensão visual de referência da V60.
+   O JavaScript limita a altura da moldura para manter os demais campos acessíveis. */
+#pergunta #qtext.question {
+ font-size:clamp(42px,3.6vw,92px)!important;
+ line-height:1.12!important;
+ padding:clamp(18px,2.2vh,36px) clamp(20px,3vw,54px)!important;
+ max-width:min(100%,1450px)!important;
+ margin:clamp(10px,1.5vh,22px) auto clamp(12px,2vh,25px)!important;
+ overflow-wrap:break-word!important;
+ word-break:normal!important;
+ text-wrap:balance!important;
+}
+#pergunta .v45-question-core {width:min(100%,1500px)!important;max-width:1500px!important;}
+@media (min-width:1700px) {#pergunta #qtext.question{font-size:clamp(58px,3.6vw,100px)!important;}}
+@media (max-width:900px) {#pergunta #qtext.question{font-size:clamp(34px,5vw,56px)!important;}}
+@media (max-width:600px) {#pergunta #qtext.question{font-size:clamp(29px,6vw,43px)!important;padding:16px 12px!important;}}
+@media (max-height:720px) and (min-width:901px) {
+ #pergunta #qtext.question{padding:12px 24px!important;margin:8px auto 12px!important;}
+ #pergunta .v45-question-core{gap:8px!important;}
+}
+@media (min-width:2000px) and (min-height:1000px) {
+ #pergunta #qtext.question{font-size:clamp(72px,3.5vw,112px)!important;}
+ #pergunta .v45-question-core{width:min(100%,1700px)!important;max-width:1700px!important;}
+}
+
+/* V62 — tipografia para projeção em monitor grande / Smart TV.
+   Regra final única, aplicada a todas as questões sorteadas. */
+#pergunta.v46-question-panel:not(.hidden) .v45-question-core{
+  width:min(94%,1550px)!important;max-width:1550px!important;
+  min-height:clamp(590px,calc(100dvh - 245px),1000px)!important;
+  justify-content:space-evenly!important;
+  gap:clamp(14px,2vh,30px)!important;
+}
+#pergunta.v46-question-panel:not(.hidden) #qtext.question{
+  font-size:clamp(52px,4.5vw,96px)!important;
+  line-height:1.12!important;
+  font-weight:900!important;
+  width:100%!important;max-width:1500px!important;
+  padding:clamp(22px,3vh,46px) clamp(24px,3vw,60px)!important;
+  margin:clamp(12px,2vh,28px) auto!important;
+  text-wrap:balance!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+}
+#pergunta.v46-question-panel:not(.hidden) #qcontrols:not(.hidden){
+  flex:1 1 auto!important;justify-content:space-evenly!important;
+  gap:clamp(16px,2vh,30px)!important;
+}
+@media(max-width:900px){
+ #pergunta.v46-question-panel:not(.hidden) .v45-question-core{width:100%!important;min-height:0!important;}
+ #pergunta.v46-question-panel:not(.hidden) #qtext.question{font-size:clamp(30px,5.5vw,52px)!important;padding:18px!important;}
+}
+@media(min-width:901px) and (max-height:750px){
+ #pergunta.v46-question-panel:not(.hidden) .v45-question-core{min-height:620px!important;}
+ #pergunta.v46-question-panel:not(.hidden) #qtext.question{font-size:clamp(48px,4.1vw,78px)!important;}
+}
+
+/* V63 — separação rigorosa das modalidades e botões SIM/NÃO projetáveis */
+html[data-experience-mode="individual"] #collectiveAnswer,
+html[data-experience-mode="individual"] #collectiveTotal {display:none!important;}
+html[data-experience-mode="collective"] #individualAnswer {display:none!important;}
+html[data-experience-mode="individual"] #pergunta #individualAnswer:not(.hidden){display:block!important;width:100%!important;margin:0 auto!important;}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons{
+ display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;
+ justify-content:center!important;align-items:stretch!important;gap:clamp(16px,2.5vw,38px)!important;
+ width:100%!important;max-width:760px!important;margin:12px auto 4px!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button{
+ box-sizing:border-box!important;display:flex!important;flex:1 1 210px!important;
+ justify-content:center!important;align-items:center!important;gap:12px!important;
+ width:auto!important;max-width:320px!important;min-width:175px!important;
+ min-height:clamp(76px,9vh,112px)!important;padding:14px 25px!important;
+ font-size:clamp(28px,2.7vw,46px)!important;line-height:1.05!important;
+ white-space:nowrap!important;border-radius:16px!important;opacity:1!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer #answerYes{
+ background:linear-gradient(135deg,#b7ffdc,#42ec9a)!important;color:#043322!important;
+ border:3px solid #b7ffe2!important;box-shadow:0 0 22px #40ffa255!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer #answerNo{
+ background:linear-gradient(135deg,#ffe0df,#ff8e9b)!important;color:#4d0b1a!important;
+ border:3px solid #ffd4d9!important;box-shadow:0 0 22px #ff839555!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button.selected{
+ outline:5px solid #ffe08b!important;outline-offset:4px!important;
+ box-shadow:0 0 28px #f6c65b88!important;
+}
+html[data-experience-mode="individual"] #pergunta .answer-label{font-size:clamp(18px,1.4vw,25px)!important;}
+@media(max-width:520px){
+ html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button{min-width:125px!important;flex-basis:125px!important;font-size:25px!important;}
+}
+
+/* V64 — visual FUTURISTA aplicado aos elementos funcionais da roda */
+#roda.panel:not(.hidden){border:1px solid #24c9f5!important;}
+#roda .home-layout{grid-template-columns:minmax(390px,1.05fr) minmax(390px,1fr);gap:clamp(24px,3vw,70px);}
+#roda .wheel-wrap{width:min(100%,620px)!important;filter:drop-shadow(0 12px 22px #0009) drop-shadow(0 0 15px #f6c15a66)!important;}
+#roda .home-side{background:linear-gradient(120deg,rgba(3,22,49,.82),rgba(3,21,48,.7))!important;border:0!important;border-left:2px solid #1bcaff!important;border-radius:0!important;padding:clamp(22px,3vw,48px)!important;}
+#roda .home-side .hero{font-size:clamp(38px,3.9vw,72px)!important;line-height:1.08!important;}
+#roda .home-side .eyebrow{font-size:clamp(15px,1.15vw,23px)!important;letter-spacing:.15em!important;}
+#roda .home-side .intro{font-size:clamp(17px,1.25vw,24px)!important;line-height:1.48!important;}
+#roda .home-side .actions{max-width:none!important;gap:clamp(10px,1.3vh,20px)!important;}
+#roda .home-side .actions button{min-height:clamp(56px,7.2vh,86px)!important;font-size:clamp(16px,1.45vw,25px)!important;border-radius:15px!important;}
+#roda #spin{background:linear-gradient(180deg,#0587ff,#00489d)!important;border:2px solid #58edff!important;box-shadow:0 0 20px #03bfff77,inset 0 2px 2px #c7f8ff66!important;}
+#roda #last{background:linear-gradient(180deg,#526e91,#2d4b70)!important;border:1px solid #93b8df!important;}
+#roda #resetHome{background:linear-gradient(180deg,#793251,#4d213c)!important;border:2px solid #ff6ca0!important;color:#fff!important;}
+#roda #changeExperience{background:linear-gradient(180deg,#10375d,#041b37)!important;border:2px solid #c3e5ff!important;color:#fff!important;}
+@media(max-width:950px){#roda .home-layout{grid-template-columns:1fr!important;}#roda .home-side{border-left:0!important;border-top:2px solid #1bcaff!important;}}
+
+/* V65 — legibilidade real na projeção: ambas as modalidades */
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core #qtext.question{
+ font-size:clamp(64px,6.2vw,118px)!important;
+ line-height:1.08!important;
+ font-weight:900!important;
+ letter-spacing:-.025em!important;
+ width:min(100%,1500px)!important;
+ max-width:1500px!important;
+ padding:clamp(20px,2.4vh,36px) clamp(22px,2.5vw,48px)!important;
+ margin:clamp(12px,1.5vh,22px) auto!important;
+ border:2px solid #ffd46b!important;
+ border-radius:18px!important;
+ text-align:center!important;
+ text-wrap:balance!important;
+ overflow-wrap:break-word!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons{
+ max-width:470px!important;gap:18px!important;margin:8px auto 2px!important;
+}
+html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button{
+ flex:0 1 190px!important;width:190px!important;max-width:190px!important;
+ min-width:140px!important;min-height:58px!important;height:clamp(58px,7vh,76px)!important;
+ padding:8px 16px!important;font-size:clamp(23px,1.65vw,32px)!important;
+ border-radius:12px!important;
+}
+@media(max-width:900px){
+ html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core #qtext.question{font-size:clamp(38px,7vw,70px)!important;padding:16px!important;}
+}
+@media(max-width:500px){
+ html[data-experience-mode="individual"] #pergunta #individualAnswer .answer-buttons button{width:135px!important;min-width:120px!important;flex-basis:135px!important;font-size:23px!important;}
+}
+
+/* V66 — Entrada translúcida: a arte ENTRADA.jpg permanece visível,
+   sem reduzir a opacidade dos textos e dos botões. */
+#welcome.welcome-screen:not(.hidden) .welcome-card.welcome-v22 {
+  background:rgba(6,22,43,.43)!important;
+  backdrop-filter:blur(2px)!important;
+  -webkit-backdrop-filter:blur(2px)!important;
+}
+#welcome.welcome-screen:not(.hidden) .welcome-three .welcome-purpose {
+  background:rgba(12,43,73,.58)!important;
+}
+#welcome.welcome-screen:not(.hidden) .welcome-three .mode-card {
+  background:rgba(15,51,82,.58)!important;
+}
+
+
+/* V67 — LOGIN.jpg é a arte fixa oficial. Os botões HTML reais sobrepõem os botões desenhados. */
+html body #welcome.login-v67:not(.hidden){
+  box-sizing:border-box!important;min-height:100vh!important;min-height:100dvh!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:center!important;gap:clamp(8px,1.5vh,18px)!important;
+  padding:clamp(8px,1.5vh,20px)!important;background:#03152b!important;
+}
+#welcome.login-v67 .login-stage{
+  position:relative!important;width:min(100%,calc((100dvh - 95px)*1.77683))!important;
+  aspect-ratio:1672/941!important;flex:none!important;
+  background:#06213f url("LOGIN.jpg") center / 100% 100% no-repeat!important;
+  box-shadow:0 12px 42px #0008!important;border-radius:8px!important;
+}
+#welcome.login-v67 .login-actions{position:absolute!important;inset:0!important;}
+#welcome.login-v67 .login-hotspot{
+  position:absolute!important;top:55.2%!important;height:20.4%!important;
+  border:0!important;background:transparent!important;color:transparent!important;
+  box-shadow:none!important;cursor:pointer!important;border-radius:12%!important;
+  padding:0!important;min-height:0!important;transform:none!important;
+}
+#welcome.login-v67 #chooseIndividual{left:19.1%!important;width:30.4%!important;}
+#welcome.login-v67 #chooseCollective{left:50.8%!important;width:32.3%!important;}
+#welcome.login-v67 .login-hotspot span{opacity:0!important;}
+#welcome.login-v67 .login-hotspot:focus-visible{
+ outline:4px solid #b5ff4b!important;outline-offset:2px!important;
+ box-shadow:0 0 20px #85ff58!important;
+}
+#welcome.login-v67 .login-hotspot:hover{background:rgba(27,240,255,.10)!important;}
+#welcome.login-v67 .login-instructions{
+  display:block!important;position:relative!important;
+  background:linear-gradient(180deg,#0d7b4b,#043e30)!important;
+  border:2px solid #8dff67!important;color:#fff!important;
+  box-shadow:0 0 17px #63ff5880!important;border-radius:14px!important;
+  font-size:clamp(15px,1.5vw,22px)!important;font-weight:900!important;
+  padding:clamp(10px,1.3vh,17px) clamp(24px,3vw,48px)!important;
+  cursor:pointer!important;
+}
+#welcome.login-v67 .instructions-dialog{
+  width:min(700px,calc(100vw - 32px))!important;max-height:85vh!important;
+  overflow:auto!important;background:#0a2947!important;color:white!important;
+  border:2px solid #3ad9f5!important;border-radius:18px!important;
+  padding:clamp(20px,3vw,38px)!important;box-shadow:0 25px 90px #000c!important;
+}
+#welcome.login-v67 .instructions-dialog::backdrop{background:rgba(0,8,22,.84);}
+#welcome.login-v67 .instructions-dialog h2{font-size:clamp(24px,2.5vw,36px)!important;}
+#welcome.login-v67 .instructions-dialog p{font-size:clamp(17px,1.35vw,21px)!important;line-height:1.55!important;}
+#welcome.login-v67 .instructions-dialog button{background:#05c2e8!important;color:#03172b!important;font-weight:900!important;}
+/* Ações de retorno: verde néon apenas para RETORNAR/VOLTAR À RODA.
+   SALVAR E VOLTAR À RODA mantém azul, conforme solicitado. */
+html body #pergunta button[id*="back" i],
+html body #pergunta button[id*="Back" i]{background:linear-gradient(135deg,#0d6f49,#15d77c)!important;color:#fff!important;border:2px solid #70ffb1!important;}
+html body #pergunta #save,
+html body #pergunta #saveBack,
+html body #pergunta #saveReturn{
+ background:linear-gradient(135deg,#214b77,#126ca4)!important;
+ border:2px solid #8bd9ff!important;color:#fff!important;
+}
+@media(max-aspect-ratio:9/11){
+ #welcome.login-v67 .login-stage{width:100%!important;}
+}
+
+
+/* ============================================================
+   V68 — LAYOUT CANÔNICO DA QUESTÃO (individual e coletiva)
+   Regras finais, escopo exclusivo de #pergunta. Evita que
+   estilos antigos reduzam a fonte no monitor ou Smart TV.
+   ============================================================ */
+html body #pergunta.v46-question-panel:not(.hidden) {
+  box-sizing:border-box!important;
+  min-height:calc(100dvh - 150px)!important;
+  padding:clamp(10px,1.3vh,18px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core{
+  width:min(100%,1200px)!important;
+  max-width:1200px!important;
+  margin:0 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:clamp(7px,1vh,14px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-label{
+  align-self:center!important;
+  margin:0!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+  box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;max-width:1100px!important;
+  min-height:clamp(110px,15vh,190px)!important;
+  margin:0 auto!important;
+  padding:clamp(15px,2.4vh,28px) clamp(18px,3vw,45px)!important;
+  font-size:clamp(34px,3.35vw,66px)!important;
+  line-height:1.12!important;font-weight:900!important;
+  text-align:center!important;text-wrap:balance!important;
+  color:#fff!important;
+  background:rgba(2,18,39,.90)!important;
+  border:3px solid #ffca42!important;border-radius:24px!important;
+  box-shadow:0 0 18px rgba(255,193,48,.32),inset 0 0 20px rgba(0,0,0,.25)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #qcontrols{
+  width:min(100%,1050px)!important;max-width:1050px!important;
+  margin:0 auto!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-reveals{
+  width:100%!important;
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(10px,1.3vw,20px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-bridge{
+  min-width:0!important;
+  border:1px solid #17c4e9!important;border-radius:14px!important;
+  background:rgba(3,28,53,.85)!important;
+  overflow:hidden!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-reveal-head{
+  width:100%!important;
+  min-height:48px!important;
+  font-size:clamp(16px,1.25vw,23px)!important;
+  text-align:left!important;
+  color:white!important;
+  background:linear-gradient(180deg,#07547d,#073553)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-comment-wrap{
+  width:100%!important;max-width:none!important;
+  margin:0 auto!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #note{
+  box-sizing:border-box!important;width:100%!important;
+  min-height:clamp(75px,11vh,140px)!important;
+  font-size:clamp(15px,1.05vw,20px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-save-actions{
+  display:flex!important;justify-content:center!important;
+  flex-wrap:wrap!important;gap:clamp(12px,2vw,28px)!important;
+  margin-top:clamp(8px,1.5vh,18px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #backWheel{
+  background:linear-gradient(135deg,#075c39,#0f9d5a)!important;
+  color:#fff!important;border:2px solid #77ffa6!important;
+  box-shadow:0 0 13px rgba(48,255,123,.4)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #save{
+  background:linear-gradient(135deg,#214b77,#126ca4)!important;
+  color:#fff!important;border:2px solid #8bd9ff!important;
+}
+html body #welcome.login-v67 .login-instructions{
+  background:linear-gradient(180deg,#ffd66c,#e7a826)!important;
+  color:#081b31!important;border:2px solid #ffdf82!important;
+  box-shadow:0 4px 16px rgba(231,168,38,.28)!important;
+}
+html body #welcome.login-v67 .login-hotspot:hover{
+  background:rgba(255,198,63,.07)!important;
+}
+html body #welcome.login-v67 .instructions-dialog h3{
+  color:#ffdc83;font-size:clamp(19px,1.5vw,25px);margin:22px 0 6px;
+}
+@media(max-width:760px){
+ html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+   font-size:clamp(27px,5.3vw,43px)!important;min-height:110px!important;
+ }
+ html body #pergunta.v46-question-panel:not(.hidden) .v45-reveals{
+   grid-template-columns:1fr!important;
+ }
+}
+@media(min-width:1500px){
+ html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+   font-size:clamp(52px,3.5vw,74px)!important;
+ }
+}
+
+
+
+/* ===========================================================
+   V70 — REGRAS FINAIS E ÚNICAS PARA LOGIN E PERGUNTAS
+   Arte LOGIN.jpg é fixa. Hotspots são transparentes em TODOS
+   os estados do mouse; somente o cursor muda para mão.
+   =========================================================== */
+html body #welcome.login-v67:not(.hidden){padding:0!important;gap:0!important;min-height:100dvh!important;background:#04172d!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+html body #welcome.login-v67 .login-stage{
+ width:min(100vw,177.58dvh)!important;max-width:none!important;
+ aspect-ratio:1671/941!important;
+ background:#04172d url("LOGIN.jpg") center / 100% 100% no-repeat!important;
+ box-shadow:none!important;border:0!important;border-radius:0!important;
+ position:relative!important;
+}
+html body #welcome.login-v67 .login-actions{position:absolute!important;inset:0!important;pointer-events:none!important;}
+html body #welcome.login-v67 .login-hotspot{
+ position:absolute!important;top:53.4%!important;height:18.2%!important;
+ border:0!important;border-radius:0!important;
+ background:transparent!important;background-image:none!important;
+ box-shadow:none!important;filter:none!important;transform:none!important;
+ opacity:1!important;transition:none!important;
+ cursor:pointer!important;pointer-events:auto!important;
+}
+html body #welcome.login-v67 #chooseIndividual{left:18.1%!important;width:30.7%!important;}
+html body #welcome.login-v67 #chooseCollective{left:50.2%!important;width:32.5%!important;}
+html body #welcome.login-v67 .login-instructions{
+ position:absolute!important;z-index:4!important;
+ top:75.3%!important;left:25.1%!important;width:49.1%!important;height:11.7%!important;
+ display:block!important;padding:0!important;margin:0!important;
+ background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;
+ color:transparent!important;box-shadow:none!important;filter:none!important;
+ transform:none!important;transition:none!important;cursor:pointer!important;font-size:0!important;
+}
+html body #welcome.login-v67 .login-instructions span,
+html body #welcome.login-v67 .login-hotspot span{opacity:0!important;}
+html body #welcome.login-v67 .login-hotspot:is(:hover,:active,:focus,:focus-visible),
+html body #welcome.login-v67 .login-instructions:is(:hover,:active,:focus,:focus-visible){
+ background:transparent!important;background-image:none!important;
+ box-shadow:none!important;filter:none!important;transform:none!important;
+ border:0!important;outline:none!important;opacity:1!important;
+}
+/* Acessibilidade: o foco permanece identificável para teclado sem alterar a arte ao passar o mouse. */
+html body #welcome.login-v67 .login-hotspot:focus-visible,
+html body #welcome.login-v67 .login-instructions:focus-visible{
+ outline:3px dashed #ffffff!important;outline-offset:-4px!important;
+}
+/* Perguntas: caixa dourada, texto realmente ampliado e duas pontes abaixo. */
+html body #pergunta.v46-question-panel:not(.hidden){min-height:calc(100dvh - 155px)!important;padding:clamp(8px,1.2vh,18px)!important;}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-question-core{
+ width:min(100%,1250px)!important;max-width:1250px!important;
+ margin:0 auto!important;gap:clamp(8px,1.2vh,15px)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{
+ box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ width:min(100%,1200px)!important;max-width:1200px!important;
+ min-height:clamp(130px,19vh,205px)!important;
+ margin:8px auto 12px!important;padding:clamp(16px,2vh,28px) clamp(22px,3vw,50px)!important;
+ font-size:clamp(42px,4.1vw,76px)!important;font-weight:900!important;
+ line-height:1.07!important;letter-spacing:-.025em!important;text-align:center!important;
+ color:#fff!important;text-wrap:balance!important;overflow-wrap:break-word!important;
+ border:3px solid #ffd145!important;border-radius:28px!important;
+ background:rgba(2,19,41,.94)!important;
+ box-shadow:0 0 24px rgba(255,196,45,.38)!important;
+}
+html body #pergunta.v46-question-panel:not(.hidden) #qcontrols{width:min(100%,1120px)!important;max-width:1120px!important;}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-reveals{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-bridge{border:2px solid #1ed3f2!important;border-radius:15px!important;box-shadow:0 0 12px rgba(0,195,245,.20)!important;}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-reveal-head{min-height:48px!important;font-size:clamp(17px,1.4vw,24px)!important;background:linear-gradient(180deg,#0b648d,#06304f)!important;}
+html body #pergunta.v46-question-panel:not(.hidden) .v45-comment-wrap{border:2px solid #71c9ee!important;border-radius:15px!important;padding:10px 13px!important;background:rgba(3,26,50,.88)!important;}
+html body #pergunta.v46-question-panel:not(.hidden) #note{min-height:clamp(65px,9vh,110px)!important;font-size:clamp(15px,1.15vw,21px)!important;}
+html body #pergunta.v46-question-panel:not(.hidden) #save{background:linear-gradient(135deg,#20476a,#245d86)!important;border:2px solid #9cdbff!important;color:white!important;}
+html body #pergunta.v46-question-panel:not(.hidden) #backWheel{background:linear-gradient(135deg,#0b603e,#0d9658)!important;border:2px solid #83ffae!important;color:white!important;}
+html body #roda .wheel-wrap{width:min(100%,min(82vh,860px))!important;max-width:860px!important;margin-inline:auto!important;}
+html body #roda #wheel{display:block!important;width:100%!important;height:auto!important;aspect-ratio:1!important;}
+@media(max-width:760px){
+ html body #pergunta.v46-question-panel:not(.hidden) #qtext.question{font-size:clamp(27px,6vw,44px)!important;min-height:120px!important;}
+ html body #pergunta.v46-question-panel:not(.hidden) .v45-reveals{grid-template-columns:1fr!important;}
+ html body #roda .wheel-wrap{width:min(100%,95vw)!important;}
+}
+
+/* V71 — REGRA CANÔNICA: vence os seletores antigos #appMain:has(...) da V31.
+   Não reduzir fontes ao entrar em tela cheia. */
+#appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-question-core {
+ width:min(92vw,1380px)!important;max-width:1380px!important;gap:12px!important;
+}
+#appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qtext.question {
+ font-size:clamp(48px,4.4vw,82px)!important;line-height:1.1!important;
+ font-weight:900!important;letter-spacing:-.02em!important;
+ width:100%!important;max-width:1380px!important;min-height:0!important;
+ padding:clamp(18px,2.5vh,32px) clamp(22px,3vw,48px)!important;
+ margin:8px auto 12px!important;display:block!important;text-align:center!important;
+ border:3px solid #ffd145!important;border-radius:24px!important;
+ background:rgba(2,19,41,.94)!important;box-shadow:0 0 24px rgba(255,196,45,.34)!important;
+ text-wrap:balance!important;overflow-wrap:break-word!important;
+}
+#appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qcontrols {width:100%!important;max-width:1320px!important;margin:auto!important;}
+#appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-reveals{width:100%!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+#appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-comment-wrap{width:100%!important;}
+@media(max-width:760px){
+ #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qtext.question{font-size:clamp(30px,6.2vw,48px)!important;padding:18px 16px!important;}
+ #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-reveals{grid-template-columns:1fr!important;}
+}
+
+
+/* ===============================================================
+   V72 — LAYOUT DE PROJEÇÃO: fonte elegante, borda branca SEM LUZ
+   A experiência individual conserva SIM/NÃO; coletiva conserva
+   somente o campo numérico. As duas compartilham a mesma grade.
+   Regras finais: não inserir CSS concorrente depois deste bloco.
+   =============================================================== */
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel {
+  min-height:calc(100dvh - 158px)!important;
+  padding:clamp(8px,1.1vh,14px) clamp(12px,2vw,30px)!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-top{
+  margin-bottom:0!important;min-height:38px!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-question-core{
+  width:min(100%,1510px)!important;max-width:1510px!important;
+  gap:clamp(7px,.95vh,13px)!important;margin:0 auto!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-question-label{
+  margin:0 auto!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qtext.question{
+  box-sizing:border-box!important;
+  width:min(100%,1510px)!important;max-width:1510px!important;
+  min-height:clamp(155px,23vh,265px)!important;
+  padding:clamp(12px,1.7vh,24px) clamp(20px,3vw,52px)!important;
+  margin:0 auto!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  font-family:Georgia,"Palatino Linotype","Book Antiqua",Palatino,serif!important;
+  font-size:clamp(42px,4.4vw,82px)!important;
+  font-weight:400!important;font-style:italic!important;
+  line-height:1.08!important;letter-spacing:-.025em!important;
+  color:#fff!important;text-align:center!important;text-wrap:balance!important;
+  border:3px solid #fff!important;border-radius:36px!important;
+  background:rgba(2,17,37,.90)!important;
+  box-shadow:none!important;filter:none!important;text-shadow:none!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qcontrols{
+  width:min(100%,1230px)!important;max-width:1230px!important;
+  margin:0 auto!important;gap:clamp(7px,1vh,12px)!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #collectiveAnswer,
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #individualAnswer{
+  margin:0 auto!important;padding:0!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #collectiveAnswer label,
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .answer-label{
+  margin:0 0 5px!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #count{
+  min-height:43px!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-reveals{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;width:100%!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-bridge{
+  min-width:0!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-reveal-head{
+  min-height:46px!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-comment-wrap{
+  width:100%!important;box-sizing:border-box!important;margin:0!important;
+  padding:8px 12px!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #note{
+  min-height:clamp(58px,7.8vh,92px)!important;
+  height:clamp(58px,7.8vh,92px)!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-save-actions{
+  margin-top:3px!important;gap:clamp(12px,2vw,32px)!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .answer-buttons{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:18px!important;margin:4px auto!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .answer-buttons button{
+  width:auto!important;min-width:145px!important;min-height:56px!important;
+  padding:8px 26px!important;border-radius:12px!important;
+  font-size:clamp(21px,1.8vw,29px)!important;line-height:1.1!important;
+  font-weight:750!important;white-space:nowrap!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #answerYes{
+  background:#086b39!important;border:2px solid #65e993!important;color:#fff!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #answerNo{
+  background:#9b1c2d!important;border:2px solid #ff7d83!important;color:#fff!important;
+}
+html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #save{
+  background:linear-gradient(135deg,#20476a,#245d86)!important;
+  border:2px solid #9cdbff!important;color:white!important;
+}
+@media(max-width:760px){
+ html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qtext.question{
+   font-size:clamp(29px,6vw,46px)!important;
+   min-height:170px!important;padding:15px!important;border-radius:22px!important;
+ }
+ html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .v45-reveals{
+   grid-template-columns:1fr!important;
+ }
+ html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel .answer-buttons button{
+   min-width:110px!important;padding:8px 16px!important;
+ }
+}
+@media(max-height:700px) and (min-width:761px){
+ html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #qtext.question{
+   font-size:clamp(40px,4vw,72px)!important;min-height:140px!important;
+ }
+ html body #appMain:has(#pergunta:not(.hidden)) #pergunta.v46-question-panel #note{
+   height:56px!important;min-height:56px!important;
+ }
+}
+
+/* V73 — Controle de tela cheia na entrada, sem alterar arte nem hotspots. */
+html body #welcome.login-v67:not(.hidden) #loginFullscreen.login-fullscreen-control{
+ position:fixed!important;z-index:25!important;right:clamp(12px,2vw,30px)!important;
+ top:clamp(10px,1.6vh,22px)!important;left:auto!important;
+ width:auto!important;height:auto!important;min-height:40px!important;
+ padding:9px 16px!important;border:1px solid rgba(255,255,255,.7)!important;
+ border-radius:9px!important;background:rgba(2,19,40,.82)!important;
+ color:#fff!important;box-shadow:none!important;filter:none!important;
+ font:700 clamp(12px,1vw,15px)/1.2 Arial,sans-serif!important;
+ cursor:pointer!important;transform:none!important;
+}
+html body #welcome.login-v67:not(.hidden) #loginFullscreen.login-fullscreen-control:hover{
+ background:rgba(2,19,40,.82)!important;box-shadow:none!important;filter:none!important;
+}
+html body #welcome.login-v67.hidden #loginFullscreen{display:none!important;}
+
+
+/* V75 — A roda e o pentágono têm o MESMO layout nas duas experiências.
+   A única distinção visual é a forma de registrar respostas. */
+html[data-experience-mode="collective"] #roda,
+html[data-experience-mode="collective"] #relatorio{
+  box-sizing:border-box!important;
+}
+html[data-experience-mode="collective"] #roda .home-layout{
+  display:grid!important;
+  grid-template-columns:minmax(390px,1.05fr) minmax(390px,1fr)!important;
+  align-items:center!important;
+  gap:clamp(24px,3vw,70px)!important;
+}
+html[data-experience-mode="collective"] #roda .wheel-wrap{
+  width:min(100%,min(82vh,860px))!important;
+  max-width:860px!important;
+  margin-inline:auto!important;
+}
+html[data-experience-mode="collective"] #roda #wheel{
+  display:block!important;width:100%!important;height:auto!important;aspect-ratio:1!important;
+}
+html[data-experience-mode="collective"] #roda .home-side{
+  background:linear-gradient(120deg,rgba(3,22,49,.82),rgba(3,21,48,.7))!important;
+  border:0!important;border-left:2px solid #1bcaff!important;
+  border-radius:0!important;padding:clamp(22px,3vw,48px)!important;
+}
+html[data-experience-mode="collective"] #roda .home-side .actions{
+  max-width:none!important;gap:clamp(10px,1.3vh,20px)!important;
+}
+html[data-experience-mode="collective"] #roda .home-side .actions button{
+  min-height:clamp(56px,7.2vh,86px)!important;
+  font-size:clamp(16px,1.45vw,25px)!important;
+}
+html[data-experience-mode="collective"] #relatorio #radar{
+  display:block!important;max-width:100%!important;height:auto!important;margin-inline:auto!important;
+}
+html[data-experience-mode="collective"] #pergunta #collectiveAnswer:not(.hidden){
+  display:block!important;width:100%!important;text-align:center!important;
+}
+html[data-experience-mode="collective"] #pergunta #collectiveAnswer .v45-collective-entry{
+  width:min(100%,360px)!important;margin:6px auto!important;
+}
+html[data-experience-mode="collective"] #pergunta #collectiveAnswer #count{
+  box-sizing:border-box!important;width:100%!important;max-width:360px!important;
+  min-height:48px!important;
+}
+@media(max-width:950px){
+ html[data-experience-mode="collective"] #roda .home-layout{
+  grid-template-columns:1fr!important;
+ }
+ html[data-experience-mode="collective"] #roda .home-side{
+  border-left:0!important;border-top:2px solid #1bcaff!important;
+ }
+}
