@@ -1879,3 +1879,43 @@ html body #appMain #roda.rodaplus-panel .rodaplus-status {
 @media (max-width:900px){
  html body #appMain #roda.rodaplus-panel .rodaplus-stage{width:100%!important;}
 }
+
+
+/* V78 — Roda PNG genuinamente transparente, seta independente em CSS.
+   Os controles são áreas invisíveis sobre os botões originais de RODAPLUS.jpg. */
+html body #appMain #roda.rodaplus-panel .rodaplus-stage{isolation:isolate!important;}
+/* A cobertura evita que a roda impressa no JPG apareça sob o PNG em movimento.
+   Preserva integralmente a arte e os botões do lado direito. */
+html body #appMain #roda.rodaplus-panel .rodaplus-stage::before{
+ content:"";position:absolute;z-index:1;pointer-events:none;
+ left:5.05%;top:5.4%;width:50.2%;aspect-ratio:1;
+ border-radius:50%;background:#061d38;
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-rotor{
+ left:5.05%!important;top:5.4%!important;width:50.2%!important;
+ height:auto!important;aspect-ratio:1!important;
+ border-radius:50%!important;overflow:visible!important;z-index:2!important;
+ filter:drop-shadow(0 7px 12px #0008);
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-rotor #wheelGraphic{
+ width:100%!important;height:100%!important;object-fit:contain!important;
+ transform-origin:50% 50%!important;transition:none!important;
+ will-change:transform;pointer-events:none;user-select:none;
+}
+/* Cobre a seta que foi impressa no JPG; a seta funcional nasce no CSS. */
+html body #appMain #roda.rodaplus-panel .rodaplus-stage::after{
+ content:"";position:absolute;z-index:3;pointer-events:none;
+ left:27.1%;top:0%;width:7.2%;height:6.5%;
+ background:linear-gradient(180deg,#07203b,#08213b 80%,transparent);
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-pointer-css{
+ position:absolute;left:27.4%;top:2.5%;width:6.3%;height:9%;
+ z-index:4;pointer-events:none;
+ background:linear-gradient(115deg,#fff1b0 5%,#ffd15c 34%,#a95b0d 72%,#ffde80 95%);
+ clip-path:polygon(10% 0,90% 0,50% 100%);
+ filter:drop-shadow(0 4px 4px #000b);
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-hit{z-index:5!important;}
+@media(prefers-reduced-motion:reduce){
+ html body #roda .rodaplus-rotor #wheelGraphic{will-change:auto!important;}
+}

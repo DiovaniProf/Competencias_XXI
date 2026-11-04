@@ -68,11 +68,11 @@ isSpinning=true;tab('roda');$('spin').disabled=true;$('next').disabled=true;$('s
 // Centro do setor g está em -54 + 72*g graus; alinhar ao indicador fixo no topo.
 const desired=-72*((g+2)%5);const normalized=((desired-angle)%360+360)%360;
 angle+=360*5+normalized;
-const from=angle-(360*5+normalized),to=angle,start=performance.now(),duration=3100;
+const from=angle-(360*5+normalized),to=angle,start=performance.now(),duration=4800;
  function animate(now){const t=Math.min(1,(now-start)/duration);const eased=1-Math.pow(1-t,4);
  wheel(from+(to-from)*eased);if(t<1)requestAnimationFrame(animate);}
  requestAnimationFrame(animate);
-setTimeout(()=>{isSpinning=false;state.used.push(i);state.active=i;lastGroup=g;saveState();update();$('next').disabled=false;$('spinMessage').textContent='Eixo sorteado: '+groups[g];tab('pergunta')},5100);
+setTimeout(()=>{isSpinning=false;state.used.push(i);state.active=i;lastGroup=g;saveState();update();$('next').disabled=false;$('spinMessage').textContent='Eixo sorteado: '+groups[g];tab('pergunta')},4900);
 }
 function saveCurrent(){
  if(state.active<0)return true;
