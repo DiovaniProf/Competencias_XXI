@@ -1103,13 +1103,13 @@ body{background:#06172d!important;background-image:none!important}
 
 /* V58 — fundos oficiais 16:9, fixos, com conteúdo HTML interativo */
 #welcome.welcome-screen {
-  background-image:linear-gradient(90deg,rgba(2,15,36,.25),rgba(2,15,36,.15)),url("ENTRADA.png")!important;
+  background-image:linear-gradient(90deg,rgba(2,15,36,.25),rgba(2,15,36,.15)),url("ENTRADA.jpg")!important;
   background-size:cover!important;background-position:center center!important;
   background-attachment:fixed!important;
 }
 #welcome .welcome-card.welcome-v22 {background:rgba(7,28,52,.79)!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(83,204,249,.5)!important;box-shadow:0 20px 65px rgba(0,0,0,.38)!important;}
 #roda.panel {
-  background-image:linear-gradient(90deg,rgba(0,13,35,.20),rgba(0,14,39,.34)),url("RODA.png")!important;
+  background-image:linear-gradient(90deg,rgba(0,13,35,.20),rgba(0,14,39,.34)),url("RODA.jpg")!important;
   background-size:cover!important;background-position:center center!important;
   background-repeat:no-repeat!important;
   border-color:#2bd8fa!important;
@@ -1149,3 +1149,9 @@ body{background:#06172d!important;background-image:none!important}
  #questoes #list .bank-question{flex-direction:column!important;align-items:stretch!important;}
  #questoes #list .bank-status{min-width:0!important;}
 }
+
+/* V59: fundos JPG oficiais da raiz do GitHub, com prioridade de exibição. */
+#welcome.welcome-screen:not(.hidden){background:#062344 url("ENTRADA.jpg") center center / cover no-repeat fixed!important;}
+#roda.panel:not(.hidden){background:#062344 url("RODA.jpg") center center / cover no-repeat!important;}
+#welcome .welcome-card.welcome-v22{background:rgba(6,22,43,.68)!important;}
+@media(max-width:800px){#welcome.welcome-screen:not(.hidden){background-attachment:scroll!important;}}

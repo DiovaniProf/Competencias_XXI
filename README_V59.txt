@@ -1,0 +1,1 @@
+V59 — Corrigidos os nomes e caminhos das imagens: ENTRADA.jpg e RODA.jpg, ambas na raiz do GitHub. ENTRADA somente na escolha da modalidade; RODA somente na tela da roleta. Envie TODOS os arquivos deste ZIP diretamente para a raiz do repositório. Atualize o navegador com Ctrl+F5 para eliminar CSS em cache. FUTURISTA.png permanece referência estética.
