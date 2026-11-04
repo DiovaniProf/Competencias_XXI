@@ -991,3 +991,40 @@ body{background:#06172d!important;background-image:none!important}
   #pergunta.v46-question-panel {min-height: min(740px,calc(100dvh - 170px)) !important;}
   #pergunta .v45-question-core {margin:5px auto 0 !important;}
 }
+/* V54 — correção de dimensionamento em tela cheia, sem alterar os dados. */
+#pergunta.v46-question-panel{width:100%!important;min-height:max(650px,calc(100dvh - 240px))!important;overflow:visible!important;}
+#pergunta .v45-question-core{display:block!important;width:min(100%,1180px)!important;max-width:1180px!important;margin:0 auto!important;min-width:0!important;text-align:center!important;}
+#pergunta #qcontrols:not(.hidden){display:block!important;position:static!important;width:100%!important;max-width:none!important;min-width:0!important;flex:none!important;align-items:stretch!important;justify-content:initial!important;}
+#pergunta #qtext.question{display:block!important;min-height:0!important;width:100%!important;max-width:1180px!important;margin:14px auto 20px!important;padding:0 12px!important;font-size:clamp(34px,3.2vw,58px)!important;line-height:1.13!important;font-weight:900!important;letter-spacing:-.018em!important;overflow-wrap:break-word!important;text-wrap:balance!important;}
+#pergunta #collectiveAnswer{display:block!important;width:100%!important;max-width:1100px!important;margin:0 auto 18px!important;text-align:center!important;}
+#pergunta #collectiveAnswer label{font-size:clamp(15px,1.1vw,19px)!important;text-align:center!important;}
+#pergunta #collectiveAnswer .v45-collective-entry{width:min(100%,360px)!important;margin:8px auto 0!important;}
+#pergunta #collectiveAnswer #count{width:100%!important;max-width:none!important;min-height:48px!important;font-size:17px!important;}
+#pergunta .v46-reveals{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important;max-width:1050px!important;margin:18px auto 12px!important;gap:16px!important;}
+#pergunta .v45-bridge{min-width:0!important;}
+#pergunta .v45-reveal-head{min-height:60px!important;font-size:clamp(15px,1.15vw,19px)!important;}
+#pergunta .v45-comment-wrap{display:block!important;width:100%!important;max-width:1050px!important;min-width:0!important;margin:0 auto!important;padding:14px 16px!important;flex:none!important;}
+#pergunta .v45-comment-wrap label{display:block!important;text-align:left!important;font-size:clamp(15px,1.1vw,19px)!important;}
+#pergunta #note{display:block!important;box-sizing:border-box!important;width:100%!important;max-width:none!important;min-width:0!important;height:clamp(105px,13vh,145px)!important;min-height:105px!important;max-height:none!important;resize:vertical!important;font-size:clamp(15px,1vw,18px)!important;line-height:1.4!important;}
+#pergunta .v45-save-actions{display:flex!important;flex-direction:row!important;justify-content:center!important;align-items:stretch!important;width:100%!important;max-width:850px!important;gap:clamp(18px,3vw,55px)!important;margin:18px auto 4px!important;}
+#pergunta .v45-save-actions button{flex:1 1 0!important;width:auto!important;max-width:350px!important;min-height:66px!important;font-size:clamp(14px,1vw,17px)!important;line-height:1.2!important;white-space:normal!important;}
+@media(min-width:901px) and (max-height:780px){
+#pergunta.v46-question-panel{min-height:max(550px,calc(100dvh - 205px))!important;}
+#pergunta #qtext.question{font-size:clamp(32px,2.85vw,49px)!important;margin:9px auto 12px!important;}
+#pergunta .v46-reveals{margin:12px auto 9px!important;}
+#pergunta .v45-reveal-head{min-height:52px!important;}
+#pergunta #note{height:clamp(88px,12vh,112px)!important;min-height:88px!important;}
+#pergunta .v45-save-actions button{min-height:54px!important;}
+}
+@media(max-width:900px){
+#pergunta.v46-question-panel{min-height:calc(100dvh - 170px)!important;}
+#pergunta .v45-question-core{width:100%!important;margin:5px auto!important;}
+#pergunta #qtext.question{font-size:clamp(27px,4.5vw,42px)!important;}
+#pergunta .v46-reveals{gap:10px!important;}
+#pergunta #note{min-height:100px!important;height:110px!important;}
+}
+@media(max-width:680px){
+#pergunta .v46-reveals{grid-template-columns:1fr!important;}
+#pergunta .v45-save-actions{flex-direction:column!important;gap:10px!important;}
+#pergunta .v45-save-actions button{flex:none!important;width:100%!important;max-width:none!important;}
+}
