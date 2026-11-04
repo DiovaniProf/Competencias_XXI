@@ -1,0 +1,1 @@
+V68 — Organização visual da questão, fonte ampliada e CSS consolidado no final da folha; dois painéis Ponte lado a lado, comentário amplo, retorno verde e salvar/voltar azul. Guia de instruções ampliado. LOGIN.jpg preservada. Para GitHub, enviar todos os arquivos à raiz do repositório.\n

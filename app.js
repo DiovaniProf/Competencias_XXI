@@ -23,8 +23,8 @@ function setMode(mode,reset=false){
  $('collectiveAnswer').classList.toggle('hidden',mode==='individual');
  $('modeIndicator').textContent=mode==='individual'?'EXPERIÊNCIA INDIVIDUAL':'EXPERIÊNCIA COLETIVA';
  document.querySelector('#roda .intro').textContent=mode==='individual'?'Uma questão por vez, alternando os cinco eixos. Responda SIM ou NÃO, explore a mediação e registre seus comentários para refletir sobre suas competências e possibilidades de desenvolvimento.':'Uma questão por vez, alternando os cinco eixos. Registre quantos estudantes responderam SIM, explore a mediação e registre comentários para promover o diálogo e identificar possibilidades de intervenção interdisciplinar.';
- if($('totalCaption'))$('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
- if($('totalChangeHint'))$('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
+ $('totalCaption').textContent=mode==='individual'?'Participação:':'Participantes:';
+ $('totalChangeHint').textContent=mode==='individual'?'Respostas individuais.':'Para alterar, volte à tela da roda.';
  $('total').value=state.total;syncModeNavigation();saveState();update();tab('dashboard');
 }
 $('backWheel').onclick=()=>{tab('roda')};
@@ -54,8 +54,39 @@ function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
 // V64: roda 3D desenhada em canvas, mantendo sorteio e animação originais.
 function wheel(rotation=angle){
- const image=$('wheelGraphic');
- if(image)image.style.transform=`rotate(${rotation}deg)`;
+ const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=209;
+ const rot=rotation*Math.PI/180;
+ x.clearRect(0,0,500,500);
+ // Sombra e aro metálico externo.
+ x.save();x.shadowColor='rgba(0,0,0,.85)';x.shadowBlur=25;x.shadowOffsetY=15;
+ x.beginPath();x.arc(cx,cy,237,0,Math.PI*2);x.fillStyle='#07162b';x.fill();x.restore();
+ let outer=x.createRadialGradient(190,145,70,cx,cy,239);
+ outer.addColorStop(0,'#fff0ad');outer.addColorStop(.67,'#b9781b');outer.addColorStop(.91,'#ffe59b');outer.addColorStop(1,'#674013');
+ x.beginPath();x.arc(cx,cy,235,0,Math.PI*2);x.fillStyle=outer;x.fill();
+ x.beginPath();x.arc(cx,cy,222,0,Math.PI*2);x.fillStyle='#061d36';x.fill();
+ const base=[['#0b4ab7','#2b7cff','#062c7b'],['#00778f','#20e4f5','#00476e'],['#006e53','#1de8a0','#004a3b'],['#5620aa','#b84cf5','#351067'],['#aa6508','#ffc444','#754006']];
+ for(let i=0;i<5;i++){
+  const a=-Math.PI/2+i*2*Math.PI/5+rot,b=a+2*Math.PI/5,mid=(a+b)/2;
+  x.save();x.shadowColor='rgba(0,0,0,.75)';x.shadowBlur=9;x.shadowOffsetY=7;
+  x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a+.012,b-.012);x.closePath();
+  let g=x.createLinearGradient(cx+Math.cos(mid)*35,cy+Math.sin(mid)*35,cx+Math.cos(mid)*r,cy+Math.sin(mid)*r);
+  g.addColorStop(0,base[i][0]);g.addColorStop(.68,base[i][1]);g.addColorStop(1,base[i][2]);
+  x.fillStyle=g;x.fill();x.restore();x.strokeStyle='#05172c';x.lineWidth=5;x.stroke();
+  x.save();x.beginPath();x.arc(cx,cy,r-7,a+.05,b-.05);x.strokeStyle='rgba(255,255,255,.25)';x.lineWidth=3;x.stroke();x.restore();
+  const labels=[['PROTAGONISMO'],['TECNOLOGIA'],['ENEM'],['CARREIRA'],['LAZER E','TEMPO LIVRE']][i];
+  const tx=cx+147*Math.cos(mid),ty=cy+147*Math.sin(mid);
+  x.save();x.translate(tx,ty);x.textAlign='center';x.textBaseline='middle';
+  x.shadowColor='#00101d';x.shadowBlur=6;x.shadowOffsetY=2;x.fillStyle='#fff';x.font='900 17px system-ui';
+  labels.forEach((line,j)=>x.fillText(line,0,(j-(labels.length-1)/2)*22,128));x.restore();
+ }
+ // Medalhão central, fixo e com relevo dourado.
+ x.save();x.shadowColor='rgba(0,0,0,.8)';x.shadowBlur=14;x.shadowOffsetY=5;
+ x.beginPath();x.arc(cx,cy,93,0,Math.PI*2);x.fillStyle='#e7b34e';x.fill();x.restore();
+ let inner=x.createRadialGradient(cx-27,cy-37,8,cx,cy,89);inner.addColorStop(0,'#16466a');inner.addColorStop(1,'#041a30');
+ x.beginPath();x.arc(cx,cy,83,0,Math.PI*2);x.fillStyle=inner;x.fill();x.strokeStyle='#ffdf86';x.lineWidth=3;x.stroke();
+ x.textAlign='center';x.textBaseline='middle';x.font='900 18px system-ui';x.fillStyle='#fff';x.fillText('RODA DAS',cx,cy-23);
+ x.fillStyle='#4ce8ef';x.font='900 17px system-ui';x.fillText('COMPETÊNCIAS',cx,cy+3);
+ x.fillStyle='#ffd77a';x.font='900 17px system-ui';x.fillText('SÉC. XXI',cx,cy+29);
 }
 
 let isSpinning=false,angle=0,lastGroup=state.active>=0?questions[state.active].g:-1;
@@ -66,13 +97,13 @@ let eligible=rest.filter(i=>questions[i].g!==lastGroup);if(!eligible.length)elig
 const i=eligible[Math.floor(Math.random()*eligible.length)],g=questions[i].g;
 isSpinning=true;tab('roda');$('spin').disabled=true;$('next').disabled=true;$('spinMessage').textContent='A roda está girando…';
 // Centro do setor g está em -54 + 72*g graus; alinhar ao indicador fixo no topo.
-const desired=-72*((g+2)%5);const normalized=((desired-angle)%360+360)%360;
+const desired=-36-72*g;const normalized=((desired-angle)%360+360)%360;
 angle+=360*5+normalized;
-const from=angle-(360*5+normalized),to=angle,start=performance.now(),duration=4800;
+const from=angle-(360*5+normalized),to=angle,start=performance.now(),duration=3100;
  function animate(now){const t=Math.min(1,(now-start)/duration);const eased=1-Math.pow(1-t,4);
  wheel(from+(to-from)*eased);if(t<1)requestAnimationFrame(animate);}
  requestAnimationFrame(animate);
-setTimeout(()=>{isSpinning=false;state.used.push(i);state.active=i;lastGroup=g;saveState();update();$('next').disabled=false;$('spinMessage').textContent='Eixo sorteado: '+groups[g];tab('pergunta')},4900);
+setTimeout(()=>{isSpinning=false;state.used.push(i);state.active=i;lastGroup=g;saveState();update();$('next').disabled=false;$('spinMessage').textContent='Eixo sorteado: '+groups[g];tab('pergunta')},5100);
 }
 function saveCurrent(){
  if(state.active<0)return true;
@@ -87,7 +118,6 @@ function saveCurrent(){
  radar();
  return true;
 }
-$('openControl').onclick=()=>tab('dashboard');
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
 $('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert(state.mode==='individual'?'Selecione SIM ou NÃO antes de continuar.':'Informe quantos estudantes responderam SIM antes de continuar.');(state.mode==='individual'?$('answerYes'):$('count')).focus();return}if(saveCurrent())spin()};
 $('save').onclick=()=>{
