@@ -16,6 +16,7 @@ function setMode(mode,reset=false){
  if(!['individual','collective'].includes(mode))return;
  if(reset){state={used:[],active:-1,counts:{},notes:{},className:'',total:mode==='individual'?1:10,mode};lastGroup=-1;angle=0;wheel(0);$('className').value='';$('spinMessage').textContent='';}
  state.mode=mode;if(mode==='individual')state.total=1;
+ document.documentElement.dataset.experienceMode=mode;
  $('welcome').classList.add('hidden');$('appMain').classList.remove('hidden');
  $('collectiveTotal').classList.toggle('hidden',mode==='individual');
  $('individualAnswer').classList.toggle('hidden',mode!=='individual');
@@ -30,33 +31,47 @@ $('backWheel').onclick=()=>{tab('roda')};
 $('chooseIndividual').onclick=()=>setMode('individual',true);
 $('chooseCollective').onclick=()=>setMode('collective',true);
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
-function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
+function selectAnswer(n){if(state.mode!=='individual'||state.active<0)return;$('count').value=String(n);if(saveCurrent()){ $('answerYes').setAttribute('aria-pressed',String(n===1));$('answerNo').setAttribute('aria-pressed',String(n===0)); }}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
 function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio'){if(state.active>=0&&$('count').value.trim()!=='')saveCurrent();radar();}if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
+// V64: roda 3D desenhada em canvas, mantendo sorteio e animação originais.
 function wheel(rotation=angle){
- const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
+ const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=209;
  const rot=rotation*Math.PI/180;
  x.clearRect(0,0,500,500);
+ // Sombra e aro metálico externo.
+ x.save();x.shadowColor='rgba(0,0,0,.85)';x.shadowBlur=25;x.shadowOffsetY=15;
+ x.beginPath();x.arc(cx,cy,237,0,Math.PI*2);x.fillStyle='#07162b';x.fill();x.restore();
+ let outer=x.createRadialGradient(190,145,70,cx,cy,239);
+ outer.addColorStop(0,'#fff0ad');outer.addColorStop(.67,'#b9781b');outer.addColorStop(.91,'#ffe59b');outer.addColorStop(1,'#674013');
+ x.beginPath();x.arc(cx,cy,235,0,Math.PI*2);x.fillStyle=outer;x.fill();
+ x.beginPath();x.arc(cx,cy,222,0,Math.PI*2);x.fillStyle='#061d36';x.fill();
+ const base=[['#0b4ab7','#2b7cff','#062c7b'],['#00778f','#20e4f5','#00476e'],['#006e53','#1de8a0','#004a3b'],['#5620aa','#b84cf5','#351067'],['#aa6508','#ffc444','#754006']];
  for(let i=0;i<5;i++){
   const a=-Math.PI/2+i*2*Math.PI/5+rot,b=a+2*Math.PI/5,mid=(a+b)/2;
-  x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,b);x.closePath();
-  x.fillStyle=colors[i];x.fill();x.strokeStyle='#071525';x.lineWidth=5;x.stroke();
-  // Letras verticais, nunca invertidas, inclusive no eixo sorteado.
+  x.save();x.shadowColor='rgba(0,0,0,.75)';x.shadowBlur=9;x.shadowOffsetY=7;
+  x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a+.012,b-.012);x.closePath();
+  let g=x.createLinearGradient(cx+Math.cos(mid)*35,cy+Math.sin(mid)*35,cx+Math.cos(mid)*r,cy+Math.sin(mid)*r);
+  g.addColorStop(0,base[i][0]);g.addColorStop(.68,base[i][1]);g.addColorStop(1,base[i][2]);
+  x.fillStyle=g;x.fill();x.restore();x.strokeStyle='#05172c';x.lineWidth=5;x.stroke();
+  x.save();x.beginPath();x.arc(cx,cy,r-7,a+.05,b-.05);x.strokeStyle='rgba(255,255,255,.25)';x.lineWidth=3;x.stroke();x.restore();
   const labels=[['PROTAGONISMO'],['TECNOLOGIA'],['ENEM'],['CARREIRA'],['LAZER E','TEMPO LIVRE']][i];
-  const tx=cx+145*Math.cos(mid),ty=cy+145*Math.sin(mid);
+  const tx=cx+147*Math.cos(mid),ty=cy+147*Math.sin(mid);
   x.save();x.translate(tx,ty);x.textAlign='center';x.textBaseline='middle';
-  x.fillStyle='#fff';x.font='bold 16px system-ui';
-  labels.forEach((line,j)=>x.fillText(line,0,(j-(labels.length-1)/2)*21,118));
-  x.restore();
+  x.shadowColor='#00101d';x.shadowBlur=6;x.shadowOffsetY=2;x.fillStyle='#fff';x.font='900 17px system-ui';
+  labels.forEach((line,j)=>x.fillText(line,0,(j-(labels.length-1)/2)*22,128));x.restore();
  }
- // Disco central permanece imóvel, sem encostar nas divisórias.
- x.beginPath();x.arc(cx,cy,86,0,Math.PI*2);x.fillStyle='#112742';x.fill();
- x.strokeStyle='#f5d17d';x.lineWidth=6;x.stroke();
- x.textAlign='center';x.textBaseline='middle';x.font='bold 19px system-ui';
- x.fillStyle='#fff';x.fillText('RODA DAS',cx,cy-15);
- x.fillStyle='#58dce9';x.font='bold 17px system-ui';x.fillText('COMPETÊNCIAS',cx,cy+15);
+ // Medalhão central, fixo e com relevo dourado.
+ x.save();x.shadowColor='rgba(0,0,0,.8)';x.shadowBlur=14;x.shadowOffsetY=5;
+ x.beginPath();x.arc(cx,cy,93,0,Math.PI*2);x.fillStyle='#e7b34e';x.fill();x.restore();
+ let inner=x.createRadialGradient(cx-27,cy-37,8,cx,cy,89);inner.addColorStop(0,'#16466a');inner.addColorStop(1,'#041a30');
+ x.beginPath();x.arc(cx,cy,83,0,Math.PI*2);x.fillStyle=inner;x.fill();x.strokeStyle='#ffdf86';x.lineWidth=3;x.stroke();
+ x.textAlign='center';x.textBaseline='middle';x.font='900 18px system-ui';x.fillStyle='#fff';x.fillText('RODA DAS',cx,cy-23);
+ x.fillStyle='#4ce8ef';x.font='900 17px system-ui';x.fillText('COMPETÊNCIAS',cx,cy+3);
+ x.fillStyle='#ffd77a';x.font='900 17px system-ui';x.fillText('SÉC. XXI',cx,cy+29);
 }
+
 let isSpinning=false,angle=0,lastGroup=state.active>=0?questions[state.active].g:-1;
 function select(i){if(isSpinning)return;if(!state.used.includes(i))state.used.push(i);state.active=i;lastGroup=questions[i].g;saveState();update();tab('pergunta')}
 function spin(){if(isSpinning)return;const rest=questions.map((_,i)=>i).filter(i=>!state.used.includes(i));if(!rest.length){alert('As 20 perguntas já foram realizadas.');return}
@@ -84,7 +99,7 @@ function saveCurrent(){
  state.notes[state.active]=$('note').value;saveState();update();if(!$('relatorio').classList.contains('hidden'))radar();return true;
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
-$('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert('Registre e confirme a resposta SIM ou NÃO antes de continuar.');$('count').focus();return}if(saveCurrent())spin()};
+$('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert(state.mode==='individual'?'Selecione SIM ou NÃO antes de continuar.':'Informe quantos estudantes responderam SIM antes de continuar.');(state.mode==='individual'?$('answerYes'):$('count')).focus();return}if(saveCurrent())spin()};
 $('save').onclick=()=>{if(saveCurrent())tab('roda')};
 $('last').onclick=()=>{if(state.active>=0)tab('pergunta')};
 // Sincroniza respostas com os indicadores e o pentágono sem aguardar nova questão.
@@ -128,7 +143,7 @@ function resetBridges(){hideBridge('med','showMed');hideBridge('action','showAct
 function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)return;const willOpen=el.hidden;el.hidden=!willOpen;btn.setAttribute('aria-expanded',String(willOpen));}
 $('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
 $('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
-function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas SIM · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
+function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas SIM · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('answerYes').setAttribute('aria-pressed',String(state.counts[i]===1));$('answerNo').setAttribute('aria-pressed',String(state.counts[i]===0));$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
 function scores(){return groups.map((_,g)=>{let ids=questions.map((q,i)=>q.g===g?i:-1).filter(i=>i>=0&&state.counts[i]!==undefined);return ids.length?Math.round(100*ids.reduce((a,i)=>a+Number(state.counts[i]),0)/(ids.length*state.total)):null})}
 function reflectionData(){
  const v=scores();
@@ -213,7 +228,7 @@ function makeDocx(){
  return zipDocx([['[Content_Types].xml',enc.encode(contentTypes)],['_rels/.rels',enc.encode(rels)],['word/document.xml',enc.encode(documentXml)],['word/styles.xml',enc.encode(styles)],['word/_rels/document.xml.rels',enc.encode(docrels)],['word/media/pentagono.png',img]]);
 }
 $('export').onclick=()=>{try{saveState();radar();const blob=makeDocx(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Roda_das_Competencias_Sec_XXI_Relatorio.docx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Relatório DOCX gerado e disponibilizado para download.'}catch(e){$('status').textContent='Não foi possível gerar o DOCX: '+e.message;console.error(e)}};
-$('reportBack').onclick=()=>tab('roda');$('reportReset').onclick=()=>$('resetHome').click();$('resetHome').onclick=()=>{if(!confirm('Reiniciar a roda? A experiência atual será arquivada no histórico da turma, se houver uma turma selecionada.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:state.className,total:state.total,mode:state.mode};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';saveState();update();tab('roda')};$('changeExperience').onclick=()=>{const hasRecords=state.used.length>0||Object.keys(state.counts).length>0||Object.values(state.notes).some(v=>String(v||'').trim());if(hasRecords&&!confirm('Finalizar esta experiência? Os registros serão arquivados automaticamente se uma turma estiver selecionada. Caso contrário, exporte uma cópia JSON antes de sair.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';$('className').value='';$('total').value='10';$('welcome').classList.remove('hidden');$('appMain').classList.add('hidden');syncModeNavigation();try{localStorage.removeItem('rodaProjetoVidaV5')}catch(e){};update();window.scrollTo(0,0)};$('className').value=state.className;$('total').value=state.total;$('totalSummary').textContent=state.total;wheel();syncModeNavigation();update();
+$('reportBack').onclick=()=>tab('roda');$('reportReset').onclick=()=>$('resetHome').click();$('resetHome').onclick=()=>{if(!confirm('Reiniciar a roda? A experiência atual será arquivada no histórico da turma, se houver uma turma selecionada.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:state.className,total:state.total,mode:state.mode};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';saveState();update();tab('roda')};$('changeExperience').onclick=()=>{const hasRecords=state.used.length>0||Object.keys(state.counts).length>0||Object.values(state.notes).some(v=>String(v||'').trim());if(hasRecords&&!confirm('Finalizar esta experiência? Os registros serão arquivados automaticamente se uma turma estiver selecionada. Caso contrário, exporte uma cópia JSON antes de sair.'))return;if(typeof archiveCurrentExperience==='function')archiveCurrentExperience(true);state={used:[],active:-1,counts:{},notes:{},className:'',total:10,mode:null};lastGroup=-1;angle=0;wheel(0);$('spinMessage').textContent='';$('className').value='';$('total').value='10';$('welcome').classList.remove('hidden');$('appMain').classList.add('hidden');syncModeNavigation();try{localStorage.removeItem('rodaProjetoVidaV5')}catch(e){};update();window.scrollTo(0,0)};$('className').value=state.className;$('total').value=state.total;$('totalSummary').textContent=state.total;wheel();syncModeNavigation();if(state.mode==='individual'||state.mode==='collective')setMode(state.mode,false);
 
 // v19: manter o layout sincronizado com o modo de tela cheia.
 document.addEventListener('fullscreenchange',()=>{
