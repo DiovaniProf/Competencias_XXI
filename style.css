@@ -951,3 +951,43 @@ body{background:#06172d!important;background-image:none!important}
 @media (max-width: 520px) {
   #pergunta #qtext.question {font-size: clamp(25px, 6vw, 34px) !important;}
 }
+
+
+/* V53 — tela de questão ocupando a área útil conforme referência 1663×927. */
+@media (min-width: 901px) {
+  #appMain {max-width: none !important; padding: 10px clamp(12px,1.25vw,24px) 6px !important;}
+  #appMain .v46-header {min-height: 94px !important; padding: 2px 0 12px 18px !important;}
+  #appMain .v46-header .v46-brand-icon {display:none !important;}
+  #appMain .v46-header h1 {font-size:clamp(26px,2.15vw,39px) !important;}
+  #appMain .v46-topstats {min-height:72px !important;margin: 9px 0 17px !important;}
+  #pergunta.v46-question-panel {min-height: max(620px, calc(100dvh - 268px)) !important; padding: 16px clamp(15px,1.85vw,34px) 20px !important;}
+  #pergunta .v45-top {min-height:45px;}
+  #pergunta .v45-question-core {width: min(100%, 1050px) !important;max-width:1050px !important;margin:-40px auto 0 !important;}
+  #pergunta .v45-question-label {margin-bottom: 5px !important;}
+  #pergunta #qtext.question {font-size:clamp(36px,3.25vw,60px) !important;line-height:1.06 !important;max-width: 1050px !important;margin: 4px auto 15px !important;padding: 4px 8px 7px !important;}
+  #pergunta #collectiveAnswer {max-width:1020px !important;margin: 0 auto 15px !important;}
+  #pergunta #collectiveAnswer label {font-size:clamp(14px,1.12vw,18px) !important;}
+  #pergunta #collectiveAnswer .v45-collective-entry {width:min(100%,365px) !important;}
+  #pergunta #collectiveAnswer #count {max-width:365px !important;min-height:48px !important;font-size:17px !important;}
+  #pergunta .v46-reveals {max-width:1020px !important;gap:14px !important;margin: 13px auto 11px !important;}
+  #pergunta .v45-reveal-head {min-height:61px !important;font-size:clamp(15px,1.15vw,19px) !important;}
+  #pergunta .v45-comment-wrap {max-width:1020px !important;padding:13px 16px !important;margin: 0 auto !important;}
+  #pergunta .v45-comment-wrap label {font-size:clamp(15px,1.1vw,19px) !important;}
+  #pergunta #note {height:83px !important;min-height:83px !important;font-size:clamp(14px,1.05vw,18px) !important;}
+  #pergunta .v45-save-actions {max-width:850px !important;gap:clamp(28px,4vw,70px) !important;margin: 15px auto 0 !important;}
+  #pergunta .v45-save-actions button {flex:0 1 300px !important;max-width:300px !important;min-height:66px !important;font-size:clamp(13px,1vw,17px) !important;}
+}
+@media (min-width:901px) and (max-height:800px) {
+  #appMain .v46-header {min-height:72px !important;}
+  #appMain .v46-topstats {min-height:58px !important;margin-bottom:10px !important;}
+  #pergunta.v46-question-panel {min-height:max(525px,calc(100dvh - 215px)) !important;}
+  #pergunta .v45-question-core {margin:-30px auto 0 !important;}
+  #pergunta #qtext.question {font-size:clamp(34px,2.9vw,51px) !important;margin-bottom:9px !important;}
+  #pergunta .v45-reveal-head {min-height:49px !important;}
+  #pergunta #note {height:65px !important;min-height:65px !important;}
+  #pergunta .v45-save-actions button {min-height:52px !important;}
+}
+@media (max-width:900px) {
+  #pergunta.v46-question-panel {min-height: min(740px,calc(100dvh - 170px)) !important;}
+  #pergunta .v45-question-core {margin:5px auto 0 !important;}
+}
