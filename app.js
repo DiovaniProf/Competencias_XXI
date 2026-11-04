@@ -32,7 +32,7 @@ $('chooseCollective').onclick=()=>setMode('collective',true);
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
 function selectAnswer(n){$('count').value=String(n);$('answerYes').classList.toggle('selected',n===1);$('answerNo').classList.toggle('selected',n===0);saveCurrent()}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
-function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio')radar();if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio'){if(state.active>=0&&$('count').value.trim()!=='')saveCurrent();radar();}if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
 function wheel(rotation=angle){
  const c=$('wheel'),x=c.getContext('2d'),cx=250,cy=250,r=214;
@@ -80,15 +80,24 @@ function saveCurrent(){
   const n=Number(raw);
   if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas SIM entre 0 e '+state.total+'.');$('count').focus();return false}
   state.counts[state.active]=n;
- }else{delete state.counts[state.active]}
- state.notes[state.active]=$('note').value;saveState();return true;
+ }else if(state.counts[state.active]===undefined){/* sem resposta ainda */}
+ state.notes[state.active]=$('note').value;saveState();update();if(!$('relatorio').classList.contains('hidden'))radar();return true;
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
 $('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert('Registre e confirme a resposta SIM ou NÃO antes de continuar.');$('count').focus();return}if(saveCurrent())spin()};
 $('save').onclick=()=>{if(saveCurrent())tab('roda')};
 $('last').onclick=()=>{if(state.active>=0)tab('pergunta')};
-$('count').onchange=()=>{};
-$('note').onchange=()=>{};
+// Sincroniza respostas com os indicadores e o pentágono sem aguardar nova questão.
+// Durante a digitação, valores incompletos não apagam registros já confirmados.
+$('count').addEventListener('change',()=>{
+ if(state.active<0)return;
+ const raw=$('count').value.trim();
+ if(raw===''){return;} // Apagar temporariamente o campo não elimina um registro salvo.
+ const n=Number(raw);
+ if(Number.isInteger(n)&&n>=0&&n<=state.total)saveCurrent();
+});
+
+$('note').addEventListener('change',()=>{if(state.active>=0)saveCurrent()});
 $('className').onchange=saveState;
 $('total').onchange=()=>{
  const n=Number($('total').value);

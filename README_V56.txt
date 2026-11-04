@@ -1,0 +1,1 @@
+V56 — Correção da sincronização das respostas com o Pentágono. Respostas individuais e coletivas atualizam indicadores; resultados por eixo usam somente questões respondidas. Não altera a chave de armazenamento local nem o banco de questões.
