@@ -28,8 +28,21 @@ function setMode(mode,reset=false){
  $('total').value=state.total;syncModeNavigation();saveState();update();tab('dashboard');
 }
 $('backWheel').onclick=()=>{tab('roda')};
-$('chooseIndividual').onclick=()=>setMode('individual',true);
-$('chooseCollective').onclick=()=>setMode('collective',true);
+// V73: fullscreen must be requested directly within the trusted click event.
+// Browsers intentionally block fullscreen on automatic page load.
+function enterFullscreenV73(){
+ if(document.fullscreenElement)return;
+ const root=document.documentElement;
+ const request=root.requestFullscreen||root.webkitRequestFullscreen;
+ if(!request){return;}
+ try{const result=request.call(root);if(result&&typeof result.catch==='function')result.catch(()=>{});}catch(e){}
+}
+$('chooseIndividual').onclick=()=>{enterFullscreenV73();setMode('individual',true);};
+$('chooseCollective').onclick=()=>{enterFullscreenV73();setMode('collective',true);};
+$('loginFullscreen').onclick=()=>{
+ if(document.fullscreenElement){const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)try{const r=exit.call(document);if(r&&r.catch)r.catch(()=>{});}catch(e){}}
+ else enterFullscreenV73();
+};
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
 function selectAnswer(n){if(state.mode!=='individual'||state.active<0)return;$('count').value=String(n);if(saveCurrent()){ $('answerYes').setAttribute('aria-pressed',String(n===1));$('answerNo').setAttribute('aria-pressed',String(n===0)); }}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
@@ -235,6 +248,8 @@ document.addEventListener('fullscreenchange',()=>{
   document.documentElement.classList.toggle('fullscreen-active',Boolean(document.fullscreenElement));
   const btn=document.getElementById('fullScreen');
   if(btn)btn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';
+  const loginBtn=document.getElementById('loginFullscreen');
+  if(loginBtn){loginBtn.textContent=document.fullscreenElement?'⛶ SAIR DA TELA CHEIA':'⛶ TELA CHEIA';loginBtn.setAttribute('aria-label',document.fullscreenElement?'Sair da tela cheia':'Abrir tela de entrada em tela cheia');}
   window.dispatchEvent(new Event('resize'));
 });
 

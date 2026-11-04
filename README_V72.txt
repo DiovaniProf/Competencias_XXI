@@ -1,4 +1,1 @@
-V72 — Ajuste visual para monitores convencionais.
-Corrigida a cascata CSS com seletor de especificidade superior ao conjunto histórico.
-Teste de renderização por Chromium com conteúdo HTML/CSS injetado, em 1366x768, 1600x900 e 1920x1080.
-A verificação visual testa o layout; não substitui testes completos do fluxo de navegação.
+V72 — Layout da pergunta conforme imagem aprovada: borda branca sem brilho; fonte serifada itálica elegante e ampla; campos de mediação/encaminhamento lado a lado; comentário compacto; botões de ação preservados. Experiência individual: SIM/NÃO. Experiência coletiva: quantidade SIM. LOGIN.jpg fixa com áreas clicáveis transparentes.
