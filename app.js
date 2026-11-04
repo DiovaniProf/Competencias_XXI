@@ -44,9 +44,13 @@ $('loginFullscreen').onclick=()=>{
  else enterFullscreenV73();
 };
 $('fullScreen').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('O navegador não permitiu a tela cheia.')}};
-function selectAnswer(n){if(state.mode!=='individual'||state.active<0)return;$('count').value=String(n);if(saveCurrent()){ $('answerYes').setAttribute('aria-pressed',String(n===1));$('answerNo').setAttribute('aria-pressed',String(n===0)); }}
+function selectAnswer(n){if(state.mode!=='individual'||state.active<0)return;$('count').value=String(n);if(saveCurrent()){radar(); $('answerYes').setAttribute('aria-pressed',String(n===1));$('answerNo').setAttribute('aria-pressed',String(n===0)); }}
 $('answerYes').onclick=()=>selectAnswer(1);$('answerNo').onclick=()=>selectAnswer(0);
-function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio'){if(state.active>=0&&$('count').value.trim()!=='')saveCurrent();radar();}if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function tab(name){if(name==='turmas'&&state.mode!=='collective')name='dashboard';if(name==='dashboard'&&typeof renderV47Dashboard==='function')renderV47Dashboard();document.querySelectorAll('main>section[id]').forEach(s=>{if(['dashboard','roda','pergunta','questoes','relatorio','intervencao','turmas'].includes(s.id))s.classList.toggle('hidden',s.id!==name)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));if(name==='relatorio'){
+ if(state.active>=0&&$('count').value.trim()!=='')saveCurrent();
+ radar();
+ requestAnimationFrame(()=>{if(!$('relatorio').classList.contains('hidden'))radar();});
+}if(name==='questoes')list();if(name==='intervencao'&&typeof renderIntervention==='function')renderIntervention();if(name==='turmas'&&typeof renderClasses==='function')renderClasses()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 // Setores giram, mas seus rótulos permanecem sempre legíveis; miolo é fixo.
 // V64: roda 3D desenhada em canvas, mantendo sorteio e animação originais.
 function wheel(rotation=angle){
@@ -109,7 +113,10 @@ function saveCurrent(){
   if(!Number.isInteger(n)||n<0||n>state.total){alert('Informe um número inteiro de respostas SIM entre 0 e '+state.total+'.');$('count').focus();return false}
   state.counts[state.active]=n;
  }else if(state.counts[state.active]===undefined){/* sem resposta ainda */}
- state.notes[state.active]=$('note').value;saveState();update();if(!$('relatorio').classList.contains('hidden'))radar();return true;
+ state.notes[state.active]=$('note').value;
+ saveState();update();
+ radar();
+ return true;
 }
 $('spin').onclick=()=>{if(state.active>=0){alert('Para avançar, utilize SALVAR E SORTEAR PRÓXIMA PERGUNTA na questão atual.');tab('pergunta');return}spin()};
 $('next').onclick=()=>{if(state.active<0)return; if($('count').value.trim()===''){alert(state.mode==='individual'?'Selecione SIM ou NÃO antes de continuar.':'Informe quantos estudantes responderam SIM antes de continuar.');(state.mode==='individual'?$('answerYes'):$('count')).focus();return}if(saveCurrent())spin()};
@@ -157,7 +164,16 @@ function toggleBridge(id,buttonId){const el=$(id),btn=$(buttonId);if(!el||!btn)r
 $('showMed').addEventListener('click',()=>toggleBridge('med','showMed'));
 $('showAction').addEventListener('click',()=>toggleBridge('action','showAction'));
 function update(){if(state.active!==lastBridgeQuestion){resetBridges();lastBridgeQuestion=state.active;}const completed=Object.keys(state.counts).filter(k=>state.counts[k]!==null&&state.counts[k]!==undefined).length;const yesTotal=Object.values(state.counts).reduce((sum,n)=>sum+(Number(n)||0),0);$('counterTop').textContent=state.used.length+' de 20 questões sorteadas';$('answersTop').textContent=completed+' respostas registradas';$('scoreTop').textContent=yesTotal+' respostas SIM · '+state.total+' '+(state.total===1?'participante':'participantes');$('progress').style.width=(state.used.length*5)+'%';$('spin').disabled=state.used.length===20||isSpinning||state.active>=0;$('last').disabled=state.active<0;$('totalSummary').textContent=state.total;if(state.active>=0){const i=state.active,q=questions[i];$('qhead').textContent='QUESTÃO '+(i+1)+' • '+groups[q.g];$('qtext').textContent=q.q;$('med').textContent=q.m;$('action').textContent=q.a;$('count').value=state.counts[i]??'';$('answerYes').classList.toggle('selected',state.counts[i]===1);$('answerNo').classList.toggle('selected',state.counts[i]===0);$('answerYes').setAttribute('aria-pressed',String(state.counts[i]===1));$('answerNo').setAttribute('aria-pressed',String(state.counts[i]===0));$('note').value=state.notes[i]||'';$('qcontrols').classList.remove('hidden')}else{$('qhead').textContent='';$('qtext').textContent='Gire a roda para começar.';$('qcontrols').classList.add('hidden')}}
-function scores(){return groups.map((_,g)=>{let ids=questions.map((q,i)=>q.g===g?i:-1).filter(i=>i>=0&&state.counts[i]!==undefined);return ids.length?Math.round(100*ids.reduce((a,i)=>a+Number(state.counts[i]),0)/(ids.length*state.total)):null})}
+function scores(){
+ const total=state.mode==='individual'?1:Math.max(1,Number(state.total)||1);
+ return groups.map((_,g)=>{
+  const ids=questions.map((q,i)=>q.g===g?i:-1)
+    .filter(i=>i>=0&&state.counts[i]!==undefined&&state.counts[i]!==null&&state.counts[i]!=='');
+  if(!ids.length)return null;
+  const yes=ids.reduce((sum,i)=>sum+Math.min(total,Math.max(0,Number(state.counts[i])||0)),0);
+  return Math.max(0,Math.min(100,Math.round(100*yes/(ids.length*total))));
+ });
+}
 function reflectionData(){
  const v=scores();
  const entries=v.map((value,g)=>({g,value,ids:questions.map((q,i)=>q.g===g&&state.counts[i]!==undefined?i:-1).filter(i=>i>=0)})).filter(x=>x.value!==null);

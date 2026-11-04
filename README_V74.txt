@@ -1,0 +1,1 @@
+V74: correção do registro e atualização do pentágono: valores normalizados, atualização imediata após salvar SIM/NÃO ou contagem coletiva e redesenho ao abrir resultados. Preserva tela LOGIN, tela cheia e layout V73.
