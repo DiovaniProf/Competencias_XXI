@@ -1828,3 +1828,54 @@ html body #roda #spinMessage{margin:0!important;font-size:13px!important;color:#
 html body #roda .rodaplus-intro{display:none!important}
 @media(min-width:950px){html body #appMain:has(#roda:not(.hidden))>.v46-header{padding-block:7px!important;min-height:0!important}html body #appMain:has(#roda:not(.hidden))>nav{padding-block:3px!important}}
 @media(max-width:720px){html body #roda .rodaplus-stage{width:100%!important}html body #roda .rodaplus-hit{border-radius:12px!important}html body #roda .rodaplus-status{padding:12px!important}html body #roda #collectiveTotal{flex-wrap:wrap!important;justify-content:center!important}}
+
+
+/* V77 — Correção definitiva dos hotspots: os seletores por ID antigos
+   não podem pintar os botões que pertencem à imagem RODAPLUS.jpg. */
+html body #appMain #roda.rodaplus-panel #spin.rodaplus-hit,
+html body #appMain #roda.rodaplus-panel #openControl.rodaplus-hit,
+html body #appMain #roda.rodaplus-panel #resetHome.rodaplus-hit,
+html body #appMain #roda.rodaplus-panel #last.rodaplus-hit,
+html body #appMain #roda.rodaplus-panel #changeExperience.rodaplus-hit {
+  appearance:none!important;-webkit-appearance:none!important;
+  background:none!important;background-color:transparent!important;
+  background-image:none!important;border:0!important;outline:0 solid transparent;
+  box-shadow:none!important;filter:none!important;backdrop-filter:none!important;
+  color:transparent!important;text-shadow:none!important;
+  opacity:1!important;transform:none!important;transition:none!important;
+  padding:0!important;margin:0!important;min-width:0!important;
+  font-size:0!important;line-height:0!important;overflow:hidden!important;
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-hit::before,
+html body #appMain #roda.rodaplus-panel .rodaplus-hit::after {content:none!important;display:none!important;}
+html body #appMain #roda.rodaplus-panel .rodaplus-hit:hover,
+html body #appMain #roda.rodaplus-panel .rodaplus-hit:active,
+html body #appMain #roda.rodaplus-panel .rodaplus-hit:disabled {
+ background:none!important;background-color:transparent!important;
+ background-image:none!important;border:0!important;box-shadow:none!important;
+ opacity:1!important;filter:none!important;cursor:pointer!important;
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-hit:focus-visible {
+ outline:3px solid #fff!important;outline-offset:2px!important;
+}
+/* Painel ocupa a largura útil da tela, sem a antiga limitação de 1450px. */
+html body #appMain:has(#roda:not(.hidden)) {
+ max-width:none!important;width:100%!important;
+ padding-left:clamp(8px,1vw,20px)!important;
+ padding-right:clamp(8px,1vw,20px)!important;
+}
+html body #appMain #roda.rodaplus-panel {width:100%!important;max-width:none!important;}
+html body #appMain #roda.rodaplus-panel .rodaplus-stage {
+ width:min(100%,1900px)!important;max-width:none!important;
+ aspect-ratio:1671/941!important;margin-inline:auto!important;
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-background {
+ display:block!important;opacity:1!important;
+}
+html body #appMain #roda.rodaplus-panel .rodaplus-status {
+ width:min(100%,1900px)!important;max-width:none!important;
+ padding:10px 20px!important;justify-content:center!important;
+}
+@media (max-width:900px){
+ html body #appMain #roda.rodaplus-panel .rodaplus-stage{width:100%!important;}
+}

@@ -1,0 +1,1 @@
+V77: correção dos 4 botões que apareciam como retângulos coloridos. Hotspots agora são inteiramente transparentes (inclusive seletores de ID antigos). Fundo RODAPLUS.jpg exibe seus próprios textos e ícones. Ampliação da largura útil do painel, sem alterar animação da roda, seta fixa, experiências individual/coletiva, painel e pentágono.
