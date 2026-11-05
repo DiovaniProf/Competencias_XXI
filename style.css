@@ -1800,3 +1800,29 @@ html[data-experience-mode="collective"] #pergunta #collectiveAnswer #count{
   border-left:0!important;border-top:2px solid #1bcaff!important;
  }
 }
+
+/* V75.2 — alinhamento com a atualização LGPD V75.1.
+   Corrige a rolagem na análise de intervenções em tela cheia.
+   Preserva a identidade visual e as funcionalidades da V75 XXI. */
+html[data-experience-mode="individual"] #pergunta #collectiveAnswer,
+html[data-experience-mode="collective"] #pergunta #individualAnswer {display:none!important;}
+
+/* A área de trabalho é o contêiner de rolagem quando a tela cheia está ativa. */
+html:fullscreen #appMain, html.fullscreen-active #appMain,
+body:fullscreen #appMain, #appMain:fullscreen {
+  box-sizing:border-box!important;
+  height:100dvh!important;max-height:100dvh!important;min-height:0!important;
+  overflow-x:hidden!important;overflow-y:auto!important;
+  scrollbar-gutter:stable;overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+/* Não permitir que regras anteriores aprisionem a seção de intervenções. */
+html:fullscreen #intervencao:not(.hidden),
+html.fullscreen-active #intervencao:not(.hidden),
+body:fullscreen #intervencao:not(.hidden),
+#appMain:fullscreen #intervencao:not(.hidden) {
+  height:auto!important;max-height:none!important;min-height:0!important;
+  overflow:visible!important;flex:0 0 auto!important;
+}
+/* Os cartões e campos continuam recebendo eventos normais de mouse/scroll. */
+#intervencao, #intervencao * {touch-action:pan-y;}

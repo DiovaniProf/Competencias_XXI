@@ -1,0 +1,1 @@
+V75.2: atualização espelhada da LGPD V75.1: rolagem por mouse na Análise e Intervenções, inclusive em tela cheia; separação rigorosa dos campos de resposta individual/coletiva. Mantida a base XXI V75 com correção do pentágono, textos, imagens, painel e gestão de turmas.
